@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/tcocca/acts_as_follower.git
+  revision: c5ac7b9601c4af01eb4d9112330b27be4d694ecc
+  branch: master
+  specs:
+    acts_as_follower (0.2.1)
+      activerecord (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -190,6 +198,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.3)
+    socialization (1.2.3)
+      activerecord
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -216,6 +226,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_follower!
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   devise
@@ -233,6 +245,7 @@ DEPENDENCIES
   rspec-rails
   shoulda-matchers
   simplecov
+  socialization
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data
