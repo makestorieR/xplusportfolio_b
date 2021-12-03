@@ -644,6 +644,7 @@
           1,
           1,
           1,
+          1,
           null
         ]
       },
@@ -654,16 +655,26 @@
           null
         ]
       },
+      "/root/iamworkingon_b/app/models/comment.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
       "/root/iamworkingon_b/app/models/project.rb": {
         "lines": [
           1,
           1,
-          null,
+          1,
           1,
           null
         ]
       }
     },
-    "timestamp": 1638540588
+    "timestamp": 1638548069
   }
 }
