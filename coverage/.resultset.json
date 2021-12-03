@@ -612,6 +612,17 @@
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/iamworkingon_b/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
           null
         ]
       },
@@ -650,18 +661,19 @@
           null
         ]
       },
-      "/root/iamworkingon_b/app/models/application_record.rb": {
-        "lines": [
-          1,
-          1,
-          null
-        ]
-      },
       "/root/iamworkingon_b/app/models/comment.rb": {
         "lines": [
           1,
           1,
           1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/root/iamworkingon_b/app/models/notification.rb": {
+        "lines": [
           1,
           1,
           1,
@@ -679,6 +691,6 @@
         ]
       }
     },
-    "timestamp": 1638551084
+    "timestamp": 1638555736
   }
 }

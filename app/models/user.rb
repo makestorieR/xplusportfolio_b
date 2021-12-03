@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   has_many :projects, dependent: :destroy
   has_many :anticipations, dependent: :destroy
+  has_many :notifications, as: :recipient
   acts_as_liker
   acts_as_followable
   acts_as_follower
