@@ -591,7 +591,13 @@
       "/root/iamworkingon_b/config/routes.rb": {
         "lines": [
           1,
+          null,
           1,
+          1,
+          1,
+          null,
+          null,
+          null,
           null,
           null,
           null
@@ -608,6 +614,7 @@
           null,
           1,
           null,
+          1,
           1,
           1,
           1,
@@ -640,6 +647,12 @@
           null,
           2,
           null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          null,
           null
         ]
       },
@@ -658,6 +671,7 @@
           1,
           1,
           1,
+          null,
           null
         ]
       },
@@ -669,6 +683,7 @@
           1,
           1,
           1,
+          null,
           null
         ]
       },
@@ -689,8 +704,19 @@
           1,
           null
         ]
+      },
+      "/root/iamworkingon_b/app/models/suggestion.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1638555736
+    "timestamp": 1638647739
   }
 }

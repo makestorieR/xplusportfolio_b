@@ -15,6 +15,12 @@ class NewProjectNotification < Noticed::Base
   #
    param :project
 
+   def to_database 
+    {
+      message: @project.title
+    }
+   end
+
   # Define helper methods to make rendering easier.
   #
   def message

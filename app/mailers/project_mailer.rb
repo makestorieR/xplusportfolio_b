@@ -10,4 +10,10 @@ class ProjectMailer < ApplicationMailer
 
     mail to: "johnnonso090@gmail.com"
   end
+
+  def new_project_notification
+    @greeting = "Hi"
+
+    mail to: "johnnonso090@gmail.com"
+  end
 end

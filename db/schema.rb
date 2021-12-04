@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_03_181747) do
+ActiveRecord::Schema.define(version: 2021_12_04_154529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2021_12_03_181747) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
     t.string "content"
-    t.integer "likees_count", default: 0
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -49,16 +48,6 @@ ActiveRecord::Schema.define(version: 2021_12_03_181747) do
     t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
     t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.string "liker_type"
-    t.integer "liker_id"
-    t.string "likeable_type"
-    t.integer "likeable_id"
-    t.datetime "created_at"
-    t.index ["likeable_id", "likeable_type"], name: "fk_likeables"
-    t.index ["liker_id", "liker_type"], name: "fk_likes"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -83,6 +72,17 @@ ActiveRecord::Schema.define(version: 2021_12_03_181747) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "suggestions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.boolean "done", default: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_suggestions_on_project_id"
+    t.index ["user_id"], name: "index_suggestions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -101,14 +101,31 @@ ActiveRecord::Schema.define(version: 2021_12_03_181747) do
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "likees_count", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.string "votable_type"
+    t.bigint "votable_id"
+    t.string "voter_type"
+    t.bigint "voter_id"
+    t.boolean "vote_flag"
+    t.string "vote_scope"
+    t.integer "vote_weight"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
+    t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+    t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
+  end
+
   add_foreign_key "anticipations", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "suggestions", "projects"
+  add_foreign_key "suggestions", "users"
 end

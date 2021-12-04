@@ -19,13 +19,15 @@ gem 'friendly_id', '~> 5.4.0'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem "socialization"
-gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
+gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
+gem 'acts_as_votable'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'noticed', '~> 1.5', '>= 1.5.5'
+
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem "figaro"
@@ -51,3 +53,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "noticed", "~> 1.5"
+
+gem "sidekiq", "~> 6.3"
