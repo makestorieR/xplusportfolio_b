@@ -101,7 +101,7 @@ RSpec.describe "Api::V1::Users", type: :request do
       
     end
 
-    context "when user is authenticated and " do
+    context "when user is authenticated " do
 
       it "returns proper length of the list of users" do
         subject 
@@ -117,22 +117,15 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
 
 
-    # context "page params does not exists" do
-
-    #   before do 
-    #     get '/api/v1/users', headers: @headers
+    context "when user could not be found " do
+      it "returns http status :not_found" do
+        get '/api/v1/users/peter-packer', headers: @headers
+        expect(response).to have_http_status(:not_found)
         
-    #     @json_data = JSON.parse(response.body)
-    #   end
-
-    #   it "returns proper length of the list of users" do
+      end
       
-    #     expect(@json_data.length).to eq(10)
-    #   end
-      
-    # end
-      
-    #end
+    end
+    
 
   end
 end

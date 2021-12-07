@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
 
 
     def show 
-        
+
         render 'api/v1/users/show.json.jbuilder'
     end
 
@@ -24,6 +24,10 @@ class Api::V1::UsersController < ApplicationController
     def find_user 
 
         @user = User.all.friendly.find_by_slug(params[:id]) 
+
+        unless @user 
+            render json: 'Not Found', message: "User does not exist", status: :not_found
+        end
 
         
         
