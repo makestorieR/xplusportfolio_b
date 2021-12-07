@@ -151,4 +151,59 @@ RSpec.describe "Api::V1::Projects", type: :request do
     end
   
   end
+
+
+  describe "DELETE /destroy" do
+    include ApiDoc::V1::Projects::Destroy 
+
+    before do 
+      @project_url = '/api/v1/projects/todo-application'
+      
+      create :project, title: "Todo Application", description: "A Todo App", user: @user
+
+    end
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        delete '/api/v1/projects/todo-application'
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when user is authenticated and" do
+
+      context "project is deleted" do
+        subject { delete @project_url, headers: @headers } 
+
+        
+        it "returns http status :no_content" do
+          subject
+          expect(response).to have_http_status(:no_content)
+        end
+
+        it "return nil project" do
+          subject
+          expect(Project.friendly.find_by_slug('todo-application')).to eq(nil)  
+          
+        end
+        
+        
+        
+      end
+
+      
+
+      context "project could not be found" do
+        it "returns http status :not_found" do
+          delete '/api/v1/projects/todo', headers: @headers
+          expect(response).to have_http_status(:not_found)
+        end
+        
+      end
+      
+      
+    end
+  
+  end
 end

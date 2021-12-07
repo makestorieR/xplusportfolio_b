@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update]
-    before_action :find_project, only: [:update]
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy]
+    before_action :find_project, only: [:update, :destroy]
 
     def create 
 
@@ -23,6 +23,11 @@ class Api::V1::ProjectsController < ApplicationController
         else
             render json: @project.errors.messages, status: :unprocessable_entity
         end
+    end
+
+
+    def destroy 
+        @project.destroy
     end
 
     private
