@@ -79,17 +79,76 @@ RSpec.describe "Api::V1::Projects", type: :request do
           post @project_url, params: {project: {title: "", description: "this is a todo application"}}, headers: @headers
           expect(response).to have_http_status(:unprocessable_entity)
         end
+      
+      end
+      
+    end
+  
+  end
+
+
+  describe "POST /update" do
+    include ApiDoc::V1::Projects::Update 
+
+    before do 
+      @project_url = '/api/v1/projects/todo-application'
+      @project_params = {
+
+        project: {
+          title: "Todo Application",
+          description: "A todo application that help people to keep track of all their activities"
+  
+        }
         
+      }
 
 
+      create :project, title: "Todo Application", description: "A Todo App", user: @user
+
+
+    end
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        put '/api/v1/projects/todo-application', params: @project_params
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when user is authenticated and" do
+
+      context "project is updated" do
+        subject { put @project_url, params: @project_params, headers: @headers } 
+
+        
+        it "returns http status :ok" do
+          subject
+          expect(response).to have_http_status(:ok)
+        end
+        
+        
+      end
+
+      context "project failed to be updated" do
+
+        it "returns http status :unprocessable_entity" do
+          put @project_url, params: {project: {title: "", description: "this is a todo application"}}, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+      
+      end
+
+      context "project could not be found" do
+        it "returns http status :not_found" do
+          put '/api/v1/projects/todo', headers: @headers, params: @project_params
+          expect(response).to have_http_status(:not_found)
+        end
+        
       end
       
       
-      
-      
     end
-    
-
-
+  
   end
 end

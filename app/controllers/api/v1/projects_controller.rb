@@ -1,5 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create]
+    before_action :authenticate_api_v1_user!, only: [:create, :update]
+    before_action :find_project, only: [:update]
 
     def create 
 
@@ -14,9 +15,27 @@ class Api::V1::ProjectsController < ApplicationController
 
     end
 
+
+    def update 
+
+        if @project.update(project_params)
+            render json: @project, status: :ok
+        else
+            render json: @project.errors.messages, status: :unprocessable_entity
+        end
+    end
+
     private
 
     def project_params 
         params.require(:project).permit(:title, :description)
+    end
+
+    def find_project 
+        @project = current_api_v1_user.projects.friendly.find_by_slug(params[:id])
+        
+        unless @project 
+            render json: "Not Found", message: "Project not found", status: :not_found
+        end
     end
 end
