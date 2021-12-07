@@ -8,7 +8,7 @@ RSpec.describe "Api::V1::Users", type: :request do
     
     @login_url = '/api/v1/auth/sign_in'
 
-    @user = create :user, email: "meller@gmail.com", password: "password"
+    @user = create :user, email: "meller@gmail.com", password: "password", name: "paul mike"
     @user.confirm
 
     @login_params = {
@@ -30,7 +30,7 @@ RSpec.describe "Api::V1::Users", type: :request do
   end
 
   describe "GET /index" do
-    #include ApiDoc::V1::Users::Index
+    include ApiDoc::V1::Users::Index
 
     before do 
       create_list :user, 20
@@ -81,16 +81,58 @@ RSpec.describe "Api::V1::Users", type: :request do
       
     end
     
-    
+  end
 
-    
 
-    
-    
 
-    
-    
-    
-    
+
+
+  describe "GET /show" do
+    include ApiDoc::V1::Users::Show
+
+    subject { get '/api/v1/users/paul-mike', headers: @headers } 
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get '/api/v1/users/paul-mike'
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      it "returns proper length of the list of users" do
+        subject 
+        @json_data = JSON.parse(response.body)
+        expect(@json_data['user']).to include({
+          'name' => 'paul mike',
+          'slug' => 'paul-mike'
+        })
+      end
+      
+  
+      
+    end
+
+
+    # context "page params does not exists" do
+
+    #   before do 
+    #     get '/api/v1/users', headers: @headers
+        
+    #     @json_data = JSON.parse(response.body)
+    #   end
+
+    #   it "returns proper length of the list of users" do
+      
+    #     expect(@json_data.length).to eq(10)
+    #   end
+      
+    # end
+      
+    #end
+
   end
 end
