@@ -186,17 +186,70 @@ RSpec.describe "Api::V1::Projects", type: :request do
           subject
           expect(Project.friendly.find_by_slug('todo-application')).to eq(nil)  
           
-        end
-        
-        
+        end 
         
       end
-
-      
 
       context "project could not be found" do
         it "returns http status :not_found" do
           delete '/api/v1/projects/todo', headers: @headers
+          expect(response).to have_http_status(:not_found)
+        end
+        
+      end
+      
+      
+    end
+  
+  end
+
+
+  describe "GET /show" do
+    include ApiDoc::V1::Projects::Show 
+
+    before do 
+      @project_url = '/api/v1/projects/todo-application'
+      
+      create :project, title: "Todo Application", description: "A Todo App", user: @user
+
+    end
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get '/api/v1/projects/todo-application'
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when user is authenticated and" do
+
+      context "project is found" do
+        subject { get @project_url, headers: @headers } 
+
+        
+        it "returns http status :ok" do
+          subject
+          expect(response).to have_http_status(:ok)
+        end
+
+        it "returns project as json response" do
+          get '/api/v1/projects/todo-application', headers: @headers
+          json_data = JSON.parse(response.body)
+
+          
+          expect(json_data['project']).to  include({
+            'title' => 'Todo Application',
+            'description' => 'A Todo App'
+          })
+        end
+        
+        
+      end
+
+      context "project could not be found" do
+        it "returns http status :not_found" do
+          get '/api/v1/projects/todo', headers: @headers
           expect(response).to have_http_status(:not_found)
         end
         

@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy]
-    before_action :find_project, only: [:update, :destroy]
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show]
+    before_action :find_project, only: [:update, :destroy, :show]
 
     def create 
 
@@ -28,6 +28,11 @@ class Api::V1::ProjectsController < ApplicationController
 
     def destroy 
         @project.destroy
+    end
+
+
+    def show 
+        render 'api/v1/projects/show.json.jbuilder'
     end
 
     private
