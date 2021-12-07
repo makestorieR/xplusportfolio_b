@@ -19,17 +19,7 @@ module ApiDoc
         action 'Get a user'
       end
 
-      document :update do
-        action 'Update a user'
-      end
-
-      document :create do
-        action 'Create a user'
-      end
-
-      document :destroy do
-        action 'Delete a user'
-      end
+      
     end
   end
 end

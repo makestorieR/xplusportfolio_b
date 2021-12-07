@@ -1,0 +1,95 @@
+require 'rails_helper'
+
+RSpec.describe "Api::V1::Projects", type: :request do
+  include ApiDoc::V1::Projects::Api
+
+  before do 
+
+    
+    @login_url = '/api/v1/auth/sign_in'
+
+    @user = create :user, email: "meller@gmail.com", password: "password", name: "paul mike"
+    @user.confirm
+    @project_url = '/api/v1/projects'
+
+    @login_params = {
+      email: @user.email,
+      password: @user.password 
+    }
+
+    post @login_url, params: @login_params 
+
+    @headers = {
+      'access-token' => response.headers['access-token'],
+      'client' => response.headers['client'],
+      'uid' => response.headers['uid']
+    }
+
+  end
+
+
+  describe "POST /create" do
+    include ApiDoc::V1::Projects::Create 
+
+    before do 
+      
+      @project_params = {
+
+        project: {
+          title: "Todo Application",
+          description: "A todo application that help people to keep track of all their activities"
+  
+        }
+        
+      }
+
+    end
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        post '/api/v1/projects/', params: @project_params
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when user is authenticated and" do
+
+      context "new project is created" do
+        subject { post @project_url, params: @project_params, headers: @headers } 
+
+        it "increment Project.count by 1" do
+          expect{subject}.to change{Project.count}.by(1)  
+        end
+
+        it "returns http status :created" do
+          subject
+          expect(response).to have_http_status(:created)
+        end
+        
+        
+      end
+
+      context "project failed to be created" do
+        it "do not increment Project.count " do
+          expect{subject}.to_not change{Project.count}  
+        end
+
+        it "returns http status :unprocessable_entity" do
+          post @project_url, params: {project: {title: "", description: "this is a todo application"}}, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+        
+
+
+      end
+      
+      
+      
+      
+    end
+    
+
+
+  end
+end

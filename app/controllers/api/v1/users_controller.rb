@@ -28,8 +28,5 @@ class Api::V1::UsersController < ApplicationController
         unless @user 
             render json: 'Not Found', message: "User does not exist", status: :not_found
         end
-
-        
-        
     end
 end
