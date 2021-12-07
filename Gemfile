@@ -42,6 +42,7 @@ gem 'rack-cors'
   gem 'simplecov', require: false, group: :test
   gem 'shoulda-matchers'
   gem 'kaminari'
+  gem 'dox', require: false
 end
 
 group :development do
@@ -57,3 +58,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "noticed", "~> 1.5"
 
 gem "sidekiq", "~> 6.3"
+

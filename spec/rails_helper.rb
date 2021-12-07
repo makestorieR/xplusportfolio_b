@@ -5,6 +5,7 @@ require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require 'dox'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -21,6 +22,7 @@ require 'rspec/rails'
 # require only the support files necessary.
 #
 # Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
+Dir[Rails.root.join("spec/api_doc/**/*.rb")].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -62,6 +64,13 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  
+
+  config.after(:each, :dox) do |example|
+    example.metadata[:request] = request
+    example.metadata[:response] = response
+  end
 end
 
 
@@ -71,4 +80,20 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+
+Dox.configure do |config|
+  #config.descriptions_location  = Rails.root.join('spec/docs/v1/descriptions')
+ 
+  config.headers_whitelist = ['Accept', 'X-Auth-Token']
+  config.title = 'API'
+  config.api_version = '1.0'
+  # config.header_description = 'api_description.md'
+
+  # config.header_file_path = Rails.root.join("spec/api_doc/v1/descriptions/header.md")
+  # config.desc_folder_path = Rails.root.join("spec/api_doc/v1/descriptions")
+  config.header_file_path = Rails.root.join('spec/api_doc/v1/descriptions/header.md')
+  config.desc_folder_path = Rails.root.join('spec/api_doc/v1/descriptions')
+
 end

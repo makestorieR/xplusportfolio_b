@@ -89,6 +89,9 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dox (2.1.0)
+      activesupport (>= 4.0)
+      rspec-core
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -263,6 +266,7 @@ DEPENDENCIES
   byebug
   devise
   devise_token_auth
+  dox
   factory_bot_rails
   figaro
   friendly_id (~> 5.4.0)

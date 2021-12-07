@@ -596,6 +596,10 @@
           1,
           1,
           null,
+          1,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -643,9 +647,9 @@
           null,
           null,
           1,
-          2,
+          0,
           null,
-          2,
+          0,
           null,
           null,
           1,
@@ -715,8 +719,34 @@
           1,
           null
         ]
+      },
+      "/root/iamworkingon_b/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/root/iamworkingon_b/app/controllers/api/v1/users_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1638647739
+    "timestamp": 1638817654
   }
 }
