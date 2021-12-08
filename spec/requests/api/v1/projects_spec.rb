@@ -87,7 +87,7 @@ RSpec.describe "Api::V1::Projects", type: :request do
   end
 
 
-  describe "POST /update" do
+  describe "PUT /update" do
     include ApiDoc::V1::Projects::Update 
 
     before do 

@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       #project routes 
       resources :projects, only: [:create, :update, :destroy, :show]
 
+      #anticipations routes 
+      resources :anticipations, only: [:show, :update, :create]
+
     end
   end
 

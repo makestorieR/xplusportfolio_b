@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_173158) do
+ActiveRecord::Schema.define(version: 2021_12_08_101304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "anticipation_covers", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "anticipations", force: :cascade do |t|
     t.string "body"
@@ -21,6 +27,8 @@ ActiveRecord::Schema.define(version: 2021_12_07_173158) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "anticipation_cover_id"
+    t.index ["anticipation_cover_id"], name: "index_anticipations_on_anticipation_cover_id"
     t.index ["user_id"], name: "index_anticipations_on_user_id"
   end
 
@@ -138,6 +146,7 @@ ActiveRecord::Schema.define(version: 2021_12_07_173158) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  add_foreign_key "anticipations", "anticipation_covers"
   add_foreign_key "anticipations", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "projects", "users"
