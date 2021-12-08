@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index] 
-    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index]
+    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index, :follower_index] 
+    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index]
    
     def index 
         if params[:page].present?
@@ -46,12 +46,25 @@ class Api::V1::UsersController < ApplicationController
         render 'api/v1/users/suggestion_index.json.jbuilder'
     end
 
+    def follower_index 
+        if params[:page].present?    
+            @pagy, @followers = pagy(followers, page: params[:page])
+        else
+            @pagy, @followers = pagy(followers, page: 1)
+        end
+        render 'api/v1/users/follower_index.json.jbuilder'
+    end
 
+ 
     private 
     def find_user 
         @user = User.all.friendly.find_by_slug(params[:id]) 
         unless @user 
             render json: 'Not Found', message: "User does not exist", status: :not_found
         end
+    end
+
+    def followers 
+        User.where({id: @user.followers})
     end
 end
