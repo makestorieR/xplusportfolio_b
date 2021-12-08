@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :anticipations, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :suggestions, dependent: :destroy
   acts_as_followable
   acts_as_follower
   acts_as_voter
