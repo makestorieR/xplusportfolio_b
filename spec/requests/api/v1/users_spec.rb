@@ -71,7 +71,7 @@ RSpec.describe "Api::V1::Users", type: :request do
 
       it "returns proper length of the list of users" do
       
-        expect(@json_data.length).to eq(10)
+        expect(@json_data.length).to eq(9)
       end
       
     end
@@ -269,4 +269,76 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
     
   end
+
+  describe "GET /anticipation_index" do
+    include ApiDoc::V1::Users::Projects
+
+    before do 
+      anticipation_cover = create :anticipation_cover
+      20.times do |n|
+        create :anticipation, user: @user, anticipation_cover: anticipation_cover
+      end
+
+      @project_url = '/api/v1/users/paul-mike/anticipations'
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "when user could not be found " do
+        it "returns http status :not_found" do
+          get '/api/v1/users/peter-packer/anticipations', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+
+      context "page params exists" do
+
+        before do 
+          get @project_url, params: {page: 2}, headers: @headers
+          
+          @json_data = JSON.parse(response.body)
+          
+        end
+
+        it "returns proper length of the list of user anticipations" do
+          
+          expect(@json_data.length).to eq(10)
+        end
+    
+        
+      end
+
+
+      context "page params does not exists" do
+
+        before do 
+          get @project_url, headers: @headers
+          
+          @json_data = JSON.parse(response.body)
+        end
+
+        it "returns proper length of the list of user anticipations" do
+        
+          expect(@json_data.length).to eq(10)
+        end
+        
+      end
+      
+    end
+    
+  end
+
+
 end

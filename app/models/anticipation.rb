@@ -13,7 +13,7 @@ class Anticipation < ApplicationRecord
 
     private 
     def set_slug 
-        self.slug = Digest::MD5.hexdigest(self.body + Time.current.to_s + ENV['DIGEST_SECRET'])
+        self.slug = Digest::MD5.hexdigest(self.body + Time.now.to_f.to_s.gsub(".", "") + SecureRandom.hex(5))
     end
 
     def penilize_user 
