@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :show] 
-    before_action :find_user, only: :show
+    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index] 
+    before_action :find_user, only: [:show, :project_index]
    
     def index 
         
@@ -17,6 +17,20 @@ class Api::V1::UsersController < ApplicationController
     def show 
 
         render 'api/v1/users/show.json.jbuilder'
+    end
+
+    def project_index 
+
+        if params[:page].present?
+            
+            @pagy, @projects = pagy(@user.projects, page: params[:page])
+        else
+            @pagy, @projects = pagy(@user.projects, page: 1)
+        end
+
+
+        
+        render 'api/v1/users/project_index.json.jbuilder'
     end
 
 
