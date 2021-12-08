@@ -24,9 +24,6 @@ RSpec.describe "Api::V1::Users", type: :request do
       'uid' => response.headers['uid']
     }
 
-    
-
-
   end
 
   describe "GET /index" do

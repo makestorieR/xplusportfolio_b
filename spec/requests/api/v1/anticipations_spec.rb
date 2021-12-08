@@ -177,7 +177,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
     context "when user is not authenticated" do
       it "returns http status :unauthorized" do
-        get '/api/v1/anticipations/todo-application'
+        get '/api/v1/anticipations/todo-application', params: {page: 1}
         expect(response).to have_http_status(:unauthorized)  
       end
       
@@ -186,7 +186,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
     context "when user is authenticated and" do
 
       context "anticipation is found" do
-        subject { get @anticipation_url, headers: @headers } 
+        subject { get @anticipation_url, headers: @headers, params: {page: 1} } 
 
         before do 
           subject
@@ -220,7 +220,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
       context "anticipation could not be found" do
         it "returns http status :not_found" do
-          get '/api/v1/anticipations/todo', headers: @headers
+          get '/api/v1/anticipations/todo', headers: @headers, params: {page: 1}
           expect(response).to have_http_status(:not_found)
         end
         

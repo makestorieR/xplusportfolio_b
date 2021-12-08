@@ -5,8 +5,7 @@ class Api::V1::AnticipationsController < ApplicationController
         anticipation = Anticipation.new anticipation_params
         anticipation.user = current_api_v1_user
         
-        if anticipation.save 
-            
+        if anticipation.save            
             render json: anticipation, status: :created
         else
             render json: anticipation.errors.messages, status: :unprocessable_entity
@@ -14,12 +13,11 @@ class Api::V1::AnticipationsController < ApplicationController
     end
 
     def show 
-        
+        @pagy, @suscribers = pagy(suscribers, page: params[:page])
         render 'api/v1/anticipations/show.json.jbuilder'
     end
 
     def update 
-
         if @anticipation.update(anticipation_params) 
             render json: @anticipation, status: :ok
         else
@@ -33,9 +31,12 @@ class Api::V1::AnticipationsController < ApplicationController
         params.require(:anticipation).permit(:body, :anticipation_cover_id, :due_date)
     end
 
+    def suscribers 
+        User.where({id: @anticipation.followers})
+    end
+
     def find_anticipation 
         @anticipation = current_api_v1_user.anticipations.find_by_slug(params[:id])
-        
         unless @anticipation 
             render json: "Not Found", message: "Project not found", status: :not_found
         end
