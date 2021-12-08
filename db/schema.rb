@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_08_101304) do
+ActiveRecord::Schema.define(version: 2021_12_08_110056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 2021_12_08_101304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "anticipation_cover_id"
+    t.string "slug"
     t.index ["anticipation_cover_id"], name: "index_anticipations_on_anticipation_cover_id"
+    t.index ["slug"], name: "index_anticipations_on_slug", unique: true
     t.index ["user_id"], name: "index_anticipations_on_user_id"
   end
 
@@ -123,6 +125,7 @@ ActiveRecord::Schema.define(version: 2021_12_08_101304) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
+    t.integer "repu_coin", default: 100
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
