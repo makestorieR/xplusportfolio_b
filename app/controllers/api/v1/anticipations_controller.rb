@@ -32,7 +32,7 @@ class Api::V1::AnticipationsController < ApplicationController
     end
 
     def suscribers 
-        User.where({id: @anticipation.followers})
+        @anticipation.followers_by_type("User")
     end
 
     def find_anticipation 
@@ -40,5 +40,9 @@ class Api::V1::AnticipationsController < ApplicationController
         unless @anticipation 
             render json: "Not Found", message: "Project not found", status: :not_found
         end
+    end
+
+    def followers 
+        @user.followers_by_type("User")
     end
 end

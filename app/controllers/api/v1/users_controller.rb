@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index, :follower_index] 
-    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index]
+    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index] 
+    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index]
    
     def index 
         if params[:page].present?
@@ -55,6 +55,15 @@ class Api::V1::UsersController < ApplicationController
         render 'api/v1/users/follower_index.json.jbuilder'
     end
 
+    def following_index 
+        if params[:page].present?    
+            @pagy, @follows = pagy(following, page: params[:page])
+        else
+            @pagy, @follows = pagy(following, page: 1)
+        end
+        render 'api/v1/users/following_index.json.jbuilder'
+    end
+
  
     private 
     def find_user 
@@ -65,6 +74,10 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def followers 
-        User.where({id: @user.followers})
+        @user.followers_by_type("User")
+    end
+
+    def following 
+        @user.following_by_type("User")
     end
 end
