@@ -37,6 +37,7 @@ Rails.application.routes.draw do
           delete 'likes', to: 'anticipations#down'
           post 'suscribers', to: 'anticipations#suscribe'
           delete 'suscribers', to: 'anticipations#unsuscribe'
+          
         end
 
       end
