@@ -28,7 +28,6 @@ RSpec.describe "Projects", type: :routing do
     end
 
 
-
     it "POST api/v1/projects/todo-application/likes routes to api/v1/projects#up" do
         expect(post '/api/v1/projects/todo-application/likes').to route_to(controller: 'api/v1/projects', action: 'up', id: 'todo-application')  
     end
@@ -36,5 +35,7 @@ RSpec.describe "Projects", type: :routing do
     it "DELETE api/v1/projects/todo-application/likes routes to api/v1/projects#down" do
         expect(delete '/api/v1/projects/todo-application/likes').to route_to(controller: 'api/v1/projects', action: 'down', id: 'todo-application')  
     end
+
+    
 
 end

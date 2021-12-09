@@ -41,6 +41,9 @@ Rails.application.routes.draw do
 
       end
 
+      #suggestions
+      resources :suggestions, only: [:create, :update]
+
     end
   end
 

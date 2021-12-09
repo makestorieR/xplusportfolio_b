@@ -1,0 +1,92 @@
+require 'rails_helper'
+
+RSpec.describe "Api::V1::Suggestions", type: :request do
+  include ApiDoc::V1::Suggestions::Api
+
+  before do 
+    @login_url = '/api/v1/auth/sign_in'
+
+    @user = create :user, email: "meller@gmail.com", password: "password", name: "paul mike"
+    @user.confirm
+    
+
+    @login_params = {
+      email: @user.email,
+      password: @user.password 
+    }
+
+    post @login_url, params: @login_params 
+
+    @headers = {
+      'access-token' => response.headers['access-token'],
+      'client' => response.headers['client'],
+      'uid' => response.headers['uid']
+    }
+
+  end
+
+
+  describe "POST /create" do
+
+    include ApiDoc::V1::Suggestions::Create 
+
+    before do 
+
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, id: 3, title: "todo application", user: @searched_user, description: "A real world todo application"
+      
+      @suggestion_url = '/api/v1/suggestions'
+      @suggestion_params = {
+
+        suggestion: {
+          content: "work on the login feature, its kinda wacky.",
+          project_id: 3
+        }
+        
+      }
+
+    end
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        post '/api/v1/suggestions/', params: @suggestion_params
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when user is authenticated and" do
+
+      context "new suggestion is created" do
+        subject { post @suggestion_url, params: @suggestion_params, headers: @headers } 
+
+        it "increment Suggestion.count by 1" do
+          expect{subject}.to change{Suggestion.count}.by(1)  
+        end
+
+        it "returns http status :created" do
+          subject
+          expect(response).to have_http_status(:created)
+        end
+        
+        
+      end
+
+      context "suggestion failed to be created" do
+        it "do not increment Suggestion.count " do
+          expect{subject}.to_not change{Suggestion.count}  
+        end
+
+        it "returns http status :unprocessable_entity" do
+          post @suggestion_url, params: {suggestion: {content: "", project_id: 3}}, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+      
+      end
+      
+    end
+  
+  end
+
+  
+end
