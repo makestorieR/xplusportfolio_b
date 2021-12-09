@@ -26,6 +26,26 @@ module ApiDoc
         document :destroy do
           action 'Delete a project'
         end
+
+        document :api do
+          resource 'Voters' do
+            endpoint '/voters'
+            group 'Voters'
+            desc 'voters.md'
+          end
+        end
+
+        document :upvote do
+          action 'Vote a project'
+        end
+
+        document :downvote do
+          action 'Downvote a project'
+        end
+
+
+
+
       end
     end
   end

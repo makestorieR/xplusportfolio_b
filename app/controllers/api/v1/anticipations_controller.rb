@@ -32,23 +32,23 @@ class Api::V1::AnticipationsController < ApplicationController
     def suscribe 
         
         current_api_v1_user.follow @anticipation
-        render json: {message: "Succesfully suscribed to this anticipation"}, status: :ok
+        render json: {message: "Succesfully suscribed to this anticipation", total_suscribers: @anticipation.count_user_followers}, status: :ok
     end
 
     def unsuscribe 
         current_api_v1_user.stop_following @anticipation
-        render json: {message: "Succesfully unsuscribed to this anticipation"}, status: :ok
+        render json: {message: "Succesfully unsuscribed to this anticipation", total_suscribers: @anticipation.count_user_followers}, status: :ok
     end
 
     def up 
 
         current_api_v1_user.likes @anticipation
-        render json: {message: "Liked this anticipation"}, status: :ok
+        render json: {message: "Liked this anticipation", total_likes: @anticipation.get_likes.size}, status: :ok
     end
 
     def down 
         current_api_v1_user.unlike @anticipation
-        render json: {message: "Unlikes this anticipation"}, status: :ok
+        render json: {message: "Unlikes this anticipation", total_likes: @anticipation.get_likes.size}, status: :ok
     end
 
 

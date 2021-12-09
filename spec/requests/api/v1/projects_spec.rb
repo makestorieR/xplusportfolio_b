@@ -259,4 +259,112 @@ RSpec.describe "Api::V1::Projects", type: :request do
     end
   
   end
+
+
+  describe "POST /upvote" do
+    include ApiDoc::V1::Projects::Upvote
+
+    before do 
+     
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, title: "todo application", user: @searched_user, description: "A real world todo application"
+      @project_url = "/api/v1/projects/todo-application/voters"
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        post @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "project could not be found " do
+        it "returns http status :not_found" do
+          post '/api/v1/projects/sdfsrdeds/voters', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+
+      context "current user vote a project" do
+
+        it "increment project votes" do
+          
+          expect{post @project_url, headers: @headers}.to change{@project.get_upvotes.size}.by(1) 
+        end
+
+        it "returns http status :ok" do
+          post @project_url, headers: @headers
+
+          
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+
+     
+
+    end
+    
+  end
+
+
+  describe "POST /downvote" do
+    include ApiDoc::V1::Projects::Downvote
+
+    before do 
+     
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, title: "todo application", user: @searched_user, description: "A real world todo application"
+      @project_url = "/api/v1/projects/todo-application/voters"
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        delete @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "project could not be found " do
+        it "returns http status :not_found" do
+          delete '/api/v1/projects/sdfsrdeds/voters', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+
+      context "current user vote a project" do
+
+        it "increment project votes" do
+          
+          expect{delete @project_url, headers: @headers}.to change{@project.get_downvotes.size}.by(1) 
+        end
+
+        it "returns http status :ok" do
+          delete @project_url, headers: @headers
+
+          
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+
+     
+
+    end
+    
+  end
 end

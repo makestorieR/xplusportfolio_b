@@ -18,7 +18,17 @@ Rails.application.routes.draw do
       end
 
       #project routes 
-      resources :projects, only: [:create, :update, :destroy, :show]
+      resources :projects, only: [:create, :update, :destroy, :show] do 
+
+        member do 
+          post 'likes', to: 'projects#up'
+          delete 'likes', to: 'projects#down'
+          post 'voters', to: 'projects#upvote'
+          delete 'voters', to: 'projects#downvote'
+
+        end
+
+      end
 
       #anticipations routes 
       resources :anticipations, only: [:show, :update, :create] do 
