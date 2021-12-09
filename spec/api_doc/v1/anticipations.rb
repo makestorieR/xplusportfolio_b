@@ -42,6 +42,23 @@ module ApiDoc
         end
 
 
+        document :likes do
+          resource 'Likes' do
+            endpoint '/likes'
+            group 'Likes'
+            desc 'likes.md'
+          end
+        end
+
+        document :up do
+          action 'Likes an anticipation'
+        end
+
+        document :down do
+          action 'Unlikes an anticipation'
+        end
+
+
   
       
       end

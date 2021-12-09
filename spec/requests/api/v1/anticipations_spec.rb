@@ -266,7 +266,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
       context "current user suscribe to an  anticipation" do
 
-        it "returns proper length of the list of anticipation suscribers" do
+        it "increment anticipation suscribers" do
           
           expect{post @anticipation_url, headers: @headers}.to change{@anticipation.count_user_followers}.by(1) 
         end
@@ -287,7 +287,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
         end
 
        
-        it "returns proper length of the list of user followings" do
+        it "do not increment user followings" do
           
           expect{post @anticipation_url, headers: @headers}.not_to change{@user.following_users_count}
         end
@@ -340,7 +340,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
       context "current user  unsuscribe to an  anticipation" do
 
-        it "returns proper length of the list of anticipation suscribers" do
+        it "increment anticipation suscribers" do
           
           expect{delete @anticipation_url, headers: @headers}.to change{@anticipation.count_user_followers}.from(1).to(0)
         end
@@ -355,6 +355,110 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
       end
 
      
+    end
+    
+  end
+
+
+  describe "POST /up" do
+    include ApiDoc::V1::Anticipations::Up
+
+    before do 
+      a_cover = create :anticipation_cover
+      @searched_user = create :user, name: "paul obi"
+      @anticipation = create :anticipation, body: "Working on a todo application", user: @searched_user, due_date: Date.today, anticipation_cover: a_cover
+      @anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/likes"
+      
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        post @anticipation_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "anticipation could not be found " do
+        it "returns http status :not_found" do
+          post '/api/v1/anticipations/sdfsrdeds/likes', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+      context "current user  likes an  anticipation" do
+
+        it "increment anticipation likes" do
+          
+          expect{post @anticipation_url, headers: @headers}.to change{@anticipation.get_likes.size}.by(1)
+        end
+
+        it "returns http status :ok" do
+          post @anticipation_url, headers: @headers
+
+          
+          
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+ 
+    end
+    
+  end
+
+
+
+  describe "DELETE /down" do
+    include ApiDoc::V1::Anticipations::Down
+
+    before do 
+      a_cover = create :anticipation_cover
+      @searched_user = create :user, name: "paul obi"
+      @anticipation = create :anticipation, body: "Working on a todo application", user: @searched_user, due_date: Date.today, anticipation_cover: a_cover
+      @anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/likes"
+      @user.likes @anticipation
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        delete @anticipation_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "anticipation could not be found " do
+        it "returns http status :not_found" do
+          delete '/api/v1/anticipations/sdfsrdeds/likes', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+      context "current user  unlikes an  anticipation" do
+
+        it "decrement anticipation likes" do
+          
+          expect{delete @anticipation_url, headers: @headers}.to change{@anticipation.get_likes.size}.from(1).to(0)
+        end
+
+        it "returns http status :ok" do
+          delete @anticipation_url, headers: @headers
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+ 
     end
     
   end

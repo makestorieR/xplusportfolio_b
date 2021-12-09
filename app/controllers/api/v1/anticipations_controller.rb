@@ -1,8 +1,9 @@
 class Api::V1::AnticipationsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe, :unsuscribe]
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe, :unsuscribe, :up, :down]
     before_action :find_user_anticipation, only: [:update, :show]
-    before_action :find_anticipation, only: [:suscribe, :unsuscribe]
+    before_action :find_anticipation, only: [:suscribe, :unsuscribe, :up, :down]
     before_action :check_suscribtion_status, only: [:suscribe]
+  
 
     def create 
         anticipation = Anticipation.new anticipation_params
@@ -39,6 +40,17 @@ class Api::V1::AnticipationsController < ApplicationController
         render json: {message: "Succesfully unsuscribed to this anticipation"}, status: :ok
     end
 
+    def up 
+
+        current_api_v1_user.likes @anticipation
+        render json: {message: "Liked this anticipation"}, status: :ok
+    end
+
+    def down 
+        current_api_v1_user.unlike @anticipation
+        render json: {message: "Unlikes this anticipation"}, status: :ok
+    end
+
 
     private 
     def anticipation_params 
@@ -71,6 +83,8 @@ class Api::V1::AnticipationsController < ApplicationController
             render json: {message: "User already a suscriber"}, status: :unprocessable_entity
         end
     end
+
+   
 
     def followers 
         @user.followers_by_type("User")
