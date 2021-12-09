@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up]
-    before_action :find_project, only: [:upvote, :downvote, :up] 
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up, :down]
+    before_action :find_project, only: [:upvote, :downvote, :up, :down] 
     before_action :find_project_by_user, only: [:update, :destroy, :show]
 
     def create 
@@ -52,6 +52,11 @@ class Api::V1::ProjectsController < ApplicationController
     def up 
         current_api_v1_user.likes @project
         render json: {message: "Liked this project", total_likes: @project.get_likes.size}, status: :ok
+    end
+
+    def down 
+        current_api_v1_user.unlike @project
+        render json: {message: "Unlikes this project", total_likes: @project.get_likes.size}, status: :ok
     end
 
     private

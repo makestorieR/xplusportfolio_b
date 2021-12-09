@@ -419,4 +419,53 @@ RSpec.describe "Api::V1::Projects", type: :request do
     end
     
   end
+
+
+  describe "DELETE /down" do
+    include ApiDoc::V1::Projects::Down
+
+    before do 
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, title: "todo application", user: @searched_user, description: "A real world todo application"
+      @project_url = "/api/v1/projects/todo-application/likes"
+      @user.likes @project
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        delete @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "project could not be found " do
+        it "returns http status :not_found" do
+          delete '/api/v1/projects/sdfsrdeds/likes', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+      context "current user  unlikes an  project" do
+
+        it "decrement project likes" do
+          
+          expect{delete @project_url, headers: @headers}.to change{@project.get_likes.size}.from(1).to(0)
+        end
+
+        it "returns http status :ok" do
+          delete @project_url, headers: @headers
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+ 
+    end
+    
+  end
 end

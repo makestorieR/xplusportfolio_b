@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-12-09T18:46:27+01:00">2021-12-09T18:46:27+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-12-09T18:50:10+01:00">2021-12-09T18:50:10+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.54
+         1.61
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>162</b> relevant lines,
-    <span class="green"><b>162</b> lines covered</span> and
+    <b>165</b> relevant lines,
+    <span class="green"><b>165</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#c0b1096487f6965038207f41531f821695e76bc5" class="src_link" title="app/controllers/api/v1/projects_controller.rb">app/controllers/api/v1/projects_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">78</td>
-            <td class="cell--number">38</td>
-            <td class="cell--number">38</td>
+            <td class="cell--number">83</td>
+            <td class="cell--number">41</td>
+            <td class="cell--number">41</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.47</td>
+            <td class="cell--number">2.59</td>
             
           </tr>
         
@@ -88,7 +88,7 @@
             <td class="cell--number">9</td>
             <td class="cell--number">9</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.11</td>
+            <td class="cell--number">4.56</td>
             
           </tr>
         
@@ -343,8 +343,8 @@
     
 
     <div class="t-line-summary">
-      <b>38</b> relevant lines.
-      <span class="green"><b>38</b> lines covered</span> and
+      <b>41</b> relevant lines.
+      <span class="green"><b>41</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -373,7 +373,7 @@
 
             
 
-            <code class="ruby">    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up]</code>
+            <code class="ruby">    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up, :down]</code>
           </li>
         </div>
       
@@ -384,7 +384,7 @@
 
             
 
-            <code class="ruby">    before_action :find_project, only: [:upvote, :downvote, :up] </code>
+            <code class="ruby">    before_action :find_project, only: [:upvote, :downvote, :up, :down] </code>
           </li>
         </div>
       
@@ -978,40 +978,40 @@
 
             
 
-            <code class="ruby">    private</code>
+            <code class="ruby">    def down </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="58">
+            <span class="hits">2</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        current_api_v1_user.unlike @project</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="59">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="59">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    def project_params </code>
+            <code class="ruby">        render json: {message: &quot;Unlikes this project&quot;, total_likes: @project.get_likes.size}, status: :ok</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="60">
-            <span class="hits">5</span>
+          <li class="never" data-hits="" data-linenumber="60">
+            
             
 
             
 
-            <code class="ruby">        params.require(:project).permit(:title, :description)</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1022,12 +1022,23 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="covered" data-hits="1" data-linenumber="62">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="63">
             
             
 
@@ -1038,7 +1049,51 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def project_params </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="65">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">        params.require(:project).permit(:title, :description)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="68">
             <span class="hits">1</span>
             
 
@@ -1049,7 +1104,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="64">
+          <li class="covered" data-hits="9" data-linenumber="69">
             <span class="hits">9</span>
             
 
@@ -1060,7 +1115,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="65">
+          <li class="never" data-hits="" data-linenumber="70">
             
             
 
@@ -1071,7 +1126,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="66">
+          <li class="covered" data-hits="9" data-linenumber="71">
             <span class="hits">9</span>
             
 
@@ -1082,68 +1137,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="67">
+          <li class="covered" data-hits="3" data-linenumber="72">
             <span class="hits">3</span>
             
 
             
 
             <code class="ruby">            render json: &quot;Not Found&quot;, message: &quot;Project not found&quot;, status: :not_found</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="68">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="69">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="70">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="71">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def find_project </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="9" data-linenumber="72">
-            <span class="hits">9</span>
-            
-
-            
-
-            <code class="ruby">        @project = Project.friendly.find_by_slug(params[:id])</code>
           </li>
         </div>
       
@@ -1154,45 +1154,12 @@
 
             
 
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="9" data-linenumber="74">
-            <span class="hits">9</span>
-            
-
-            
-
-            <code class="ruby">        unless @project </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="75">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">            render json: &quot;Not Found&quot;, message: &quot;Project not found&quot;, status: :not_found</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="76">
-            
-            
-
-            
-
             <code class="ruby">        end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="77">
+          <li class="never" data-hits="" data-linenumber="74">
             
             
 
@@ -1203,7 +1170,95 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="75">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="76">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def find_project </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="77">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        @project = Project.friendly.find_by_slug(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="12" data-linenumber="79">
+            <span class="hits">12</span>
+            
+
+            
+
+            <code class="ruby">        unless @project </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="80">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">            render json: &quot;Not Found&quot;, message: &quot;Project not found&quot;, status: :not_found</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="81">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="83">
             
             
 
@@ -1355,8 +1410,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="29" data-linenumber="11">
-            <span class="hits">29</span>
+          <li class="covered" data-hits="33" data-linenumber="11">
+            <span class="hits">33</span>
             
 
             
