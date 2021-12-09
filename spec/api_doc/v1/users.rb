@@ -47,6 +47,14 @@ module ApiDoc
         action 'Get a user Followings'
       end
 
+      document :up do
+        action 'Follow User'
+      end
+
+      document :down do
+        action 'Unfollow User'
+      end
+
 
 
 

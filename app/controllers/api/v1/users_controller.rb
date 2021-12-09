@@ -1,7 +1,7 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index] 
-    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index]
-   
+    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] 
+    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
+    before_action :check_follow_status, only: :up
     def index 
         if params[:page].present?
             @pagy, @users = pagy(User.all, page: params[:page])
@@ -64,12 +64,28 @@ class Api::V1::UsersController < ApplicationController
         render 'api/v1/users/following_index.json.jbuilder'
     end
 
+    def up 
+        current_api_v1_user.follow @user
+        render json: {message: "Started Following #{@user.name}"}, status: :ok
+    end
+
+    def down 
+        current_api_v1_user.stop_following @user
+        render json: {message: "Stopped Following #{@user.name}"}, status: :ok
+    end
+
  
     private 
     def find_user 
         @user = User.all.friendly.find_by_slug(params[:id]) 
         unless @user 
             render json: 'Not Found', message: "User does not exist", status: :not_found
+        end
+    end
+
+    def check_follow_status 
+        unless !current_api_v1_user.following? @user 
+            render json: {message: "User Already Been Followed"}, status: :unprocessable_entity
         end
     end
 

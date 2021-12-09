@@ -80,10 +80,6 @@ RSpec.describe "Api::V1::Users", type: :request do
     
   end
 
-
-
-
-
   describe "GET /show" do
     include ApiDoc::V1::Users::Show
 
@@ -108,9 +104,7 @@ RSpec.describe "Api::V1::Users", type: :request do
           'slug' => 'paul-mike'
         })
       end
-      
-  
-      
+
     end
 
 
@@ -120,7 +114,6 @@ RSpec.describe "Api::V1::Users", type: :request do
         expect(response).to have_http_status(:not_found)
         
       end
-      
     end
     
 
@@ -483,6 +476,143 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
     
   end
+
+
+
+  describe "POST /up" do
+    include ApiDoc::V1::Users::Up
+
+    before do 
+      
+      @searched_user = create :user, name: "paul obi"
+
+      @project_url = '/api/v1/users/paul-obi/followings'
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        post @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "when user could not be found " do
+        it "returns http status :not_found" do
+          post '/api/v1/users/peter-packer/followings', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+
+      context "current user starts to follow  user" do
+
+       
+        it "returns proper length of the list of user followings" do
+          
+          expect{post @project_url, headers: @headers}.to change{@user.following_users_count}.by(1) 
+        end
+
+        it "returns http status :ok" do
+          post @project_url, headers: @headers
+          expect(response).to have_http_status(:ok) 
+        end
+
+        
+        
+    
+        
+      end
+
+      context "current user is already following  user" do
+
+        before do 
+          @user.follow @searched_user
+        end
+
+       
+        it "returns proper length of the list of user followings" do
+          
+          expect{post @project_url, headers: @headers}.not_to change{@user.following_users_count}
+        end
+
+        it "returns http status code unprocessable entity" do
+          post @project_url, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity) 
+        end
+    
+        
+      end
+
+
+      
+      
+    end
+    
+  end
+
+
+
+  describe "DELETE /down" do
+    include ApiDoc::V1::Users::Down
+
+    before do 
+      
+      @searched_user = create :user, name: "paul obi"
+
+      @project_url = '/api/v1/users/paul-obi/followings'
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        delete @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "when user could not be found " do
+        it "returns http status :not_found" do
+          delete '/api/v1/users/peter-packer/followings', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+
+      context "current user stops to follow  user" do
+
+        before do  
+          @user.follow @searched_user
+        end
+
+       
+        it "returns proper length of the list of user followings" do
+          
+          expect{delete @project_url, headers: @headers}.to change{@user.following_users_count}.from(1).to(0) 
+        end
+
+        it "returns http status :ok" do
+          delete @project_url, headers: @headers
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+
+
+    end
+    
+  end
+
 
 
 
