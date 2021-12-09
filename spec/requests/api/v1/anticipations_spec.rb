@@ -230,4 +230,80 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
     end
   
   end
+
+
+
+  describe "POST /suscribe" do
+    include ApiDoc::V1::Anticipations::Suscribe
+
+    before do 
+      a_cover = create :anticipation_cover
+      @searched_user = create :user, name: "paul obi"
+      @anticipation = create :anticipation, body: "Working on a todo application", user: @searched_user, due_date: Date.today, anticipation_cover: a_cover
+      @anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/suscribers"
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        post @anticipation_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "when anticipation could not be found " do
+        it "returns http status :not_found" do
+          post '/api/v1/anticipations/sdfsrdeds/suscribers', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+      
+
+      context "current user suscribe to an  anticipation" do
+
+        it "returns proper length of the list of anticipation suscribers" do
+          
+          expect{post @anticipation_url, headers: @headers}.to change{@anticipation.count_user_followers}.by(1) 
+        end
+
+        it "returns http status :ok" do
+          post @anticipation_url, headers: @headers
+
+          
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+
+      context "user has already suscribed to anticipation" do
+
+        before do 
+          @user.follow @anticipation
+        end
+
+       
+        it "returns proper length of the list of user followings" do
+          
+          expect{post @anticipation_url, headers: @headers}.not_to change{@user.following_users_count}
+        end
+
+        it "returns http status code unprocessable entity" do
+          post @anticipation_url, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity) 
+        end
+    
+        
+      end
+
+
+      
+      
+    end
+    
+  end
 end

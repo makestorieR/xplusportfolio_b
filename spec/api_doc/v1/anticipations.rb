@@ -22,6 +22,26 @@ module ApiDoc
         document :create do
           action 'Create a anticipation'
         end
+
+        document :suscribers do
+          resource 'Suscirbers' do
+            endpoint '/suscribers'
+            group 'Suscirbers'
+            desc 'suscribers.md'
+          end
+        end
+
+
+
+        document :suscribe do
+          action 'Suscribe to anticipation'
+        end
+
+        document :unsuscribe do
+          action 'Unsuscribe from anticipation'
+        end
+
+
   
       
       end
