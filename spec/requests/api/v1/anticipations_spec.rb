@@ -254,7 +254,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
     context "when user is authenticated and " do
 
-      context "when anticipation could not be found " do
+      context "anticipation could not be found " do
         it "returns http status :not_found" do
           post '/api/v1/anticipations/sdfsrdeds/suscribers', headers: @headers
           expect(response).to have_http_status(:not_found)
@@ -300,9 +300,61 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
         
       end
 
+    end
+    
+  end
 
+
+
+  describe "DELETE /unsuscrbe" do
+    include ApiDoc::V1::Anticipations::Unsuscribe
+
+    before do 
+      a_cover = create :anticipation_cover
+      @searched_user = create :user, name: "paul obi"
+      @anticipation = create :anticipation, body: "Working on a todo application", user: @searched_user, due_date: Date.today, anticipation_cover: a_cover
+      @anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/suscribers"
+      @user.follow @anticipation
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        delete @anticipation_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
       
+    end
+
+    context "when user is authenticated and " do
+
+      context "anticipation could not be found " do
+        it "returns http status :not_found" do
+          delete '/api/v1/anticipations/sdfsrdeds/suscribers', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
       
+
+      context "current user  unsuscribe to an  anticipation" do
+
+        it "returns proper length of the list of anticipation suscribers" do
+          
+          expect{delete @anticipation_url, headers: @headers}.to change{@anticipation.count_user_followers}.from(1).to(0)
+        end
+
+        it "returns http status :ok" do
+          delete @anticipation_url, headers: @headers
+
+          
+          expect(response).to have_http_status(:ok) 
+        end
+
+      end
+
+     
     end
     
   end

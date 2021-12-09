@@ -1,8 +1,9 @@
 class Api::V1::AnticipationsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe]
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe, :unsuscribe]
     before_action :find_user_anticipation, only: [:update, :show]
-    before_action :find_anticipation, only: [:suscribe]
+    before_action :find_anticipation, only: [:suscribe, :unsuscribe]
     before_action :check_suscribtion_status, only: [:suscribe]
+
     def create 
         anticipation = Anticipation.new anticipation_params
         anticipation.user = current_api_v1_user
@@ -31,6 +32,11 @@ class Api::V1::AnticipationsController < ApplicationController
         
         current_api_v1_user.follow @anticipation
         render json: {message: "Succesfully suscribed to this anticipation"}, status: :ok
+    end
+
+    def unsuscribe 
+        current_api_v1_user.stop_following @anticipation
+        render json: {message: "Succesfully unsuscribed to this anticipation"}, status: :ok
     end
 
 
