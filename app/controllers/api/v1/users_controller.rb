@@ -23,7 +23,7 @@ class Api::V1::UsersController < ApplicationController
             @pagy, @projects = pagy(@user.projects, page: 1)
         end
 
-        render 'api/v1/users/project_index.json.jbuilder'
+        render 'api/v1/projects/index.json.jbuilder'
     end
 
     def anticipation_index 

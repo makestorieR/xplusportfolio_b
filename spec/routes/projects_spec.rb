@@ -10,6 +10,10 @@ RSpec.describe "Projects", type: :routing do
         expect(get '/api/v1/projects/todo-application').to route_to(controller: 'api/v1/projects', action: 'show', id: 'todo-application')  
     end
 
+    it "GET api/v1/projects/ routes to api/v1/projects#index" do
+        expect(get '/api/v1/projects').to route_to('api/v1/projects#index')  
+    end
+
     it "GET api/v1/projects/todo-application/suggestions routes to api/v1/projects#suggestion_index" do
         expect(get '/api/v1/projects/todo-application/suggestions').to route_to(controller: 'api/v1/projects', action: 'suggestion_index', id: 'todo-application')  
     end

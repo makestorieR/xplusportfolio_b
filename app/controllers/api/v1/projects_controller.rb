@@ -1,7 +1,21 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up, :down, :suggestion_index]
+    before_action :authenticate_api_v1_user!, only: [:create, :index, :update, :destroy, :show, :upvote, :downvote, :up, :down, :suggestion_index]
     before_action :find_project, only: [:upvote, :downvote, :up, :down, :suggestion_index] 
     before_action :find_project_by_user, only: [:update, :destroy, :show]
+
+
+    def index 
+
+        if params[:page].present?  
+              
+            @pagy, @projects = pagy(current_api_v1_user.projects, page: params[:page]) 
+        else
+            @pagy, @projects = pagy(current_api_v1_user.projects, page: 1) 
+        end
+
+        render 'api/v1/projects/index.json.jbuilder'
+
+    end
 
     def create 
 
@@ -66,7 +80,7 @@ class Api::V1::ProjectsController < ApplicationController
               
             @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: params[:page]) 
         else
-            @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: params[:page]) 
+            @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: 1) 
         end
         render 'api/v1/projects/suggestion_index.json.jbuilder'
     end

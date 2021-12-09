@@ -528,7 +528,7 @@ RSpec.describe "Api::V1::Projects", type: :request do
       context "page params does not exists" do
 
         before do 
-          get @project_url, params: {page: 2}, headers: @headers
+          get @project_url, headers: @headers
           
           @json_data = JSON.parse(response.body)
         end
@@ -547,4 +547,70 @@ RSpec.describe "Api::V1::Projects", type: :request do
 
     
   end
+
+
+
+  describe "GET /project_index" do
+    include ApiDoc::V1::Projects::Index
+
+    before do 
+
+      20.times do |n|
+        create :project, user: @user
+      end
+
+
+      @project_url = '/api/v1/projects'
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get @project_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      
+
+      context "page params exists" do
+
+        before do 
+          get @project_url, params: {page: 2}, headers: @headers
+          
+          @json_data = JSON.parse(response.body)
+          
+        end
+
+        it "returns proper length of the list of user projects" do
+          
+          expect(@json_data.length).to eq(10)
+        end
+    
+        
+      end
+
+
+      context "page params does not exists" do
+
+        before do 
+          get @project_url, headers: @headers
+          
+          @json_data = JSON.parse(response.body)
+        end
+
+        it "returns proper length of the list of user projects" do
+        
+          expect(@json_data.length).to eq(10)
+        end
+        
+      end
+      
+    end
+    
+  end
+
 end

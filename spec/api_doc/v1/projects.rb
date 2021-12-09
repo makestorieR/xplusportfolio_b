@@ -10,6 +10,10 @@ module ApiDoc
             desc 'projects.md'
           end
         end
+
+        document :index do
+          action 'Get projects'
+        end
   
         document :show do
           action 'Get a project'

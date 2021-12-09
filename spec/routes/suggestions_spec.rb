@@ -7,7 +7,7 @@ RSpec.describe "Projects", type: :routing do
     end
 
     it "PUT api/v1/suggestions/4 routes to api/v1/suggestions#update" do
-        expect(put '/api/v1/suggestions/4').to route_to(controller: 'api/v1/suggestions', action: 'update', id: 'todo-application')  
+        expect(put '/api/v1/suggestions/4').to route_to(controller: 'api/v1/suggestions', action: 'update', id: '4')  
     end
 
 end

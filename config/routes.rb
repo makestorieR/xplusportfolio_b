@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
 
       #project routes 
-      resources :projects, only: [:create, :update, :destroy, :show] do 
+      resources :projects, only: [:create, :update, :destroy, :show, :index] do 
 
         member do 
           post 'likes', to: 'projects#up'
