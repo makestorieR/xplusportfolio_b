@@ -43,6 +43,22 @@ module ApiDoc
           action 'Downvote a project'
         end
 
+        document :api do
+          resource 'likes' do
+            endpoint '/likes'
+            group 'likes'
+            desc 'likes.md'
+          end
+        end
+
+        document :up do
+          action 'Like a project'
+        end
+
+        document :down do
+          action 'Unlike a project'
+        end
+
 
 
 
