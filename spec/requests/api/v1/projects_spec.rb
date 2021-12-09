@@ -468,4 +468,83 @@ RSpec.describe "Api::V1::Projects", type: :request do
     end
     
   end
+
+
+
+
+  describe "GET /suggestion_index" do
+    include ApiDoc::V1::Projects::SuggestionIndex
+
+    before do 
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, title: "todo application", user: @searched_user, description: "A real world todo application"
+      @project_url = "/api/v1/projects/todo-application/suggestions"
+
+      20.times do |sug|
+        create :suggestion, content: "#{sug} make the button on the left edge align", project: @project, user: @user
+
+      end
+     
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get @project_url, params: {page: 1}
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated" do
+
+      context "project could not be found " do
+        it "returns http status :not_found" do
+          get '/api/v1/projects/sdfsrdeds/suggestions', params: {page: 2}, headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+
+      context "page params exists" do
+
+        before do 
+          get @project_url, params: {page: 2}, headers: @headers
+          
+          @json_data = JSON.parse(response.body)
+          
+        end
+
+        it "returns proper length of the list of user followings" do
+          
+          expect(@json_data.length).to eq(10)
+        end
+    
+        
+      end
+
+
+      context "page params does not exists" do
+
+        before do 
+          get @project_url, params: {page: 2}, headers: @headers
+          
+          @json_data = JSON.parse(response.body)
+        end
+
+        it "returns proper length of the list of user followings" do
+        
+          expect(@json_data.length).to eq(10)
+        end
+        
+      end
+      
+      
+    end
+    
+
+
+    
+  end
 end

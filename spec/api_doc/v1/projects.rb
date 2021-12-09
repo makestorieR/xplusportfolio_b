@@ -60,6 +60,19 @@ module ApiDoc
         end
 
 
+        document :api do
+          resource 'suggestions' do
+            endpoint '/suggestions'
+            group 'suggestions'
+            desc 'suggestions.md'
+          end
+        end
+
+        document :suggestion_index do
+          action 'Get suggestions'
+        end
+
+
 
 
       end

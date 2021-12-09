@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up, :down]
-    before_action :find_project, only: [:upvote, :downvote, :up, :down] 
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :destroy, :show, :upvote, :downvote, :up, :down, :suggestion_index]
+    before_action :find_project, only: [:upvote, :downvote, :up, :down, :suggestion_index] 
     before_action :find_project_by_user, only: [:update, :destroy, :show]
 
     def create 
@@ -57,6 +57,18 @@ class Api::V1::ProjectsController < ApplicationController
     def down 
         current_api_v1_user.unlike @project
         render json: {message: "Unlikes this project", total_likes: @project.get_likes.size}, status: :ok
+    end
+
+    def suggestion_index 
+        
+
+        if params[:page].present?  
+              
+            @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: params[:page]) 
+        else
+            @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: params[:page]) 
+        end
+        render 'api/v1/projects/suggestion_index.json.jbuilder'
     end
 
     private

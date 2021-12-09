@@ -25,6 +25,7 @@ Rails.application.routes.draw do
           delete 'likes', to: 'projects#down'
           post 'voters', to: 'projects#upvote'
           delete 'voters', to: 'projects#downvote'
+          get 'suggestions', to: 'projects#suggestion_index'
 
         end
 
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
           delete 'likes', to: 'anticipations#down'
           post 'suscribers', to: 'anticipations#suscribe'
           delete 'suscribers', to: 'anticipations#unsuscribe'
-          
+
         end
 
       end
