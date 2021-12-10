@@ -1,4 +1,7 @@
 class Anticipation < ApplicationRecord
+  if Rails.env === 'production'
+    searchkick word_middle: [:name]
+  end
     before_create :set_slug
     before_save :penilize_user
 
@@ -21,6 +24,14 @@ class Anticipation < ApplicationRecord
            user.decrement!(:repu_coin, 50)
         end
         
+    end
+
+    def search_data
+      {
+        
+        body: body
+        
+      }
     end
     
 end

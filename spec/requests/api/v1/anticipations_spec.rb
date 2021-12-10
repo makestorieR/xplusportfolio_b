@@ -266,19 +266,42 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
       context "current user suscribe to an  anticipation" do
 
+        before do 
+          a_cover = create :anticipation_cover
+         
+          @anticipation = create :anticipation, body: "Working on a todo application", user: @user, due_date: Date.today, anticipation_cover: a_cover
+          @new_anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/suscribers"
+        end
+
+
         it "increment anticipation suscribers" do
           
-          expect{post @anticipation_url, headers: @headers}.to change{@anticipation.count_user_followers}.by(1) 
+          expect{post @new_anticipation_url, headers: @headers}.to change{@anticipation.count_user_followers}.by(1) 
         end
 
         it "returns http status :ok" do
-          post @anticipation_url, headers: @headers
+          post @new_anticipation_url, headers: @headers
 
           
           expect(response).to have_http_status(:ok) 
         end
 
       end
+
+      context "when the user suscribing to an anticipation is the anticipation owner" do
+
+        
+        it "do not increment anticipation suscribers" do
+          
+          expect{post @anticipation_url, headers: @headers}.not_to change{@user.following_users_count}
+        end
+
+        it "returns http status code unprocessable entity" do
+          post @anticipation_url, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity) 
+        end
+      end
+      
 
       context "user has already suscribed to anticipation" do
 
@@ -287,7 +310,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
         end
 
        
-        it "do not increment user followings" do
+        it "do not increment anticipation suscribers" do
           
           expect{post @anticipation_url, headers: @headers}.not_to change{@user.following_users_count}
         end

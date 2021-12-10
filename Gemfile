@@ -34,6 +34,7 @@ gem "figaro"
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 gem 'pagy', '~> 5.6' 
+gem 'searchkick'
 
  
  group :development, :test do
