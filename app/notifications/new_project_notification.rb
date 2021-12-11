@@ -8,6 +8,7 @@ class NewProjectNotification < Noticed::Base
   #
    deliver_by :database
    deliver_by :email, mailer: "ProjectMailer"
+   deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
 
@@ -25,6 +26,13 @@ class NewProjectNotification < Noticed::Base
   #
   def message
     t(".message")
+  end
+
+  def custom_stream
+    "user_#{recipient.id}"
+  end
+  def action_cable_data
+    { user_id: recipient.id }
   end
   #
   # def url

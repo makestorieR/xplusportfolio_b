@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  
+  mount ActionCable.server => '/cable'
   namespace :api do 
     namespace :v1 do 
       mount_devise_token_auth_for 'User', at: 'auth'
+
+
+      #route to retrieve user nofitications
+      get 'notifications', to: 'notifications#index'
+
+      #routes for web_push_notifications
+      post 'web_push_notifications', to: 'web_push_notifications#create'
 
       #users routes
       resources :users, only: [:index, :show] do 

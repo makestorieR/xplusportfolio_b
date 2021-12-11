@@ -1,5 +1,6 @@
 class Api::V1::SuggestionsController < ApplicationController
     before_action :authenticate_api_v1_user!, only: [:create, :update]
+    before_action :validate_suggestion, only: :create
     before_action :find_suggestion, only: [:update]
 
 
@@ -36,6 +37,17 @@ class Api::V1::SuggestionsController < ApplicationController
         unless @suggestion 
             render json: {messages: "Suggestion not found"}, status: :not_found
         end
+    end
+
+    def validate_suggestion 
+
+        @project = Project.find_by_id(suggestion_params[:project_id])
+
+        unless @project.user.id != current_api_v1_user.id 
+            render json:{message: "User cannot create a suggestion for its own project"}, status: :unprocessable_entity
+        end
+
+
     end
 
 

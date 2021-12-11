@@ -23,6 +23,14 @@ class Api::V1::ProjectsController < ApplicationController
         @project.user = current_api_v1_user
 
         if @project.save 
+            ActionCable.server.broadcast(
+                "wall_channel",
+                {
+                    id: @project.id,
+                    title: @project.title,
+                    description: @project.description
+                }
+            )
             render json: @project, status: :created
         else
             render json: @project.errors.messages, status: :unprocessable_entity

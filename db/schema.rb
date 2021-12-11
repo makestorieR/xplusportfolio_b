@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_09_184643) do
+ActiveRecord::Schema.define(version: 2021_12_11_181623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,10 +150,21 @@ ActiveRecord::Schema.define(version: 2021_12_09_184643) do
     t.index ["voter_type", "voter_id"], name: "index_votes_on_voter_type_and_voter_id"
   end
 
+  create_table "web_push_notifications", force: :cascade do |t|
+    t.string "endpoint"
+    t.string "auth_key"
+    t.string "p256dh_key"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_web_push_notifications_on_user_id"
+  end
+
   add_foreign_key "anticipations", "anticipation_covers"
   add_foreign_key "anticipations", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "suggestions", "projects"
   add_foreign_key "suggestions", "users"
+  add_foreign_key "web_push_notifications", "users"
 end

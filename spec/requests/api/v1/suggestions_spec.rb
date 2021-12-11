@@ -34,7 +34,9 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
 
       @searched_user = create :user, name: "paul obi"
       @project = create :project, id: 3, title: "todo application", user: @searched_user, description: "A real world todo application"
-      
+      create :project, id: 5, title: "space ship app", user: @user, description: "a space ship application"
+
+
       @suggestion_url = '/api/v1/suggestions'
       @suggestion_params = {
 
@@ -71,6 +73,27 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
         
         
       end
+
+      context "project belongs to user" do
+
+        it "do not increment Suggestion.count " do
+          expect{
+            post @suggestion_url, params: {suggestion: {content: "work on the login feature, its kinda wacky.", project_id: 5}}, headers: @headers
+          }.to_not change{Suggestion.count}  
+        end
+
+        it "returns http status :unprocessable_entity" do
+          post @suggestion_url, params: {suggestion: {content: "work on the login feature, its kinda wacky.", project_id: 5}}, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
+
+
+
+
+
+        
+      end
+      
 
       context "suggestion failed to be created" do
         it "do not increment Suggestion.count " do

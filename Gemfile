@@ -20,6 +20,8 @@ gem 'friendly_id', '~> 5.4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'webpush'
+
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem 'acts_as_votable'
 # Use Active Storage variant

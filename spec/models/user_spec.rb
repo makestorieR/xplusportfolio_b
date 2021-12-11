@@ -6,4 +6,5 @@ RSpec.describe User, type: :model do
  it { should have_many(:anticipations) } 
  it { should have_many(:notifications) } 
  it {should have_many(:suggestions)}
+ it { should have_many(:web_push_notifications) } 
 end

@@ -87,7 +87,7 @@ class Api::V1::AnticipationsController < ApplicationController
 
     def authenticate_suscriber
         unless current_api_v1_user.id == @anticipation.user.id
-            render json: {message: "User Cannot Suscribe to its own anticipation"}, status: :unprocessable_entity
+            render json: {message: "User cannot suscribe to its own anticipation"}, status: :unprocessable_entity
         end
     end
 
