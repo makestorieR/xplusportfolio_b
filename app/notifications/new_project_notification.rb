@@ -6,11 +6,15 @@
 class NewProjectNotification < Noticed::Base
   # Add your delivery methods
   #
+   
    deliver_by :database
-   deliver_by :email, mailer: "ProjectMailer"
+   deliver_by :email, mailer: "ProjectMailer", delay: 1.day, unless: :read?
    deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
+   deliver_by :custom, class: "DeliveryMethods::NewProjectPush", delay: 60.minutes, unless: :read?
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
+
+  before_action_cable :set_data
 
   # Add required params
   #
@@ -31,8 +35,18 @@ class NewProjectNotification < Noticed::Base
   def custom_stream
     "user_#{recipient.id}"
   end
+
   def action_cable_data
-    { user_id: recipient.id }
+    { project: record[:params][:project] }
+  end
+
+  private 
+
+  def set_data 
+
+    @project = record[:params][:project]
+
+    
   end
   #
   # def url
