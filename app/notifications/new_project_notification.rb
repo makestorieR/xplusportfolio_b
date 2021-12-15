@@ -8,13 +8,11 @@ class NewProjectNotification < Noticed::Base
   #
    
    deliver_by :database
-   deliver_by :email, mailer: "ProjectMailer", delay: 1.day, unless: :read?
+   deliver_by :email, mailer: "ProjectMailer", delay: 1.hours, unless: :read?
    deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
-   deliver_by :custom, class: "DeliveryMethods::NewProjectPush", delay: 60.minutes, unless: :read?
+   deliver_by :custom, class: "DeliveryMethods::Webpush", format: :web_push_data, delay: 5.minutes, unless: :read? 
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
-
-  before_action_cable :set_data
 
   # Add required params
   #
@@ -40,14 +38,15 @@ class NewProjectNotification < Noticed::Base
     { project: record[:params][:project] }
   end
 
-  private 
 
-  def set_data 
-
+  def webpush_data 
     @project = record[:params][:project]
-
-    
+    {
+      title: "New Project Alert!",
+      body: "#{@project.user.name} launched a new project #{@project.title}"
+    }
   end
+
   #
   # def url
   #   post_path(params[:post])

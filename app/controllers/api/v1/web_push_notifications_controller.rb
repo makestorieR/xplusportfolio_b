@@ -22,7 +22,7 @@ class Api::V1::WebPushNotificationsController < ApplicationController
   private
   def find_web_push_notification 
     
-      web_push = current_api_v1_user.web_push_notifications.find_by_auth_key(params[:subscription][:keys][:auth])
+      web_push = current_api_v1_user.webpush_subscriptions.find_by_auth_key(params[:subscription][:keys][:auth])
       unless web_push.nil?
         render json: "", status: :no_content 
       end

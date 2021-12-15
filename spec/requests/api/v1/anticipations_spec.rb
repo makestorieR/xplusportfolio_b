@@ -71,6 +71,15 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
           subject
           expect(response).to have_http_status(:created)
         end
+
+        it "matches with performed job" do
+          ActiveJob::Base.queue_adapter = :test
+          ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+          
+          expect {
+            subject
+          }.to have_performed_job(NewAnticipationJob)
+        end
         
         
       end

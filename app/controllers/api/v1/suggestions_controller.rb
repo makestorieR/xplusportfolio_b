@@ -10,6 +10,7 @@ class Api::V1::SuggestionsController < ApplicationController
         suggestion.user = current_api_v1_user 
 
         if suggestion.save 
+            NewSuggestionNotification.with(suggestion: suggestion).deliver_later suggestion.project.user
             render json: suggestion, status: :created
         else
             render json: suggestion.errors.messages, status: :unprocessable_entity

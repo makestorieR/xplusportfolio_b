@@ -1,16 +1,10 @@
-class DeliveryMethods::NewProjectPush < Noticed::DeliveryMethods::Base
+class DeliveryMethods::Webpush < Noticed::DeliveryMethods::Base
   include WebpushHelper
   def deliver
     # Logic for sending the notification
 
-    @message = {
-      title: "New Project Alert!",
-      body: "#{recipient.name} Just created a new project"
-    }
-
-    recipient.followers.each do |user|
-
-      user.webpush_subscriptions.each do |webpush|
+    @message = @notification.webpush_data
+      recipient.webpush_subscriptions.each do |webpush|
 
         begin
             send_push_notification(@message, web_push)
@@ -20,7 +14,6 @@ class DeliveryMethods::NewProjectPush < Noticed::DeliveryMethods::Base
 
       end
 
-    end
   end
 
   # You may override this method to validate options for the delivery method

@@ -21,16 +21,9 @@ class Api::V1::ProjectsController < ApplicationController
 
         @project = Project.new project_params
         @project.user = current_api_v1_user
-
+        
         if @project.save 
-            ActionCable.server.broadcast(
-                "wall_channel",
-                {
-                    id: @project.id,
-                    title: @project.title,
-                    description: @project.description
-                }
-            )
+            NewProjectJob.perform_later(@project.id)
             render json: @project, status: :created
         else
             render json: @project.errors.messages, status: :unprocessable_entity
@@ -60,6 +53,7 @@ class Api::V1::ProjectsController < ApplicationController
 
     def upvote 
         @project.vote_by voter: current_api_v1_user
+        UpvoteNotification.with(project: @project).deliver_later @project.user
         render json: {message: "Succesfully Voted for project", total_votes: @project.weighted_score}, status: :ok
     end
 
@@ -73,6 +67,7 @@ class Api::V1::ProjectsController < ApplicationController
 
     def up 
         current_api_v1_user.likes @project
+        ProjectLikeNotification.with(project: @project).deliver @project.user
         render json: {message: "Liked this project", total_likes: @project.get_likes.size}, status: :ok
     end
 

@@ -25,7 +25,7 @@ RSpec.describe SubscribeUserHelper, type: :helper do
     end
 
       it "increment anticipation suscribers by 1" do
-          expect{subsribe_user(@anticipation)}.to  change{@anticipation.followers.count}.by(1)
+          expect{subscribe_user(@anticipation)}.to  change{@anticipation.followers.count}.by(1)
       end
       
   end

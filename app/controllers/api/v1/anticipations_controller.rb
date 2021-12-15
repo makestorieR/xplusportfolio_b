@@ -10,7 +10,8 @@ class Api::V1::AnticipationsController < ApplicationController
         anticipation = Anticipation.new anticipation_params
         anticipation.user = current_api_v1_user
         
-        if anticipation.save            
+        if anticipation.save       
+            NewAnticipationJob.perform_later(anticipation.id, anticipation.user.id)     
             render json: anticipation, status: :created
         else
             render json: anticipation.errors.messages, status: :unprocessable_entity
@@ -33,6 +34,7 @@ class Api::V1::AnticipationsController < ApplicationController
     def suscribe 
         
         current_api_v1_user.follow @anticipation
+        AnticipationSubscriptionNotification.with(anticipation: @anticipation).deliver @anticipation.user
         render json: {message: "Succesfully suscribed to this anticipation", total_suscribers: @anticipation.count_user_followers}, status: :ok
     end
 
@@ -44,6 +46,7 @@ class Api::V1::AnticipationsController < ApplicationController
     def up 
 
         current_api_v1_user.likes @anticipation
+        AnticipationLikeNotification.with(anticipation: @anticipation).deliver_later @anticipation.user
         render json: {message: "Liked this anticipation", total_likes: @anticipation.get_likes.size}, status: :ok
     end
 

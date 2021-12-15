@@ -1,5 +1,5 @@
 module SubscribeUserHelper
-    def subsribe_user(anticipation)
+    def subscribe_user(anticipation)
 
         user = anticipation.user 
         user.followers.each do |user| 
