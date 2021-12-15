@@ -8,7 +8,7 @@ class NewAnticipationNotification < Noticed::Base
   deliver_by :database
   deliver_by :email, mailer: "AnticipationMailer", delay: 1.hours, unless: :read?
   deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
-  deliver_by :custom, class: "DeliveryMethods::Webpush". delay: 5.minutes, unless: :read?
+  deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
 
   # Add required params
   #

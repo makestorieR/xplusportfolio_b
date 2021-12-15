@@ -57,8 +57,11 @@ Rails.application.routes.draw do
       end
 
       #suggestions
-      resources :suggestions, only: [:create, :update]
+      resources :suggestions, only: [:create, :update] do 
+        put 'complete', to: 'suggestions#mark_as_done'
 
+      end
+      
     end
   end
 

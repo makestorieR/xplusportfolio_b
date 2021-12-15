@@ -11,7 +11,6 @@ module ApiDoc
           end
         end
 
-
         document :create do
           action 'create a suggestion'
         end
@@ -20,8 +19,9 @@ module ApiDoc
           action 'update a suggestion'
         end
 
-
-  
+        document :mark_as_done do
+          action 'update a suggestion done attribute to true'
+        end
       
       end
     end

@@ -123,7 +123,9 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
 
       @searched_user = create :user, name: "paul obi"
       @project = create :project, id: 3, title: "todo application", user: @searched_user, description: "A real world todo application"
+      
       create :suggestion, id: 7, content: "work on login ", project: @project, user: @searched_user
+      create :suggestion, id: 12, content: "fix the padding on the button nav", project: @project, user: @user
 
 
 
@@ -171,10 +173,107 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
       
       end
 
+
+      # context "when the user updating the suggestion done attribute is the creator" do
+
+      #   it "returns http status :unprocessable entity" do
+      #     put '/api/v1/suggestions/12', params: {suggestion: {content: "fix the padding on the button nav", done: true}}, headers: @headers
+      #     expect(response).to have_http_status(:unprocessable_entity)
+      #   end
+        
+        
+      # end
+
+
+      context "there should be no done attribute in the suggestion params when trying to update suggestion" do
+        it "returns http status unprocessable_entity" do
+          put '/api/v1/suggestions/7', params: {suggestion: {content: "fix the padding on the button nav", done: true}}, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity)  
+        end
+        
+      end
+      
+      
+
       context "suggestion was not found" do
         
         it "returns http status :not_found" do
           put '/api/v1/suggestions/9', params: {suggestion: {content: ""}}, headers: @headers
+          expect(response).to have_http_status(:not_found)
+        end
+      
+      end
+
+
+
+      
+    end
+  
+  end
+
+
+
+
+  describe "PUT /mark_as_done" do
+
+    include ApiDoc::V1::Suggestions::MarkAsDone 
+
+    before do 
+
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, id: 3, title: "todo application", user: @searched_user, description: "A real world todo application"
+      
+      create :suggestion, id: 7, content: "work on login ", project: @project, user: @searched_user
+      create :suggestion, id: 12, content: "fix the padding on the button nav", project: @project, user: @user
+
+
+
+      @suggestion_url = '/api/v1/suggestions/7/complete'
+      
+     
+    end
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        put '/api/v1/suggestions/9/complete'
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+
+
+    context "when user is authenticated and" do
+
+      context "suggestion is updated" do
+        subject { put @suggestion_url, headers: @headers } 
+
+        it "returns http status :updated" do
+          subject
+          
+          expect(response).to have_http_status(:ok)
+        end
+
+      end
+
+     
+      context "when the user updating the suggestion done attribute is the creator" do
+
+        it "returns http status :unprocessable entity" do
+          put '/api/v1/suggestions/12/complete', headers: @headers
+          expect(response).to have_http_status(:unauthorized)
+        end
+        
+        
+      end
+
+      
+      
+
+      context "suggestion was not found" do
+        
+        it "returns http status :not_found" do
+          put '/api/v1/suggestions/9/complete', headers: @headers
           expect(response).to have_http_status(:not_found)
         end
       
