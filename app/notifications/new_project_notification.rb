@@ -8,7 +8,7 @@ class NewProjectNotification < Noticed::Base
   #
    
    deliver_by :database
-   deliver_by :email, mailer: "ProjectMailer", delay: 1.hours, unless: :read?
+   deliver_by :email, mailer: "ProjectMailer"
    deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
    deliver_by :custom, class: "DeliveryMethods::Webpush", format: :web_push_data, delay: 5.minutes, unless: :read? 
   # deliver_by :slack

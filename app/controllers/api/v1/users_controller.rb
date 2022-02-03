@@ -65,6 +65,8 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def up 
+
+        
         current_api_v1_user.follow @user
         render json: {message: "Started Following #{@user.name}"}, status: :ok
     end

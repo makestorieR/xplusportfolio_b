@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth'
 
 
+      #route to retrieve anticipation covers
+      get 'anticipation_covers', to: 'anticipation_covers#index'
+
+
       #route to retrieve user nofitications
       get 'notifications', to: 'notifications#index'
 

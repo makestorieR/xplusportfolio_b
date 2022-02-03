@@ -24,7 +24,7 @@ DeviseTokenAuth.setup do |config|
   # time. In this case, each request in the batch will need to share the same
   # auth token. This setting determines how far apart the requests can be while
   # still using the same auth token.
-  # config.batch_request_buffer_throttle = 5.seconds
+    # config.batch_request_buffer_throttle = 2.seconds
 
   # This route will be the prefix for all oauth2 redirect callbacks. For
   # example, using the default '/omniauth', the github oauth2 provider will
@@ -41,7 +41,7 @@ DeviseTokenAuth.setup do |config|
   # It depends on fields like email, provider and uid.
   # config.default_callbacks = true
 
-  config.default_confirm_success_url = "timegame.com"
+  config.default_confirm_success_url = Rails.env == "production" ? ENV['CLIENT_HOST_NAME'] : 'localhost:3001'
 
   # Makes it possible to change the headers names
   # config.headers_names = {:'access-token' => 'access-token',

@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: iamworkingon_b_development
+  database: xplusportfolio_b_development
   pool: 5
   username: postgres
   password: loafy090
@@ -62,7 +62,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: iamworkingon_b_test
+  database: xplusportfolio_b_test
   pool: 5
   username: postgres
   password: loafy090
@@ -90,6 +90,6 @@ test:
 #
 production:
   <<: *default
-  database: iamworkingon_b_production
-  username: iamworkingon_b
+  database: xplusportfolio_b_production
+  username: xplusportfolio_b
   password: <%= ENV['IAMWORKINGON_B_DATABASE_PASSWORD'] %>
