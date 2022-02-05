@@ -6,6 +6,7 @@ RSpec.describe Anticipation, type: :model do
   it { should validate_presence_of(:due_date) }
   it { should have_many(:comments) } 
   it { should belong_to(:anticipation_cover)}
+  it { should have_one(:project)}
 
 
   context "when the due date changes" do

@@ -7,6 +7,7 @@ class Anticipation < ApplicationRecord
 
     belongs_to :user
     belongs_to :anticipation_cover
+    has_one :project
     
     has_many :comments, as: :commentable
     validates :due_date, :body, presence: true

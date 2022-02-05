@@ -5,6 +5,7 @@ class Project < ApplicationRecord
     searchkick word_middle: [:name]
   end
   belongs_to :user
+  belongs_to :anticipation
   friendly_id :title, use: :slugged
   has_many :comments, as: :commentable, dependent: :destroy
   validates :title, :description, presence: true
