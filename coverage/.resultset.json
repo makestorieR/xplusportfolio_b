@@ -881,12 +881,6 @@
           null
         ]
       },
-      "/root/xplusportfolio_b/app/controllers/api/v1/technologies_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/root/xplusportfolio_b/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -899,12 +893,32 @@
           1,
           null,
           1,
-          0,
+          3,
+          null,
+          null
+        ]
+      },
+      "/root/xplusportfolio_b/app/models/technology.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/root/xplusportfolio_b/app/controllers/api/v1/technologies_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          2,
+          null,
+          2,
           null,
           null
         ]
       }
     },
-    "timestamp": 1644406595
+    "timestamp": 1644407397
   }
 }
