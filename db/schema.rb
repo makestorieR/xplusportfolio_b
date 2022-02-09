@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_05_141933) do
+ActiveRecord::Schema.define(version: 2022_02_05_150251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(version: 2022_02_05_141933) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient_type_and_recipient_id"
   end
 
+  create_table "project_photos", force: :cascade do |t|
+    t.string "img_url"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_project_photos_on_project_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title"
     t.string "description"
@@ -109,6 +117,21 @@ ActiveRecord::Schema.define(version: 2022_02_05_141933) do
     t.boolean "edited"
     t.index ["project_id"], name: "index_suggestions_on_project_id"
     t.index ["user_id"], name: "index_suggestions_on_user_id"
+  end
+
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.bigint "technology_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tools_on_project_id"
+    t.index ["technology_id"], name: "index_tools_on_technology_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -167,9 +190,12 @@ ActiveRecord::Schema.define(version: 2022_02_05_141933) do
   add_foreign_key "anticipations", "anticipation_covers"
   add_foreign_key "anticipations", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "project_photos", "projects"
   add_foreign_key "projects", "anticipations"
   add_foreign_key "projects", "users"
   add_foreign_key "suggestions", "projects"
   add_foreign_key "suggestions", "users"
+  add_foreign_key "tools", "projects"
+  add_foreign_key "tools", "technologies"
   add_foreign_key "web_push_notifications", "users"
 end

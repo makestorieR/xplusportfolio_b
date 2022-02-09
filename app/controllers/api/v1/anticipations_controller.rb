@@ -2,7 +2,7 @@ class Api::V1::AnticipationsController < ApplicationController
     before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe, :unsuscribe, :up, :down]
     before_action :find_user_anticipation, only: [:update, :show]
     before_action :find_anticipation, only: [:suscribe, :unsuscribe, :up, :down]
-    before_action :check_suscribtion_status, only: [:suscribe]
+    before_action :check_subscription_status, only: [:suscribe]
     before_action :authenticate_suscriber, only: [:suscribe]
   
 
@@ -82,14 +82,14 @@ class Api::V1::AnticipationsController < ApplicationController
         end
     end
 
-    def check_suscribtion_status
+    def check_subscription_status
         unless !current_api_v1_user.following? @anticipation 
             render json: {message: "User already a suscriber"}, status: :unprocessable_entity
         end
     end
 
     def authenticate_suscriber
-        unless current_api_v1_user.id == @anticipation.user.id
+        unless current_api_v1_user.id != @anticipation.user.id
             render json: {message: "User cannot suscribe to its own anticipation"}, status: :unprocessable_entity
         end
     end

@@ -278,7 +278,7 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
         before do 
           a_cover = create :anticipation_cover
          
-          @anticipation = create :anticipation, body: "Working on a todo application", user: @user, due_date: Date.today, anticipation_cover: a_cover
+          @anticipation = create :anticipation, body: "Working on a todo application", user: @searched_user, due_date: Date.today, anticipation_cover: a_cover
           @new_anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/suscribers"
         end
 
@@ -299,14 +299,21 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
 
       context "when the user suscribing to an anticipation is the anticipation owner" do
 
+        before do 
+          a_cover = create :anticipation_cover
+         
+          @anticipation = create :anticipation, body: "Working on a todo application", user: @user, due_date: Date.today, anticipation_cover: a_cover
+          @new_anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/suscribers"
+        end
+
         
         it "do not increment anticipation suscribers" do
           
-          expect{post @anticipation_url, headers: @headers}.not_to change{@user.following_users_count}
+          expect{post @new_anticipation_url, headers: @headers}.not_to change{@user.following_users_count}
         end
 
         it "returns http status code unprocessable entity" do
-          post @anticipation_url, headers: @headers
+          post @new_anticipation_url, headers: @headers
           expect(response).to have_http_status(:unprocessable_entity) 
         end
       end
