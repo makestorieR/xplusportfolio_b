@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       #route to retrieve user nofitications
       get 'notifications', to: 'notifications#index'
 
+      #routes to technologies 
+      get 'technologies', to: 'technologies#index'
+
       #routes for web_push_notifications
       post 'web_push_notifications', to: 'web_push_notifications#create'
 
