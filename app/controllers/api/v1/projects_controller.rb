@@ -19,10 +19,71 @@ class Api::V1::ProjectsController < ApplicationController
 
     def create 
 
-        @project = Project.new project_params
-        @project.user = current_api_v1_user
+            photos = []
+            technology_ids = params[:tools].split(",").map{|id| id.to_i}
+            project = JSON.parse(params[:project]).with_indifferent_access
+
+
+            succesfull = false 
         
-        if @project.save 
+            params.each do |key, value|
+              
+              photos.push(value) if key.include?('image') && value.class == ActionDispatch::Http::UploadedFile
+            end
+
+            
+
+
+            @project = Project.new 
+            @project.title = project[:title]
+            @project.description = project[:description]
+            @project.user = current_api_v1_user
+            @project.github_link = project[:githubLink]
+            @project.live_link = project[:liveLink]
+
+
+            Project.transaction(requires_new: true) do 
+                ProjectPhoto.transaction(requires_new: true) do 
+                    Tool.transaction(requires_new: true) do 
+
+                        raise ActiveRecord::Rollback if !@project.save 
+
+                        photos.each do |photo|  
+
+                            result = Cloudinary::Uploader.upload(photo, :folder => "#{current_api_v1_user.name}/projects/")
+                            ProjectPhoto.create img_url: result["url"], project: @project
+
+
+                        end
+
+                        technology_ids.each do |tech_id|  
+                            Tool.create technology_id: tech_id, project: @project
+
+                        end
+
+                        if @project.save 
+                            succesfull = true 
+                        end
+
+
+
+                    end
+
+                    
+
+                end
+
+
+            end
+
+         
+
+            
+         
+
+        
+        
+        if succesfull 
             NewProjectJob.perform_later(@project.id)
             render json: @project, status: :created
         else
