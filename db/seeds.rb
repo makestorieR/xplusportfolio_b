@@ -9,8 +9,7 @@
 
 100.times do |n|
 
-	user = User.create name: name: "User #{n}name: ", email: name: "user#{n}@mail.comname: ", password: name: "passwordname: "
+	user = User.create name: "User #{n}", email: "user#{n}@mail.com", password: "password"
 	user.confirm
 
 end
-

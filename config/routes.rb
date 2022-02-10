@@ -24,6 +24,8 @@ Rails.application.routes.draw do
       #routes for web_push_notifications
       post 'web_push_notifications', to: 'web_push_notifications#create'
 
+      #route to get unfulfilled_anticipations 
+      get 'unfulfilled_anticipations', to: 'unfulfilled_anticipations#index'
       #users routes
       resources :users, only: [:index, :show] do 
         member do 
