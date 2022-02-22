@@ -47,6 +47,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def follower_index 
+        
         if params[:page].present?    
             @pagy, @followers = pagy(followers, page: params[:page])
         else
@@ -79,7 +80,7 @@ class Api::V1::UsersController < ApplicationController
  
     private 
     def find_user 
-        @user = User.all.friendly.find_by_slug(params[:id]) 
+        @user = User.all.friendly.find(params[:id]) 
         unless @user 
             render json: 'Not Found', message: "User does not exist", status: :not_found
         end

@@ -5,6 +5,9 @@ json.array! @projects do |project|
     json.total_votes project.get_upvotes.size
 
     json.liked project.get_likes.where(voter_id: current_api_v1_user).exists?
+    json.voted project.get_upvotes.where(voter_id: current_api_v1_user).exists?
+    json.total_suggestions project.suggestions.size	
+
 
 
     json.project_photos project.project_photos do |photo|
