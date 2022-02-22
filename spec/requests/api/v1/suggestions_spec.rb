@@ -228,6 +228,7 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
 
 
 
+
       @suggestion_url = '/api/v1/suggestions/7/complete'
       
      
@@ -287,77 +288,64 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
   end
 
 
-  # describe "PUT /mark_as_done" do
+  describe "INDEX" do
 
-  #   include ApiDoc::V1::Suggestions::Index 
+    include ApiDoc::V1::Suggestions::Index 
 
-  #   before do 
+    before do 
 
-  #     @searched_user = create :user, name: "paul obi"
-  #     @project = create :project, id: 3, title: "todo application", user: @searched_user, description: "A real world todo application"
+      @searched_user = create :user, name: "paul obi"
+      @project = create :project, id: 3, title: "todo application", user: @searched_user, description: "A real world todo application"
       
-  #     create :suggestion, id: 7, content: "work on login ", project: @project, user: @searched_user
-  #     create :suggestion, id: 12, content: "fix the padding on the button nav", project: @project, user: @user
+      create :suggestion, id: 7, content: "work on login ", project: @project, user: @searched_user
+      create :suggestion, id: 12, content: "fix the padding on the button nav", project: @project, user: @user
+       create :suggestion, id: 124, content: "make the nav bar easy to use", project: @project, user: @user
 
 
 
-  #     @suggestion_url = '/api/v1/suggestions/'
+
+      @suggestion_url = '/api/v1/suggestions/'
       
      
-  #   end
+    end
 
-  #   context "when user is not authenticated" do
-  #     it "returns http status :unauthorized" do
-  #       put '/api/v1/suggestions/9/complete'
-  #       expect(response).to have_http_status(:unauthorized)  
-  #     end
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get '/api/v1/suggestions'
+        expect(response).to have_http_status(:unauthorized)  
+      end
       
-  #   end
+    end
 
 
 
-  #   context "when user is authenticated and" do
+    context "when user is authenticated and" do
 
-  #     context "suggestion is updated" do
-  #       subject { put @suggestion_url, headers: @headers } 
+      before do 
+        get '/api/v1/suggestions', headers: @headers
+        @json_data = JSON.parse(response.body)
+      end
 
-  #       it "returns http status :updated" do
-  #         subject
-          
-  #         expect(response).to have_http_status(:ok)
-  #       end
+     it "returns proper first suggetion json response" do 
 
-  #     end
+      expect(@json_data.first).to include({
+        'content' => 'fix the padding on the button nav'
+      })
 
-     
-  #     context "when the user updating the suggestion done attribute is the creator" do
+     end
 
-  #       it "returns http status :unprocessable entity" do
-  #         put '/api/v1/suggestions/12/complete', headers: @headers
-  #         expect(response).to have_http_status(:unauthorized)
-  #       end
-        
-        
-  #     end
+      it "returns proper last suggetion json response" do 
 
-      
-      
+      expect(@json_data.last).to include({
+        'content' => 'make the nav bar easy to use'
+      })
 
-  #     context "suggestion was not found" do
-        
-  #       it "returns http status :not_found" do
-  #         put '/api/v1/suggestions/9/complete', headers: @headers
-  #         expect(response).to have_http_status(:not_found)
-  #       end
-      
-  #     end
+     end
 
 
-
-      
-  #   end
+    end
   
-  # end
+  end
 
 
   

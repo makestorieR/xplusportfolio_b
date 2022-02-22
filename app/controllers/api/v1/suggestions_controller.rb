@@ -1,5 +1,5 @@
 class Api::V1::SuggestionsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :mark_as_done]
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :mark_as_done, :index]
     before_action :validate_suggestion, only: :create
     before_action :find_suggestion, only: [:update]
     before_action :ensure_done_attribute, only: [:update]
@@ -34,6 +34,11 @@ class Api::V1::SuggestionsController < ApplicationController
         if @suggestion.update!(done: true) 
             render json: @suggestion, status: :ok
         end
+    end
+
+    def index 
+        @suggestions = current_api_v1_user.suggestions
+        render 'api/v1/suggestions/index.json.jbuilder'
     end
 
     private

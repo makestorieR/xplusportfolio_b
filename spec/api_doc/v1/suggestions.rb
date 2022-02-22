@@ -22,6 +22,12 @@ module ApiDoc
         document :mark_as_done do
           action 'update a suggestion done attribute to true'
         end
+
+        document :index do
+          action 'get all suggestions'
+        end
+
+
       
       end
     end
