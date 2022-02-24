@@ -40,6 +40,7 @@ class Api::V1::ProjectsController < ApplicationController
             @project.user = current_api_v1_user
             @project.github_link = project[:githubLink]
             @project.live_link = project[:liveLink]
+            @project.anticipation_id = project[:anticipation_id]
 
 
             Project.transaction(requires_new: true) do 
