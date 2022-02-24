@@ -12,8 +12,8 @@ class Api::V1::UnfulfilledAnticipationsController < ApplicationController
   #   json.is_subscribed current_api_v1_user.following?(anticipation)
   #   json.a_slug anticipation.slug
   #   json.defaulted (Time.now > anticipation.due_date && anticipation.project.nil?)
-
-		@anticipations = current_api_v1_user.anticipations
+  		
+		@anticipations = current_api_v1_user.anticipations.filter{|anti| anti.project.nil? }
 		render 'api/v1/unfulfilled_anticipations/index.json.jbuilder'
 	end
 end

@@ -14,6 +14,13 @@ RSpec.describe "Anticipations", type: :routing do
         expect(put '/api/v1/anticipations/todo-application').to route_to(controller: 'api/v1/anticipations', action: 'update', id: 'todo-application')  
     end
 
+     it "GET api/v1/anticipations/ routes to api/v1/anticipations#unfulfilled" do
+        expect(get '/api/v1/anticipations/todo-application').to route_to('api/v1/anticipations#unfulfilled')  
+    end
+
+
+
+
 
 
 

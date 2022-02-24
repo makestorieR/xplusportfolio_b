@@ -1,7 +1,7 @@
 class Api::V1::ProjectsController < ApplicationController
     before_action :authenticate_api_v1_user!, only: [:create, :index, :update, :destroy, :show, :upvote, :downvote, :up, :down, :suggestion_index]
-    before_action :find_project, only: [:upvote, :downvote, :up, :down, :suggestion_index] 
-    before_action :find_project_by_user, only: [:update, :destroy, :show]
+    before_action :find_project, only: [:upvote, :downvote, :up, :down, :suggestion_index, :update, :destroy, :show] 
+    
 
 
     def index 

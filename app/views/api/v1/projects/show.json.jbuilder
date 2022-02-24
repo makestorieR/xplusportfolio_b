@@ -1,9 +1,8 @@
 
 json.project do 
 
-    json.(@project, :slug, :title, :description)
 
-    json.(@project, :title, :slug, :github_link, :live_link, :created_at)
+    json.(@project, :id, :title, :description, :slug, :github_link, :live_link, :created_at)
     json.total_likes @project.get_likes.size
     json.total_votes @project.get_upvotes.size
     json.description @project.description

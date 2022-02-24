@@ -39,12 +39,14 @@ RSpec.describe "Api::V1::UnfulfilledAnticipations", type: :request do
 
    	before do 
 
+   	  project1 = create :project, title: "A Movie App", user: @user
 
       cover = create :anticipation_cover, id: 4
       create :anticipation,  body: "A Todo App", user: @user, anticipation_cover: cover, due_date: Date.tomorrow
       create :anticipation,  body: "A Rider  App", user: @user, anticipation_cover: cover
-      create :anticipation,  body: "A Movie App", user: @user, anticipation_cover: cover
+     
       create :anticipation,  body: "A gmail App", user: @user, anticipation_cover: cover
+       create :anticipation,  body: "creating a A Movie App", user: @user, anticipation_cover: cover, project: project1
       
 
    	end
@@ -68,7 +70,7 @@ RSpec.describe "Api::V1::UnfulfilledAnticipations", type: :request do
   		end
 
   		it "return proper first json data response" do 
-
+  			
   			expect(@json_data.first).to include({
   				'body' => "A Todo App",
 
@@ -77,7 +79,7 @@ RSpec.describe "Api::V1::UnfulfilledAnticipations", type: :request do
 
   		it "return proper last json data response" do 
 
-  			expect(@json_data.first).to include({
+  			expect(@json_data.last).to include({
   				'body' => "A gmail App",
   				
   			})

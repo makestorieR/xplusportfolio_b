@@ -9,7 +9,7 @@ class Api::V1::SuggestionsController < ApplicationController
 
 
     def create 
-
+        
         suggestion = Suggestion.new suggestion_params
         suggestion.user = current_api_v1_user 
 

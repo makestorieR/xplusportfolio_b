@@ -13,6 +13,10 @@ class Api::V1::UsersController < ApplicationController
 
 
     def show 
+        @total_project_votes = @user.projects.reduce(0) { |sum, project| sum + project.get_upvotes.size }
+
+        
+
         render 'api/v1/users/show.json.jbuilder'
     end
 
