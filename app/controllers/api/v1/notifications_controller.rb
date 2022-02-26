@@ -17,6 +17,16 @@ class Api::V1::NotificationsController < ApplicationController
 
     def mark_read 
 
+    	@notification = Notification.find_by_id(params[:id])
 
+
+    	if @notification
+    		@notification.mark_as_read! 
+    		render json: @notification, status: :ok
+    	else 
+
+    		render json: "Notification could not be found", status: :not_found
+
+    	end
     end
 end

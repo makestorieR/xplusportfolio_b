@@ -13,4 +13,8 @@ RSpec.describe "Projects", type: :routing do
 
     end
 
+    it "GET api/v1/mark_all_notifications routes to api/v1/notifications#mark_all" do 
+    	expect(get '/api/v1/mark_all_notifications').to route_to('api/v1/notifications#mark_all')
+    end
+
 end

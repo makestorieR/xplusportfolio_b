@@ -27,13 +27,14 @@ RSpec.describe "Api::V1::Notifications", type: :request do
   end
 
 
-  describe "GET /update" do
+  describe "PUT /update" do
     include ApiDoc::V1::Notifications::Update
     before do 
       
-      
-       create :notification, recipient: @user
-       create :notification, recipient: @user, id: 3
+        a_cover = create :anticipation_cover
+        anticipation = create :anticipation, user: @user, anticipation_cover: a_cover
+       create :notification, recipient: @user, params: {anticipation: anticipation}
+       create :notification, recipient: @user, id: 3, params: {anticipation: anticipation}
 
   
        @notifications_update_url = '/api/v1/notifications/3'
@@ -54,6 +55,22 @@ RSpec.describe "Api::V1::Notifications", type: :request do
 
     context "when user is authenticated and " do
 
+      
+
+      context "notification was found" do 
+        it "succesfully updates the notification read status" do 
+          put @notifications_update_url, headers: @headers
+          expect(response).to have_http_status(:ok)
+        end
+
+      end
+
+      context "notification could not be found" do 
+        it "succesfully updates the notification read status" do 
+          put '/api/v1/notifications/13', headers: @headers
+          expect(response).to have_http_status(:not_found)
+        end
+      end
 
     end
 
