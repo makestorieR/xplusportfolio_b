@@ -18,6 +18,9 @@ Rails.application.routes.draw do
       #route to retrieve user nofitications
       get 'notifications', to: 'notifications#index'
 
+      #route to mark notification as read 
+      put 'notifications/:id', to: 'notifications#mark_read'
+
       #routes to technologies 
       get 'technologies', to: 'technologies#index'
 

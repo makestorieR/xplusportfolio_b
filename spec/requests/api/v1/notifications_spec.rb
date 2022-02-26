@@ -3,10 +3,9 @@ require 'rails_helper'
 RSpec.describe "Api::V1::Notifications", type: :request do
   include ApiDoc::V1::Notifications::Api
 
-  describe "GET /index" do
-    include ApiDoc::V1::Notifications::Index
-    before do 
-      @user = create :user
+  before do 
+
+    @user = create :user
       @user.confirm
       @login_url = '/api/v1/auth/sign_in'
 
@@ -15,7 +14,7 @@ RSpec.describe "Api::V1::Notifications", type: :request do
         password: @user.password
       }
 
-      @notifications_url = '/api/v1/notifications'
+     
 
       post @login_url, params: @user_params
         
@@ -24,6 +23,49 @@ RSpec.describe "Api::V1::Notifications", type: :request do
           'client' => response.headers['client'],
           'uid' => response.headers['uid']
         }
+
+  end
+
+
+  describe "GET /update" do
+    include ApiDoc::V1::Notifications::Update
+    before do 
+      
+      
+       create :notification, recipient: @user
+       create :notification, recipient: @user, id: 3
+
+  
+       @notifications_update_url = '/api/v1/notifications/3'
+      
+     
+    end
+
+
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        put @notifications_update_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+
+    end
+
+end
+
+
+
+
+  describe "GET /index" do
+    include ApiDoc::V1::Notifications::Index
+    before do 
+     @notifications_url = '/api/v1/notifications'
 
       
      
@@ -44,10 +86,13 @@ RSpec.describe "Api::V1::Notifications", type: :request do
 
 
       before do 
-
+        a_cover = create :anticipation_cover
+        anticipation = create :anticipation, user: @user, anticipation_cover: a_cover
         20.times do |n|
-          create :notification, recipient: @user
+          create :notification, recipient: @user, params: {anticipation: anticipation}
         end
+
+        
 
       end
 

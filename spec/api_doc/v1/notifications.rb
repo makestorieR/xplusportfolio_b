@@ -14,6 +14,10 @@ module ApiDoc
         document :index do
           action 'Get notifications'
         end
+
+        document :update do 
+          action "Update Notification"
+        end
   
         
   
