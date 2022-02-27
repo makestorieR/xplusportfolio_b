@@ -18,6 +18,12 @@ module ApiDoc
         document :update do 
           action "Update Notification"
         end
+
+
+        document :mark_all do 
+
+          action "Mark All notifications"
+        end
   
         
   

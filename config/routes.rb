@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       put 'notifications/:id', to: 'notifications#mark_read'
 
       #route to mark all notifications
-      get 'mark_all_notifications', to: 'notifications@mark_all'
+      get 'mark_all_notifications', to: 'notifications#mark_all'
 
       #routes to technologies 
       get 'technologies', to: 'technologies#index'

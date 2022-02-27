@@ -1,5 +1,5 @@
 class Api::V1::NotificationsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :mark_read]
+    before_action :authenticate_api_v1_user!, only: [:index, :mark_read, :mark_all]
 
     def index 
 
@@ -28,5 +28,12 @@ class Api::V1::NotificationsController < ApplicationController
     		render json: "Notification could not be found", status: :not_found
 
     	end
+    end
+
+
+    def mark_all 
+    	current_api_v1_user.notifications.mark_as_read!
+    	@notifications = current_api_v1_user.notifications.newest_first.unread
+    	render 'api/v1/notifications/index.json.jbuilder'
     end
 end

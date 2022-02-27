@@ -1,5 +1,5 @@
 json.array! @notifications do |notification|
-
+	json.id notification.id
     json.type notification.type 
     json.read notification.read?
     json.object notification.params

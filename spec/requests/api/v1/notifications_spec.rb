@@ -76,6 +76,35 @@ RSpec.describe "Api::V1::Notifications", type: :request do
 
 end
 
+describe "GET /mark_all" do
+    include ApiDoc::V1::Notifications::MarkAll
+    before do 
+      
+        a_cover = create :anticipation_cover
+        anticipation = create :anticipation, user: @user, anticipation_cover: a_cover
+       create :notification, recipient: @user, params: {anticipation: anticipation}
+       create :notification, recipient: @user, id: 3, params: {anticipation: anticipation}
+
+  
+       @mark_all_notifications = '/api/v1/mark_all_notifications/'
+      
+     
+    end
+
+
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get @mark_all_notifications
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+
+end
+
 
 
 
