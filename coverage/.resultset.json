@@ -903,12 +903,6 @@
           null
         ]
       },
-      "/root/xplusportfolio_b/app/controllers/api/v1/search_controller.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
       "/root/xplusportfolio_b/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -921,12 +915,22 @@
           1,
           null,
           1,
-          0,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/xplusportfolio_b/app/controllers/api/v1/search_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1645967538
+    "timestamp": 1645992539
   }
 }
