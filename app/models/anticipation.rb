@@ -1,6 +1,6 @@
 class Anticipation < ApplicationRecord
-  if Rails.env === 'production'
-    searchkick word_middle: [:name]
+  if Rails.env === 'production' || Rails.env === 'development'
+    searchkick word_middle: [:body]
   end
     before_create :set_slug
     before_save :penilize_user

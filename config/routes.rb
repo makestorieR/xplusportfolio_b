@@ -10,10 +10,12 @@ Rails.application.routes.draw do
     namespace :v1 do 
       mount_devise_token_auth_for 'User', at: 'auth'
 
+      #routes to search
+      get 'search', to: 'search#index'
+
 
       #route to retrieve anticipation covers
       get 'anticipation_covers', to: 'anticipation_covers#index'
-
 
       #route to retrieve user nofitications
       get 'notifications', to: 'notifications#index'

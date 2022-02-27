@@ -744,9 +744,11 @@
           1,
           null,
           null,
-          null,
           1,
           null,
+          null,
+          null,
+          1,
           null,
           null,
           1,
@@ -901,6 +903,12 @@
           null
         ]
       },
+      "/root/xplusportfolio_b/app/controllers/api/v1/search_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
       "/root/xplusportfolio_b/app/controllers/application_controller.rb": {
         "lines": [
           1,
@@ -913,111 +921,12 @@
           1,
           null,
           1,
-          7,
-          null,
-          null
-        ]
-      },
-      "/root/xplusportfolio_b/app/models/anticipation_cover.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/root/xplusportfolio_b/app/models/anticipation.rb": {
-        "lines": [
-          1,
-          1,
-          0,
-          null,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          6,
-          null,
-          null,
-          1,
-          6,
-          6,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/root/xplusportfolio_b/app/models/notification.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/root/xplusportfolio_b/app/controllers/api/v1/notifications_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          1,
-          null,
-          2,
-          null,
-          0,
-          null,
-          null,
-          2,
-          null,
-          null,
-          2,
-          null,
-          null,
-          null,
-          1,
-          null,
-          2,
-          null,
-          null,
-          2,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
           0,
           null,
           null
         ]
       }
     },
-    "timestamp": 1645920053
+    "timestamp": 1645967538
   }
 }

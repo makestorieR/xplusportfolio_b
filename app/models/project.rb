@@ -1,9 +1,10 @@
 class Project < ApplicationRecord
   extend FriendlyId
   
-  if Rails.env === 'production'
-    searchkick word_middle: [:name]
+  if Rails.env === 'production' || Rails.env === 'development'
+    searchkick word_middle: [:title, :description]
   end
+  
   belongs_to :user
   belongs_to :anticipation,  optional: true
   friendly_id :title, use: :slugged
