@@ -7,7 +7,7 @@ json.array! @anticipations do |anticipation|
     json.due_date anticipation.due_date
     json.expired Time.now > anticipation.due_date 
     json.fulfilled !anticipation.project.nil?
-    json.total_subscribers anticipation.followers_count
+    json.total_subscribers anticipation.followers_by_type_count('User')
     json.total_likes anticipation.get_likes.size
     json.is_subscribed current_api_v1_user.following?(anticipation)
     json.a_slug anticipation.slug

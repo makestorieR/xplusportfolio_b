@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   extend FriendlyId
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  if Rails.env === 'production' || Rails.env === 'development'
-    searchkick word_middle: [:name]
-  end
+  # if Rails.env === 'production' || Rails.env === 'development'
+  #   searchkick word_middle: [:name]
+  # end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   include DeviseTokenAuth::Concerns::User

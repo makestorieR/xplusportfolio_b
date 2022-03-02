@@ -22,7 +22,7 @@ class Api::V1::NotificationsController < ApplicationController
 
     	if @notification
     		@notification.mark_as_read! 
-    		render json: @notification, status: :ok
+    		render json: {total_notifications: current_api_v1_user.notifications.unread.size}, status: :ok
     	else 
 
     		render json: "Notification could not be found", status: :not_found

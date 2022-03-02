@@ -1,8 +1,9 @@
 class Anticipation < ApplicationRecord
-  if Rails.env === 'production' || Rails.env === 'development'
-    searchkick word_middle: [:body]
-  end
+  # if Rails.env === 'production' || Rails.env === 'development'
+  #   searchkick word_middle: [:body]
+  # end
     before_create :set_slug
+    after_commit :broadcast_anticipation
     before_save :penilize_user
 
     belongs_to :user
@@ -25,6 +26,13 @@ class Anticipation < ApplicationRecord
            user.decrement!(:repu_coin, 50)
         end
         
+    end
+
+    def broadcast_anticipation 
+      
+      # @anticipation = self
+
+      #   AnticipationCableJob.perform_now(@anticipation.id)
     end
 
     def search_data

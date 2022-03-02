@@ -21,8 +21,8 @@ json.user do
     json.github_url @user.github_url 
     json.linkedin_url @user.linkedin_url 
     json.total_project_votes @total_project_votes
-    json.total_followers @user.followers.size
-    json.total_followings @user.follows.size
+    json.total_followers @user.followers_by_type_count('User')
+    json.total_followings @user.following_by_type_count('User')
     json.backcover_imgurl @user.backcover_imgurl
 
 
