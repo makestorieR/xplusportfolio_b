@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   extend FriendlyId
+  include PublicActivity::Common
   
   # if Rails.env === 'production' || Rails.env === 'development'
   #   searchkick word_middle: [:title, :description]

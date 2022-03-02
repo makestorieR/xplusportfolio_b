@@ -1,5 +1,5 @@
 
-json.array! @users do |user|
+json.array! @users.order(created_at: :desc) do |user|
     
     next if user.id == current_api_v1_user.id
     json.slug user.slug

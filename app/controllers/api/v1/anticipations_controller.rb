@@ -11,9 +11,9 @@ class Api::V1::AnticipationsController < ApplicationController
         anticipation.user = current_api_v1_user
         
         if anticipation.save       
-            NewAnticipationJob.perform_now(anticipation.id, anticipation.user.id) 
-           # ActionCable.server.broadcast 'new_anticipation_channel', {data: {current_user: current_api_v1_user, notifications: current_api_v1_user.notifications}}  
-            
+            anticipation.create_activity :create, owner: current_api_v1_user
+            NewAnticipationJob.perform_later(anticipation.id, anticipation.user.id) 
+           
             render json: anticipation, status: :created
         else
             render json: anticipation.errors.messages, status: :unprocessable_entity

@@ -10,13 +10,15 @@ class NewAnticipationJob < ApplicationJob
 
       
          subscribe_user(@anticipation)
+          @user = @anticipation.user
          
         NewAnticipationNotification.with(anticipation: @anticipation).deliver (@user.followers_by_type('User') + @user.following_by_type('User'))
+
+       
+       
+        
    
-        @receivers = (@anticipation.user.followers_by_type('User') + @anticipation.user.following_by_type('User')).map{|user| {total_notifications: user.notifications.unread.size, slug: user.slug}}
-
-       ActionCable.server.broadcast 'new_anticipation_channel', {data: {receivers: @receivers,  anticipation: @anticipation, sender_slug: @anticipation.user.slug, isPost: false}}
-
+        
 
 
     # #subscribe user followers to anticipation 

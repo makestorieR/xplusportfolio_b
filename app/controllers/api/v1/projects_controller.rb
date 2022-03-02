@@ -64,6 +64,12 @@ class Api::V1::ProjectsController < ApplicationController
 
                         if @project.save 
                             succesfull = true 
+
+                            if @project.anticipation
+                                @project.create_activity :fulfilled, owner: current_api_v1_user
+                            else
+                                @project.create_activity :create, owner: current_api_v1_user
+                            end
                         end
 
 
@@ -76,13 +82,6 @@ class Api::V1::ProjectsController < ApplicationController
 
 
             end
-
-         
-
-            
-         
-
-        
         
         if succesfull 
             NewProjectJob.perform_later(@project.id)

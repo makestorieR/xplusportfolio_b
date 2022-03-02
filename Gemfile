@@ -64,3 +64,5 @@ gem "noticed", "~> 1.5"
 
 gem "sidekiq", "~> 6.3"
 
+gem 'public_activity'
+

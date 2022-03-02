@@ -4,14 +4,16 @@ class DeliveryMethods::Anticipation < Noticed::DeliveryMethods::Base
   def deliver
     # Logic for sending the notification
 
-    @anticipation = @notification.action_cable_data
+    @anticipation = @notification.action_cable_data[:anticipation]
 
-    
+     @user = @anticipation.user
 
+    @receivers = (@user.followers_by_type('User') + @user.following_by_type('User')).map{|user| {total_notifications: user.notifications.unread.size, slug: user.slug}}
+        
+    ActionCable.server.broadcast 'new_anticipation_channel',  {receivers: @receivers,  sender_slug: @user.slug, isPost: false}
 
-
-     ActionCable.server.broadcast 'new_anticipation_channel', {data: {current_user: @anticipation[:anticipation].user}}  
-
+         
+   
 
     # @message = @notification.webpush_data
     #   recipient.webpush_subscriptions.each do |webpush|

@@ -1,7 +1,9 @@
 class Anticipation < ApplicationRecord
+  include PublicActivity::Common
   # if Rails.env === 'production' || Rails.env === 'development'
   #   searchkick word_middle: [:body]
   # end
+
     before_create :set_slug
     after_commit :broadcast_anticipation
     before_save :penilize_user
