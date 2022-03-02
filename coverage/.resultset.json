@@ -747,6 +747,15 @@
           1,
           null,
           null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
           null,
           1,
           null,
@@ -827,8 +836,8 @@
           1,
           null,
           null,
-          1,
-          0,
+          null,
+          null,
           null,
           1,
           null,
@@ -876,6 +885,10 @@
           0,
           null,
           null,
+          0,
+          0,
+          null,
+          null,
           null,
           null
         ]
@@ -915,14 +928,42 @@
           1,
           null,
           1,
-          1,
+          4,
           null,
           null
         ]
       },
-      "/root/xplusportfolio_b/app/controllers/api/v1/search_controller.rb": {
+      "/root/xplusportfolio_b/app/controllers/api/v1/activities_controller.rb": {
         "lines": [
           1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
           1,
           1,
           null,
@@ -931,6 +972,6 @@
         ]
       }
     },
-    "timestamp": 1645992539
+    "timestamp": 1646252806
   }
 }

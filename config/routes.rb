@@ -13,6 +13,15 @@ Rails.application.routes.draw do
       #routes to search
       get 'search', to: 'search#index'
 
+      #routes to all users activities 
+      get 'all_activities', to: 'activities#index'
+
+      #routes to my_activites 
+      get 'user_activities', to: 'activities#user_activities'
+
+      #routes to friends_activities 
+      get 'friends_activities', to: 'activities#friends_activities'
+
 
       #route to retrieve anticipation covers
       get 'anticipation_covers', to: 'anticipation_covers#index'
