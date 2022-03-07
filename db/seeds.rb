@@ -16,13 +16,13 @@
 end
 
 
-Technology.create name "Ruby On Rails"
-Technology.create name "Javascript"
-Technology.create name "React"
-Technology.create name "Ruby"
-Technology.create name "HTML"
-Technology.create name "CSS"
-Technology.create name "GIT"
+Technology.create name: "Ruby On Rails"
+Technology.create name: "Javascript"
+Technology.create name: "React"
+Technology.create name: "Ruby"
+Technology.create name: "HTML"
+Technology.create name: "CSS"
+Technology.create name: "GIT"
 
 
 AnticipationCover.create name: "Rusty", image: "https://images.unsplash.com/photo-1609602644879-dd158c2b56b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGV4dHVyZSUyMGJhY2tncm91bmR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60", text_color: "white"
