@@ -29,3 +29,5 @@ echo "coverage" >> .gitignore
 # Ignore application configuration
 /config/application.yml
 
+/config/webpush.yml
+

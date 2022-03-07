@@ -3,6 +3,8 @@ class Api::V1::WebPushNotificationsController < ApplicationController
   before_action :find_web_push_notification, only: :create
   def create
 
+    debugger
+
       notification = WebPushNotification.new 
       notification.endpoint = params[:subscription][:endpoint]
       notification.auth_key = params[:subscription][:keys][:auth]

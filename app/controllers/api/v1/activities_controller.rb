@@ -17,7 +17,7 @@ class Api::V1::ActivitiesController < ApplicationController
 
 	def friends_activities 
 
-		friends_id = (@user.followers_by_type('User') + @user.following_by_type('User')).map{|user| user.id}
+		friends_id = (current_api_v1_user.followers_by_type('User') + current_api_v1_user.following_by_type('User')).map{|user| user.id}
 		@pagy, @activities = pagy(PublicActivity::Activity.order(created_at: :desc).where(owner_id: friends_id, owner_type: "User"), page: params[:page]) 
 
 		render 'api/v1/activities/index.json.jbuilder'

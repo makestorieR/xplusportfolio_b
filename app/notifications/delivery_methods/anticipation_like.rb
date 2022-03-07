@@ -1,17 +1,19 @@
-
-class DeliveryMethods::Anticipation < Noticed::DeliveryMethods::Base
- include BroadcastToUsersHelper
-
+class DeliveryMethods::AnticipationLike < Noticed::DeliveryMethods::Base
+  include BroadcastToUsersHelper
   def deliver
     # Logic for sending the notification
 
     anticipation = @notification.action_cable_data[:anticipation]
+    
+
     user = anticipation.user
-    receivers = (user.followers_by_type('User') + user.following_by_type('User'))
 
-    relay_message_from(user, 'new_anticipation_channel', receivers, true)
+    users = []
+    users.push(user)
 
+    relay_message_from(@recipient, 'anticipation_like_channel', users, false)
 
+    
 
   end
 

@@ -4,12 +4,13 @@
 # AnticipationLikeNotification.with(post: @post).deliver(current_user)
 
 class AnticipationLikeNotification < Noticed::Base
+    include BroadcastToUsersHelper
   # Add your delivery methods
+
+  
   #
   deliver_by :database
-  # deliver_by :email, mailer: "UserMailer"
-  # deliver_by :slack
-  deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
+  # deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
 
   # Add required params
   #
@@ -21,6 +22,8 @@ class AnticipationLikeNotification < Noticed::Base
   #   t(".message")
   # end
 
+  after_database :broadcast_anticipation_like
+
   def webpush_data 
     @anticipation = record[:params][:anticipation]
     {
@@ -29,8 +32,29 @@ class AnticipationLikeNotification < Noticed::Base
     }
   end
 
-  #
-  # def url
-  #   post_path(params[:post])
-  # end
+
+  def broadcast_anticipation_like
+    # Logic for sending the notification
+
+
+    
+
+    anticipation = params[:anticipation]
+    
+
+    user = anticipation.user
+
+    users = []
+    users.push(user)
+
+    relay_message_from(@recipient, 'anticipation_like_channel', users, false)
+
+    
+
+  end
+
+ 
+  def action_cable_data
+    { anticipation: record[:params][:anticipation] }
+  end
 end

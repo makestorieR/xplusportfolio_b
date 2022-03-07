@@ -12,6 +12,7 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
+require 'webpush'
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
@@ -32,6 +33,23 @@ module IamworkingonB
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+
+    vapid_key = Webpush.generate_key
+    # Save these in your application server settings
+    puts "****** VAPID_PUBLIC_KEY *******"
+    puts vapid_key.public_key
+    puts "****** VAPID_PRIVATE_KEY *******"
+    puts vapid_key.private_key
+
+
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'webpush.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
+
+
     config.api_only = true
     config.active_job.queue_adapter = :sidekiq
   end

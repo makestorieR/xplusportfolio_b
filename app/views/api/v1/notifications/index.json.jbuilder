@@ -2,7 +2,7 @@
 
 json.notification_info do
 
-	json.total_notifications @notifications.size
+	json.total_notifications @notifications.unread.size
 
 	json.notifications @notifications do |notification|
 		json.id notification.id
