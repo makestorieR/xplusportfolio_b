@@ -7,10 +7,12 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    if Rails.env.development?
-      origins 'localhost:3000'
+    if Rails.env.production?
+            
+        origins 'https://xplusportfolio.herokuapp.com'
     else
-      origins 'https://xplusportfolio.herokuapp.com'
+        origins 'localhost:3000'
+
     end
 
     resource '*',
@@ -21,3 +23,5 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
 
 end
+
+
