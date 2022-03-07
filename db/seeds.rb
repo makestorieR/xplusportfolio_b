@@ -7,13 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-30.times do |n|
+# 30.times do |n|
 
-	user = User.create name: "User #{n}", email: "user#{n}@mail.com", password: "password"
-	user.confirm
+# 	user = User.create name: "User #{n}", email: "user#{n}@mail.com", password: "password"
+# 	user.confirm
 
 
-end
+# end
 
 
 Technology.create name: "Ruby On Rails"
