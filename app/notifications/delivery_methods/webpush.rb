@@ -3,6 +3,8 @@ class DeliveryMethods::Webpush < Noticed::DeliveryMethods::Base
   def deliver
     # Logic for sending the notification
 
+
+    debugger
     @message = @notification.webpush_data
       recipient.webpush_subscriptions.each do |webpush|
 
