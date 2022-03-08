@@ -62,7 +62,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "noticed", "~> 1.5"
 
-gem "sidekiq", "~> 6.3"
+gem 'sidekiq'
 
 gem 'public_activity'
 

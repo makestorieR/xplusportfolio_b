@@ -348,7 +348,7 @@ DEPENDENCIES
   rspec-rails
   searchkick (~> 4.6, >= 4.6.3)
   shoulda-matchers
-  sidekiq (~> 6.3)
+  sidekiq
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
