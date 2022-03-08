@@ -5,21 +5,39 @@
 
 # Read more: github.com/cyu/rack-cors
 
-Rails.application.config.middleware.insert_before 0, Rack::Cors do
-  allow do
-    if Rails.env.production?
-            
-        origins 'https://xplusportfolio.herokuapp.com'
-    else
+
+
+ if Rails.env.production? 
+
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        
         origins 'localhost:3000'
+
+        resource '*',
+          headers: :any,
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+
 
     end
 
-    resource '*',
-      headers: :any,
-      expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-  end
+else 
+
+  Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        
+        origins 'localhost:3000'
+
+        resource '*',
+          headers: :any,
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+
+
+    end
 
 
 end
