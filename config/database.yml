@@ -93,3 +93,8 @@ production:
   database: xplusportfolio_b_production
   username: xplusportfolio_b
   password: <%= ENV['IAMWORKINGON_B_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  role: my_role
