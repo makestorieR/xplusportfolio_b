@@ -16,7 +16,8 @@ gem 'friendly_id', '~> 5.4.0'
 
  gem 'devise'
 #Use Redis adapter to run Action Cable in production
-gem 'redis'
+gem 'redis', '~> 3.2.1'
+
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
@@ -62,7 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "noticed", "~> 1.5"
 
-gem 'sidekiq'
+
+gem 'sidekiq', '~> 4.1', '>= 4.1.2'
 
 gem 'public_activity'
 

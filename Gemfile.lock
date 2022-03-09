@@ -216,6 +216,8 @@ GEM
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+    rack-protection (2.2.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.4.1)
@@ -248,7 +250,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
-    redis (4.5.1)
+    redis (3.2.2)
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -281,10 +283,11 @@ GEM
       hashie
     shoulda-matchers (5.0.0)
       activesupport (>= 5.2.0)
-    sidekiq (6.3.1)
-      connection_pool (>= 2.2.2)
-      rack (~> 2.0)
-      redis (>= 4.2.0)
+    sidekiq (4.2.10)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -345,11 +348,11 @@ DEPENDENCIES
   puma (~> 4.1)
   rack-cors
   rails (~> 6.0.4, >= 6.0.4.1)
-  redis
+  redis (~> 3.2.1)
   rspec-rails
   searchkick (~> 4.6, >= 4.6.3)
   shoulda-matchers
-  sidekiq
+  sidekiq (~> 4.1, >= 4.1.2)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
