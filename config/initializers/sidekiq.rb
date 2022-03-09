@@ -4,11 +4,11 @@
 
  
     Sidekiq.configure_client do |config|
-      config.redis = { url: ENV.fetch('REDIS_TLS_URL')}
+      config.redis = { url: ENV.fetch('STACKHERO_REDIS_URL_CLEAR')}
     end
 
     Sidekiq.configure_server do |config|
-      config.redis = { url: ENV.fetch('REDIS_TLS_URL') }
+      config.redis = { url: ENV.fetch('STACKHERO_REDIS_URL_CLEAR') }
     end
 else 
 
