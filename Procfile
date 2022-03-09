@@ -1,4 +1,4 @@
 
 
 web: bundle exec rails server -p $PORT
-worker: bundle exec sidekiq -c 10
+worker: bundle exec sidekiq -e development -C config/sidekiq.yml
