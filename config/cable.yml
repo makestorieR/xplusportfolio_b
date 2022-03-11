@@ -14,7 +14,7 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:54688d65457e689e5e7396cfb4b8d7f1@barb.redistogo.com:10288/
+  url: <%= ENV['REDIS_PROVIDER'] %>
   channel_prefix: iamworkingon_b_production
 
 
