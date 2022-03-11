@@ -5,7 +5,7 @@
 :timeout: 8
 
 production:
-  :concurrency: 25
+  :concurrency: 17
 
 staging:
   :concurrency: 15
