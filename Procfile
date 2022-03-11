@@ -1,4 +1,4 @@
 
-web: bundle exec puma -c config/puma.rb
+web: bundle exec rails server -p $PORT
 worker: bundle exec sidekiq -C config/sidekiq.yml
 
