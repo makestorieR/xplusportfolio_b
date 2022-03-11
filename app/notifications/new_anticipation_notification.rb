@@ -7,10 +7,10 @@ class NewAnticipationNotification < Noticed::Base
    
   deliver_by :database
   # deliver_by :custom, class: "DeliveryMethods::Anticipation"
-  # # deliver_by :email, mailer: "AnticipationMailer", delay: 1.hours, unless: :read?
+  # deliver_by :email, mailer: "AnticipationMailer", delay: 1.hours, unless: :read?
   
-  # # deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
-  # deliver_by :custom, class: "DeliveryMethods::Webpush"
+  # deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
+  deliver_by :custom, class: "DeliveryMethods::Webpush"
  
 
   # Add required params
