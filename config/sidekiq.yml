@@ -2,11 +2,7 @@
 ---
 :verbose: false
 :concurrency: 10
-:pidfile: tmp/pids/sidekiq.pid
-:queues:
-  - [critical, 2]
-  - default
-  - low
+:timeout: 8
 
 production:
   :concurrency: 25
