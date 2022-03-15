@@ -10,8 +10,19 @@ class Api::V1::SuggestionsController < ApplicationController
 
     def create 
         
-        suggestion = Suggestion.new suggestion_params
+        
+        
+        if !Rails.env.test? 
+
+            result = Cloudinary::Uploader.upload(params[:image], :folder => "#{current_api_v1_user.name}/suggestions/") if !params[:image].nil?
+
+        end
+
+
+        suggestion = Suggestion.new content: params[:content], project_id: @project.id
         suggestion.user = current_api_v1_user 
+
+        suggestion.image_url = result["url"] if params[:image]
 
         if suggestion.save 
             NewSuggestionNotification.with(suggestion: suggestion).deliver_later suggestion.project.user
@@ -72,7 +83,11 @@ class Api::V1::SuggestionsController < ApplicationController
 
     def validate_suggestion 
         #ensure that the user creating the suggestion is not the user that created the project
-        @project = Project.find_by_id(suggestion_params[:project_id])
+
+        
+        @project = Project.friendly.find(params[:project_id]) 
+
+        
 
         unless @project.user.id != current_api_v1_user.id 
             render json:{message: "User cannot create a suggestion for its own project"}, status: :unprocessable_entity

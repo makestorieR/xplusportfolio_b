@@ -40,10 +40,10 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
       @suggestion_url = '/api/v1/suggestions'
       @suggestion_params = {
 
-        suggestion: {
+
           content: "work on the login feature, its kinda wacky.",
           project_id: 3
-        }
+        
         
       }
 
@@ -78,12 +78,12 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
 
         it "do not increment Suggestion.count " do
           expect{
-            post @suggestion_url, params: {suggestion: {content: "work on the login feature, its kinda wacky.", project_id: 5}}, headers: @headers
+            post @suggestion_url, params: {content: "work on the login feature, its kinda wacky.", project_id: 5}, headers: @headers
           }.to_not change{Suggestion.count}  
         end
 
         it "returns http status :unprocessable_entity" do
-          post @suggestion_url, params: {suggestion: {content: "work on the login feature, its kinda wacky.", project_id: 5}}, headers: @headers
+          post @suggestion_url, params: {content: "work on the login feature, its kinda wacky.", project_id: 5}, headers: @headers
           expect(response).to have_http_status(:unprocessable_entity)
         end
 
@@ -101,7 +101,7 @@ RSpec.describe "Api::V1::Suggestions", type: :request do
         end
 
         it "returns http status :unprocessable_entity" do
-          post @suggestion_url, params: {suggestion: {content: "", project_id: 3}}, headers: @headers
+          post @suggestion_url, params: {content: "", project_id: 3}, headers: @headers
           expect(response).to have_http_status(:unprocessable_entity)
         end
       
