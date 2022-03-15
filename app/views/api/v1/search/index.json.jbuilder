@@ -4,7 +4,7 @@ json.array! @results do |result|
 	
 
 	if result.user 
-		json.owner json.(result.user, :slug, :name, :image)
+		json.owner result.owner
 	end
 
 	json.id SecureRandom.hex(5)
