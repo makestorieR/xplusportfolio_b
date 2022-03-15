@@ -3,7 +3,7 @@ json.array! @results do |result|
 	json.object result
 	
 
-	if result.user 
+	if result.type === '"Anticipation"'
 		json.owner  result.user
 	end
 
