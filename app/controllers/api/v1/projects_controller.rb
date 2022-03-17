@@ -130,7 +130,7 @@ class Api::V1::ProjectsController < ApplicationController
 
     def up 
         current_api_v1_user.likes @project
-        ProjectLikeNotification.with(project: @project).deliver @project.user
+        ProjectLikeJob.perform_later @project.id, current_api_v1_user.id
         render json: {message: "Liked this project", total_likes: @project.get_likes.size}, status: :ok
     end
 
