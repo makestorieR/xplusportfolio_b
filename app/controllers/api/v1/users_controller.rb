@@ -31,12 +31,16 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def anticipation_index 
+
+
         if params[:page].present?  
               
-            @pagy, @anticipations = pagy(@user.anticipations.includes(:anticipation_cover), page: params[:page])
+            @pagy, @anticipations = pagy(@user.anticipations.includes(:anticipation_cover, :anticipation_cover, :user, :project), page: params[:page])
         else
-            @pagy, @anticipations = pagy(@user.anticipations.includes(:anticipation_cover), page: 1)
+            @pagy, @anticipations = pagy(@user.anticipations.includes(:anticipation_cover, :anticipation_cover, :user, :project), page: 1)
         end
+
+        
         render 'api/v1/users/anticipation_index.json.jbuilder'
     end
 

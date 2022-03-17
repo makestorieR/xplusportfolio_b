@@ -113,8 +113,10 @@ class Api::V1::ProjectsController < ApplicationController
     end
 
     def upvote 
+        
         @project.vote_by voter: current_api_v1_user
-        UpvoteNotification.with(project: @project).deliver_later @project.user
+
+        ProjectUpvoteJob.perform_later @project.id, current_api_v1_user.id 
         render json: {message: "Succesfully Voted for project", total_votes: @project.weighted_score}, status: :ok
     end
 

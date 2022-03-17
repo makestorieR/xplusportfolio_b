@@ -2,7 +2,8 @@ class DeliveryMethods::Webpush < Noticed::DeliveryMethods::Base
   include WebpushHelper
   def deliver
     # Logic for sending the notification
-    @message = @notification.webpush_data
+      
+      @message = @notification.webpush_data
       recipient.webpush_subscriptions.each do |webpush|
 
         begin

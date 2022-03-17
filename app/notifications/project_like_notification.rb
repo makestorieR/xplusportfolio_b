@@ -1,7 +1,4 @@
-# To deliver this notification:
-#
-# ProjectLikeNotification.with(post: @post).deliver_later(current_user)
-# ProjectLikeNotification.with(post: @post).deliver(current_user)
+
 
 class ProjectLikeNotification < Noticed::Base
   # Add your delivery methods
@@ -21,12 +18,22 @@ class ProjectLikeNotification < Noticed::Base
   #   t(".message")
   # end
 
+  before_database :check
+
   def webpush_data 
     @project = record[:params][:project]
     {
-      title: "New Like Alert!",
+      title: "Project Like",
       body: "#{@project.title} has a new like"
     }
+  end
+
+
+  private 
+
+  def check 
+
+    debugger
   end
 
   #
