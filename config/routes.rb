@@ -33,6 +33,9 @@ Rails.application.routes.draw do
       #routes to friends_activities 
       get 'friends_activities', to: 'activities#friends_activities'
 
+      #routes to resources 
+      get 'resources', to: 'resources#index'
+
 
       #route to retrieve anticipation covers
       get 'anticipation_covers', to: 'anticipation_covers#index'
