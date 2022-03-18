@@ -15,33 +15,30 @@ class NewAnticipationNotification < Noticed::Base
 
   # Add required params
   #
-   param :anticipation
-
-   def to_database 
-    {
-      message: @anticipation.title
-    }
-   end
+   param :anticipation, :action_owner
 
   # Define helper methods to make rendering easier.
   #
-  def message
-    t(".message")
-  end
+  # def message
+  #   t(".message")
+  # end
 
   def webpush_data 
     @anticipation = record[:params][:anticipation]
+    @action_owner = record[:params][:action_owner]
+   
+
+
     {
-      title: "New Anticipation Alert!",
-      body: "#{@anticipation.user.name} launched a new anticipation #{@anticipation.body}"
+      title: "New Anticipation",
+      body: "#{@anticipation.body}",
+      action_owner: @action_owner
     }
   end
 
-  def custom_stream
 
-    
-    "user_#{recipient.id}"
-  end
+
+
 
   def action_cable_data
     { anticipation: record[:params][:anticipation] }

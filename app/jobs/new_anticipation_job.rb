@@ -10,10 +10,13 @@ class NewAnticipationJob < ApplicationJob
 
       
     subscribe_user(@anticipation)
-    @user = @anticipation.user
-       
-    NewAnticipationNotification.with(anticipation: @anticipation).deliver (@user.followers_by_type('User') + @user.following_by_type('User'))
+    
 
+    @anticipation.create_activity :create, owner: @user
+    action_owner_info = {name: @user.name, image: @user.image}
+
+     
+    NewAnticipationNotification.with(anticipation: @anticipation, action_owner: action_owner_info).deliver (@user.followers_by_type('User') + @user.following_by_type('User'))
 
     
   end

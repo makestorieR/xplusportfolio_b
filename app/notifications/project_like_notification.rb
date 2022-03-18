@@ -10,7 +10,8 @@ class ProjectLikeNotification < Noticed::Base
 
   # Add required params
   #
-   param :project, :action_performer
+
+   param :project, :action_owner, :total_performers
 
   # Define helper methods to make rendering easier.
   #
@@ -18,19 +19,24 @@ class ProjectLikeNotification < Noticed::Base
   #   t(".message")
   # end
 
+
+
   def webpush_data 
     @project = record[:params][:project]
-    @action_performer = record[:params][:action_performer]
+    @action_owner = record[:params][:action_owner]
+    @total_performers = record[:params][:total_performers]
 
 
     {
       title: "Project Like",
-      body: "#{@action_performer.name} likes your project #{@project.title}"
+      body: "#{@project.title}",
+      action_owner: @action_owner,
+      total_performers: @total_performers
     }
   end
 
 
-  private 
+  
 
 
   #

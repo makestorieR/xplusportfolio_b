@@ -11,9 +11,7 @@ class Api::V1::AnticipationsController < ApplicationController
         anticipation.user = current_api_v1_user
         
         if anticipation.save       
-            anticipation.create_activity :create, owner: current_api_v1_user
-            NewAnticipationJob.perform_later(anticipation.id, anticipation.user.id) 
-           
+            NewAnticipationJob.perform_later(anticipation.id) 
             render json: anticipation, status: :created
         else
             render json: anticipation.errors.messages, status: :unprocessable_entity
@@ -49,8 +47,7 @@ class Api::V1::AnticipationsController < ApplicationController
     def up 
 
         current_api_v1_user.likes @anticipation
-        @anticipation.create_activity :like, owner: current_api_v1_user
-        AnticipationLikeNotification.with(anticipation: @anticipation).deliver_later @anticipation.user
+        AnticipationLikeJob.perform_later @anticipation.id, current_api_v1_user.id
         render json: {message: "Liked this anticipation", total_likes: @anticipation.get_likes.size}, status: :ok
     end
 

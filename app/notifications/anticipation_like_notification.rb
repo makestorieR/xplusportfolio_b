@@ -10,11 +10,11 @@ class AnticipationLikeNotification < Noticed::Base
   
   #
   deliver_by :database
-  # deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
+  deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
 
   # Add required params
   #
-   param :anticipation
+  param :anticipation, :action_owner, :total_performers
 
   # Define helper methods to make rendering easier.
   #
@@ -26,9 +26,15 @@ class AnticipationLikeNotification < Noticed::Base
 
   def webpush_data 
     @anticipation = record[:params][:anticipation]
+    @action_owner = record[:params][:action_owner]
+    @total_performers = record[:params][:total_performers]
+
+
     {
-      title: "New Like Alert!",
-      body: "#{@anticipation.body} has a new like"
+      title: "Anticipation Like",
+      body: "#{@anticipation.body}",
+      action_owner: @action_owner,
+      total_performers: @total_performers
     }
   end
 
