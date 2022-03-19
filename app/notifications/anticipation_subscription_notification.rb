@@ -7,13 +7,13 @@ class AnticipationSubscriptionNotification < Noticed::Base
   # Add your delivery methods
   #
   deliver_by :database
-   deliver_by :email, mailer: "AnticipationMailer", delay: 1.hour, unless: :read?
+   # deliver_by :email, mailer: "AnticipationMailer", delay: 1.hour, unless: :read?
   # deliver_by :slack
   deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
 
   # Add required params
-  #
-  param :anticipation
+
+   param :anticipation, :action_owner, :total_performers
 
   # Define helper methods to make rendering easier.
   #
@@ -21,11 +21,19 @@ class AnticipationSubscriptionNotification < Noticed::Base
   #   t(".message")
   # end
 
+
   def webpush_data 
     @anticipation = record[:params][:anticipation]
+    @action_owner = record[:params][:action_owner]
+    @total_performers = record[:params][:total_performers]
+
+
     {
       title: "New Anticipation Subscriber",
-      body: "#{@anticipation.body} has a new subscriber"
+      body: "Your anticipation, #{@anticipation.body} has a new subscriber",
+      action_owner: @action_owner,
+      total_performers: @total_performers
     }
   end
+
 end

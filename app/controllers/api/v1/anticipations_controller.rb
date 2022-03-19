@@ -34,8 +34,7 @@ class Api::V1::AnticipationsController < ApplicationController
     def suscribe 
         
         current_api_v1_user.follow @anticipation
-        @anticipation.create_activity :subscribe, owner: current_api_v1_user
-        AnticipationSubscriptionNotification.with(anticipation: @anticipation).deliver @anticipation.user
+        AnticipationSubscriptionJob.perform_later @anticipation.id, current_api_v1_user.id
         render json: {message: "Succesfully suscribed to this anticipation", total_suscribers: @anticipation.count_user_followers}, status: :ok
     end
 
