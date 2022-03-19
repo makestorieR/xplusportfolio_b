@@ -25,7 +25,9 @@ class Api::V1::SuggestionsController < ApplicationController
         suggestion.image_url = result["url"] if params[:image]
 
         if suggestion.save 
-            NewSuggestionNotification.with(suggestion: suggestion).deliver_later suggestion.project.user
+           
+
+            NewSuggestionJob.perform_later suggestion.id
             render json: suggestion, status: :created
         else
             render json: suggestion.errors.messages, status: :unprocessable_entity

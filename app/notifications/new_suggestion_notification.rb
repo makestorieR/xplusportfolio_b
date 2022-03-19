@@ -12,31 +12,25 @@ class NewSuggestionNotification < Noticed::Base
 
   # Add required params
   #
-   param :suggestion
+   param :suggestion, :action_owner
 
-   
-   def to_database 
-    {
-      message: @suggestion.title
-    }
-   end
 
   # Define helper methods to make rendering easier.
   #
-  def message
-    t(".message")
-  end
-
-  def custom_stream
-    "user_#{recipient.id}"
-  end
-
+ 
 
   def webpush_data 
-    @project = record[:params][:suggestion].project
+    @suggestion = record[:params][:suggestion]
+    @action_owner = record[:params][:action_owner]
+    @project = @suggestion.project
+
     {
       title: "New Project Suggestion!",
-      body: "Your #{@project.title} have a new suggestion"
+      body: "Your #{@project.title} have a new suggestion",
+      suggestion: @suggestion,
+      action_owner: @action_owner,
+      project: @project
     }
   end
+
 end

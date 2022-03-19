@@ -1,4 +1,5 @@
 class Suggestion < ApplicationRecord
+  include PublicActivity::Common
   # validate :ensure_suggestion_not_completed
   before_create :set_done
   belongs_to :user

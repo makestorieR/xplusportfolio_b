@@ -30,13 +30,6 @@ class Anticipation < ApplicationRecord
         
     end
 
-    def broadcast_anticipation 
-      
-      # @anticipation = self
-
-      #   AnticipationCableJob.perform_now(@anticipation.id)
-    end
-
     def search_data
       {
         
