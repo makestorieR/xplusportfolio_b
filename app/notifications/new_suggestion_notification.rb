@@ -12,7 +12,7 @@ class NewSuggestionNotification < Noticed::Base
 
   # Add required params
   #
-   param :suggestion, :action_owner
+   param :suggestion, :action_owner, :project
 
 
   # Define helper methods to make rendering easier.

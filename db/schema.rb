@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_17_001649) do
+ActiveRecord::Schema.define(version: 2022_03_20_215825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,14 @@ ActiveRecord::Schema.define(version: 2022_03_17_001649) do
     t.index ["anticipation_cover_id"], name: "index_anticipations_on_anticipation_cover_id"
     t.index ["slug"], name: "index_anticipations_on_slug", unique: true
     t.index ["user_id"], name: "index_anticipations_on_user_id"
+  end
+
+  create_table "background_cover_photos", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "img_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_background_cover_photos_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -227,6 +235,7 @@ ActiveRecord::Schema.define(version: 2022_03_17_001649) do
 
   add_foreign_key "anticipations", "anticipation_covers"
   add_foreign_key "anticipations", "users"
+  add_foreign_key "background_cover_photos", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "project_photos", "projects"
   add_foreign_key "projects", "anticipations"

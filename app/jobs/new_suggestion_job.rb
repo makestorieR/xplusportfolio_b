@@ -12,7 +12,7 @@ class NewSuggestionJob < ApplicationJob
     @suggestion.create_activity :create, owner: @user
     action_owner_info = {name: @user.name, image: @user.image}
 
-    NewSuggestionNotification.with(suggestion: @suggestion, action_owner: action_owner_info).deliver @suggestion.project.user
+    NewSuggestionNotification.with(suggestion: @suggestion, action_owner: action_owner_info, project: @suggestion.project).deliver @suggestion.project.user
 
   end
 end

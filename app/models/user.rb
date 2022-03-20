@@ -2,6 +2,8 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
+
+  after_commit :create_background_cover_photo
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   if Rails.env === 'production'
@@ -19,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :suggestions, dependent: :destroy
   has_many :webpush_subscriptions, class_name: "WebPushNotification", dependent: :destroy
+  has_one :background_cover_photo, dependent: :destroy
   acts_as_followable
   acts_as_follower
   acts_as_voter
@@ -30,6 +33,13 @@ class User < ActiveRecord::Base
       name: name,
       
     }
+  end
+
+
+  def create_background_cover_photo
+
+
+    BackgroundCoverPhoto.create user: self
   end
 
   

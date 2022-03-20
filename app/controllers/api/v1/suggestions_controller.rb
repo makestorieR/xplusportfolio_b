@@ -61,7 +61,7 @@ class Api::V1::SuggestionsController < ApplicationController
     end
 
     def find_suggestion
-        @suggestion = Suggestion.find_by_id(params[:id])
+        @suggestion = current_api_v1_user.suggestions.find_by_id(params[:id])
 
         unless @suggestion 
             render json: {messages: "Suggestion not found"}, status: :not_found

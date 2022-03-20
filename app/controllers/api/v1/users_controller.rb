@@ -15,8 +15,9 @@ class Api::V1::UsersController < ApplicationController
     def show 
         @total_project_votes = @user.projects.reduce(0) { |sum, project| sum + project.get_upvotes.size }
 
-        
+        total_anticipation_fulfilled = 0
 
+    
         render 'api/v1/users/show.json.jbuilder'
     end
 
@@ -31,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def anticipation_index 
-
+        
 
         if params[:page].present?  
               

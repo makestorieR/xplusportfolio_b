@@ -14,7 +14,6 @@ json.user do
     json.repu_coin @user.repu_coin
     json.about @user.about
     json.is_following current_api_v1_user.following?(@user) if current_api_v1_user.id != @user.id
-    json.fufilled_anticipation @fufilled_anticipation
     json.expired_anticipation @expired_anticipation
     json.image @user.image
     json.website_url @user.website_url 
@@ -24,6 +23,7 @@ json.user do
     json.total_followers @user.followers_by_type_count('User')
     json.total_followings @user.following_by_type_count('User')
     json.backcover_imgurl @user.backcover_imgurl
+
 
 
 

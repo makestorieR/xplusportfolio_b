@@ -5,7 +5,6 @@ class Anticipation < ApplicationRecord
   end
 
     before_create :set_slug
-    after_commit :broadcast_anticipation
     before_save :penilize_user
 
     belongs_to :user
