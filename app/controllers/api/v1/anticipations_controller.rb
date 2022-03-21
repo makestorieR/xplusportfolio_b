@@ -1,7 +1,7 @@
 class Api::V1::AnticipationsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe, :unsuscribe, :up, :down]
+    before_action :authenticate_api_v1_user!, only: [:create, :update, :show, :suscribe, :unsuscribe, :up, :down, :subscribers]
     before_action :find_user_anticipation, only: [:update, :show]
-    before_action :find_anticipation, only: [:suscribe, :unsuscribe, :up, :down]
+    before_action :find_anticipation, only: [:suscribe, :unsuscribe, :up, :down, :subscribers]
     before_action :check_subscription_status, only: [:suscribe]
     before_action :authenticate_suscriber, only: [:suscribe]
   
@@ -29,6 +29,15 @@ class Api::V1::AnticipationsController < ApplicationController
         else
             render json: @anticipation.errors.messages, status: :unprocessable_entity
         end
+    end
+
+
+    def subscribers 
+        @subscribers = @anticipation.followers_by_type("User")
+
+
+
+        render '/api/v1/anticipations/subscribers.json.jbuilder'
     end
 
     def suscribe 
@@ -75,6 +84,8 @@ class Api::V1::AnticipationsController < ApplicationController
     def find_anticipation 
         
         @anticipation = Anticipation.find_by_slug(params[:id])
+
+
 
         
         unless @anticipation 

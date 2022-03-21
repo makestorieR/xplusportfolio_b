@@ -14,9 +14,14 @@ RSpec.describe "Anticipations", type: :routing do
         expect(put '/api/v1/anticipations/todo-application').to route_to(controller: 'api/v1/anticipations', action: 'update', id: 'todo-application')  
     end
 
-     it "GET api/v1/anticipations/ routes to api/v1/anticipations#unfulfilled" do
-        expect(get '/api/v1/anticipations/todo-application').to route_to('api/v1/anticipations#unfulfilled')  
-    end
+    #  it "GET api/v1/anticipations/ routes to api/v1/anticipations#unfulfilled" do
+    #     expect(get '/api/v1/anticipations/todo-application').to route_to(controller: 'api/v1/anticipations', action: 'unfulfilled', id: 'todo-application')
+    # end
+
+
+
+
+
 
 
 
@@ -30,6 +35,10 @@ RSpec.describe "Anticipations", type: :routing do
 
     it "DELETE api/v1/anticipations/todo-application/suscribers routes to api/v1/anticipations#unsuscribe" do
         expect(delete '/api/v1/anticipations/todo-application/suscribers').to route_to(controller: 'api/v1/anticipations', action: 'unsuscribe', id: 'todo-application')  
+    end
+
+    it "GET api/v1/anticipations/todo-application/subscribers routes to api/v1/anticipations#subscribers" do
+        expect(get '/api/v1/anticipations/todo-application/subscribers').to route_to(controller: 'api/v1/anticipations', action: 'subscribers', id: 'todo-application')
     end
 
 

@@ -55,6 +55,9 @@ Rails.application.routes.draw do
       #routes for web_push_notifications
       post 'web_push_notifications', to: 'web_push_notifications#create'
 
+      #routes for updating user background_cover_photo
+      put 'background_cover_photos', to: 'background_cover_photos#update'
+
       #route to get unfulfilled_anticipations 
       get 'unfulfilled_anticipations', to: 'unfulfilled_anticipations#index'
       #users routes
@@ -91,6 +94,7 @@ Rails.application.routes.draw do
           delete 'likes', to: 'anticipations#down'
           post 'suscribers', to: 'anticipations#suscribe'
           delete 'suscribers', to: 'anticipations#unsuscribe'
+          get 'subscribers', to: 'anticipations#subscribers'
 
         end
 

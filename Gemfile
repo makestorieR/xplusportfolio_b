@@ -38,6 +38,8 @@ gem 'rack-cors'
 gem 'pagy', '~> 5.6' 
 gem 'searchkick', '~> 4.6', '>= 4.6.3'
 
+gem 'omniauth-github'
+
  
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

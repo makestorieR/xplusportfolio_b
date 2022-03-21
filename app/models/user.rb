@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   after_commit :create_background_cover_photo
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # :omniauthable
   if Rails.env === 'production'
     searchkick word_middle: [:name]
   end

@@ -41,6 +41,10 @@ module ApiDoc
           action 'Unsuscribe from anticipation'
         end
 
+        document :subscribers do
+          action 'Get all users that have subscribed to anticipation'
+        end
+
 
         document :likes do
           resource 'Likes' do

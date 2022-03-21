@@ -399,6 +399,83 @@ RSpec.describe "Api::V1::Anticipations", type: :request do
   end
 
 
+
+  describe "GET /subsribers" do
+    include ApiDoc::V1::Anticipations::Subscribers
+
+    before do 
+      a_cover = create :anticipation_cover
+      @searched_user = create :user, name: "paul obi"
+      @anticipation = create :anticipation, slug: 'working', body: "Working on a todo application", user: @searched_user, due_date: Date.today, anticipation_cover: a_cover
+      @anticipation_url = "/api/v1/anticipations/#{@anticipation.slug}/subscribers"
+
+      @searched_user.follow @anticipation
+      @user.follow @anticipation
+    end
+    
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get @anticipation_url
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated and " do
+
+      context "anticipation could not be found " do
+        it "returns http status :not_found" do
+          get '/api/v1/anticipations/sdfsrdeds/subscribers', headers: @headers
+          expect(response).to have_http_status(:not_found)
+          
+        end
+        
+      end
+
+      context "when anticipation could be found " do 
+
+        before do 
+
+          get @anticipation_url, headers: @headers, params: {id: 'working'}
+
+          
+          
+
+          @json_data = JSON.parse(response.body)
+        end
+
+        it "returns proper first subscriber json response " do 
+
+          expect(@json_data.first).to include({
+            'name' => 'paul obi'
+          })
+
+        end
+
+
+        it "returns proper last subscriber json response " do 
+
+          expect(@json_data.last).to include({
+            'name' => 'paul mike'
+          })
+
+        end
+      end
+      
+
+      
+
+     
+      
+
+      
+
+    end
+    
+  end
+
+
   describe "POST /up" do
     include ApiDoc::V1::Anticipations::Up
 
