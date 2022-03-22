@@ -34,9 +34,9 @@ Rails.application.configure do
   config.active_storage.service = :local
 
  # Mount Action Cable outside main process or domain.
-  config.action_cable.mount_path = nil
+  # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://xplusportfoliob.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = ['https://xplusportfoliob.herokuapp.com', 'https://xplusportfoliob.herokuapp.com', /http:\/\/xplusportfoliob.herokuapp.*/, /https:\/\/xplusportfoliob.herokuapp.*/ ]
+  config.action_cable.allowed_request_origins = ['https://xplusportfoliob.herokuapp.com/']
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true

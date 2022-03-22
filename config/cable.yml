@@ -14,8 +14,7 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV['REDIS_PROVIDER'] %>
+  url: <%= ENV['REDIS_URL'] %>
   channel_prefix: iamworkingon_b_production
-
 
 
