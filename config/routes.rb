@@ -52,6 +52,9 @@ Rails.application.routes.draw do
       #routes to technologies 
       get 'technologies', to: 'technologies#index'
 
+       #routes to top_projects 
+      get 'top_projects', to: 'top_projects#index'
+
       #routes for web_push_notifications
       post 'web_push_notifications', to: 'web_push_notifications#create'
 
