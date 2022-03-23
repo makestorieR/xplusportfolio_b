@@ -4,7 +4,7 @@
 :concurrency: 10
 :timeout: 8
 :pidfile: tmp/pids/sidekiq.pid
-:queues: 
+queues: 
   - default 
   - low
 
