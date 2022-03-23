@@ -41,11 +41,11 @@ json.array! @activities do |activity|
 
 			end
 
-	elsif activity.trackable_type === 'Suggestion'
+	elsif activity.trackable_type === 'Suggestion' || activity.trackable_type === 'Project' 
 
 		json.activity do 
 
-				project = activity.trackable.project
+				project = activity.trackable_type === 'Suggestion' ? activity.trackable.project : activity.trackable
 
 
 

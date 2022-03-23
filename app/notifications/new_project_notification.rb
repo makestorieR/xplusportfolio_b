@@ -8,15 +8,15 @@ class NewProjectNotification < Noticed::Base
   #
    
    deliver_by :database
-   deliver_by :email, mailer: "ProjectMailer"
-   deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
+   # deliver_by :email, mailer: "ProjectMailer"
+   # deliver_by :action_cable, channel: WallChannel, format: :action_cable_data
    deliver_by :custom, class: "DeliveryMethods::Webpush", format: :web_push_data, delay: 5.minutes, unless: :read? 
   # deliver_by :slack
   # deliver_by :custom, class: "MyDeliveryMethod"
 
   # Add required params
   #
-   param :project
+   param :project, :action_owner
 
    def to_database 
     {
@@ -26,14 +26,7 @@ class NewProjectNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
-  def message
-    t(".message")
-  end
-
-  def custom_stream
-    "user_#{recipient.id}"
-  end
-
+ 
   def action_cable_data
     { project: record[:params][:project] }
   end
@@ -41,9 +34,12 @@ class NewProjectNotification < Noticed::Base
 
   def webpush_data 
     @project = record[:params][:project]
+    @action_owner = record[:params][:action_owner]
     {
-      title: "New Project Alert!",
-      body: "#{@project.user.name} launched a new project #{@project.title}"
+      title: "New Project Added",
+      body: "#{@project.user.name} added a new project #{@project.title}",
+      project: @project,
+      action_owner: @action_owner
     }
   end
 
