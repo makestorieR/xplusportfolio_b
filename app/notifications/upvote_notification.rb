@@ -2,6 +2,7 @@
 class UpvoteNotification < Noticed::Base
   # Add your delivery methods
   #
+  include BroadcastToUsersHelper
   deliver_by :database
    # deliver_by :email, mailer: "ProjectMailer", delay: 1.hours, unless: :read?
   deliver_by :custom, class: "DeliveryMethods::Webpush", format: :web_push_data, delay: 5.minutes, unless: :read? 
@@ -15,6 +16,8 @@ class UpvoteNotification < Noticed::Base
   # def message
   #   t(".message")
   # end
+
+  after_database :broadcast_upvote
 
 
 
@@ -30,6 +33,30 @@ class UpvoteNotification < Noticed::Base
       action_owner: @action_owner,
       total_performers: @total_performers
     }
+  end
+
+
+  def action_cable_data
+    { project: record[:params][:project] }
+  end
+
+
+  private 
+
+  def broadcast_upvote 
+
+    project = params[:project]
+    
+
+    user = project.user
+
+    users = []
+    users.push(user)
+
+    relay_message_from(@recipient, 'project_channel', users, false)
+
+
+
   end
   
 end
