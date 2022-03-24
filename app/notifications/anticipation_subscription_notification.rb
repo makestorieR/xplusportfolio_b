@@ -4,6 +4,7 @@
 # AnticipationSubscriptionNotification.with(post: @post).deliver(current_user)
 
 class AnticipationSubscriptionNotification < Noticed::Base
+   include BroadcastToUsersHelper
   # Add your delivery methods
   #
   deliver_by :database
@@ -21,6 +22,8 @@ class AnticipationSubscriptionNotification < Noticed::Base
   #   t(".message")
   # end
 
+  after_database :broadcast_anticipation_subscription
+
 
   def webpush_data 
     @anticipation = record[:params][:anticipation]
@@ -36,4 +39,27 @@ class AnticipationSubscriptionNotification < Noticed::Base
     }
   end
 
+  def action_cable_data
+    { anticipation: record[:params][:anticipation] }
+  end
+
+
+  private 
+
+   def broadcast_anticipation_subscription
+    # Logic for sending the notification
+
+    anticipation = params[:anticipation]
+    
+
+    user = anticipation.user
+
+    users = []
+    users.push(user)
+
+    relay_message_from(@recipient, 'anticipation_subscription_channel', users, false)
+
+  end
+
+  
 end
