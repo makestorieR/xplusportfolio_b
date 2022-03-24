@@ -6,6 +6,8 @@
 class NewProjectNotification < Noticed::Base
   # Add your delivery methods
   #
+    include BroadcastToUsersHelper
+
    
    deliver_by :database
    # deliver_by :email, mailer: "ProjectMailer"
@@ -15,6 +17,8 @@ class NewProjectNotification < Noticed::Base
   # deliver_by :custom, class: "MyDeliveryMethod"
 
   # Add required params
+
+  after_database :broadcast_new_project
   #
    param :project, :action_owner
 
@@ -41,6 +45,22 @@ class NewProjectNotification < Noticed::Base
       project: @project,
       action_owner: @action_owner
     }
+  end
+
+  private 
+
+  def broadcast_new_project 
+
+
+
+    project = params[:project]
+    
+
+    user = project.user
+
+
+    relay_message_from(user, 'project_channel', (user.followers_by_type('User') + user.following_by_type('User')), true)
+
   end
 
   #

@@ -22,11 +22,7 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def project_index 
-        if params[:page].present?    
-            @pagy, @projects = pagy(@user.projects, page: params[:page])
-        else
-            @pagy, @projects = pagy(@user.projects, page: 1)
-        end
+       @projects = @user.projects.includes(:user, :project_photos, :tools).order(created_at: 'desc') 
 
         render 'api/v1/projects/index.json.jbuilder'
     end
@@ -34,43 +30,27 @@ class Api::V1::UsersController < ApplicationController
     def anticipation_index 
         
 
-        if params[:page].present?  
-              
-            @pagy, @anticipations = pagy(@user.anticipations.includes(:anticipation_cover, :anticipation_cover, :user, :project), page: params[:page])
-        else
-            @pagy, @anticipations = pagy(@user.anticipations.includes(:anticipation_cover, :anticipation_cover, :user, :project), page: 1)
-        end
-
+        @anticipations = @user.anticipations.includes(:anticipation_cover, :anticipation_cover, :user, :project).order(created_at: 'desc') 
         
         render 'api/v1/users/anticipation_index.json.jbuilder'
     end
 
 
     def suggestion_index
-        if params[:page].present?    
-            @pagy, @suggestions = pagy(@user.suggestions.includes(:user), page: params[:page])
-        else
-            @pagy, @suggestions = pagy(@user.suggestions.includes(:user), page: 1)
-        end
+
+        @suggestions = @user.suggestions.includes(:user).order(created_at: 'desc') 
         render 'api/v1/users/suggestion_index.json.jbuilder'
     end
 
     def follower_index 
-        
-        if params[:page].present?    
-            @pagy, @followers = pagy(followers, page: params[:page])
-        else
-            @pagy, @followers = pagy(followers, page: 1)
-        end
+   
+        @followers = followers.order(created_at: 'desc') 
         render 'api/v1/users/follower_index.json.jbuilder'
     end
 
     def following_index 
-        if params[:page].present?    
-            @pagy, @follows = pagy(following, page: params[:page])
-        else
-            @pagy, @follows = pagy(following, page: 1)
-        end
+        
+        @follows = following.order(created_at: 'desc') 
         render 'api/v1/users/following_index.json.jbuilder'
     end
 

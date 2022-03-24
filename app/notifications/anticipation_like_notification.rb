@@ -53,7 +53,7 @@ class AnticipationLikeNotification < Noticed::Base
     users = []
     users.push(user)
 
-    relay_message_from(@recipient, 'anticipation_like_channel', users, false)
+    relay_message_from(@recipient, 'anticipation_channel', users, false)
 
     
 

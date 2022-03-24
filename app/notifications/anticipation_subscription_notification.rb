@@ -5,6 +5,7 @@
 
 class AnticipationSubscriptionNotification < Noticed::Base
   # Add your delivery methods
+   include BroadcastToUsersHelper
   #
   deliver_by :database
    # deliver_by :email, mailer: "AnticipationMailer", delay: 1.hour, unless: :read?
@@ -34,6 +35,33 @@ class AnticipationSubscriptionNotification < Noticed::Base
       action_owner: @action_owner,
       total_performers: @total_performers
     }
+  end
+
+
+  after_database :broadcast_anticipation_subscription
+
+ 
+  def action_cable_data
+    { anticipation: record[:params][:anticipation] }
+  end
+
+
+  private 
+
+
+  def broadcast_anticipation_subscription
+
+    # Logic for sending the notification
+
+    anticipation = params[:anticipation]
+    
+    user = anticipation.user
+
+    users = []
+    users.push(user)
+
+    relay_message_from(@recipient, 'anticipation_channel', users, false)
+
   end
 
 end
