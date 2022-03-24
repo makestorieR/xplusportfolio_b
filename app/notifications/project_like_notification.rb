@@ -4,6 +4,8 @@ class ProjectLikeNotification < Noticed::Base
   # Add your delivery methods
   #
    include BroadcastToUsersHelper
+   include WebpushHelper
+
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
@@ -32,7 +34,7 @@ class ProjectLikeNotification < Noticed::Base
 
     {
       title: "Project Like",
-      body: "#{@project.title}",
+      body: custom_body(@action_owner, @total_performers, "likes your project, #{project.title}"),
       action_owner: @action_owner,
       total_performers: @total_performers
     }

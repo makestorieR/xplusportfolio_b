@@ -18,6 +18,18 @@ module WebpushHelper
   
     end
 
+
+    def custom_body(action_owner, total_performers, message) 
+
+      others = total_performers >= 1 ? "and #{total_performers} others " : "" 
+
+
+      custom_body = "#{action_owner} #{others} #{message}"
+
+      custom_body
+
+    end
+
 end
 
 

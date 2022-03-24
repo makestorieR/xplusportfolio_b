@@ -6,6 +6,7 @@
 class AnticipationSubscriptionNotification < Noticed::Base
   # Add your delivery methods
    include BroadcastToUsersHelper
+   include WebpushHelper
   #
   deliver_by :database
    # deliver_by :email, mailer: "AnticipationMailer", delay: 1.hour, unless: :read?
@@ -31,7 +32,7 @@ class AnticipationSubscriptionNotification < Noticed::Base
 
     {
       title: "New Anticipation Subscriber",
-      body: "Your anticipation, #{@anticipation.body} has a new subscriber",
+      body: custom_body(@action_owner, @total_performers, "subscribed to your anticipation, #{anticipation.body}"),
       action_owner: @action_owner,
       total_performers: @total_performers
     }

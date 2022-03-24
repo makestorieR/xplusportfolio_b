@@ -5,6 +5,7 @@
 
 class AnticipationLikeNotification < Noticed::Base
     include BroadcastToUsersHelper
+    include WebpushHelper
   # Add your delivery methods
 
   
@@ -29,10 +30,10 @@ class AnticipationLikeNotification < Noticed::Base
     @action_owner = record[:params][:action_owner]
     @total_performers = record[:params][:total_performers]
 
-
+  
     {
       title: "Anticipation Like",
-      body: "#{@anticipation.body}",
+      body: custom_body(@action_owner, @total_performers, "likes your anticipation, #{anticipation.body}"),
       action_owner: @action_owner,
       total_performers: @total_performers
     }
