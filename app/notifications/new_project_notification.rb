@@ -59,7 +59,7 @@ class NewProjectNotification < Noticed::Base
     user = project.user
 
 
-    relay_message_from(user, 'project_channel', (user.followers_by_type('User') + user.following_by_type('User')), true)
+    relay_message_from(user, 'new_project_channel', (user.followers_by_type('User') + user.following_by_type('User')), true)
 
   end
 

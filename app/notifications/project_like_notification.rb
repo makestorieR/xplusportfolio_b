@@ -3,6 +3,7 @@
 class ProjectLikeNotification < Noticed::Base
   # Add your delivery methods
   #
+   include BroadcastToUsersHelper
   deliver_by :database
   # deliver_by :email, mailer: "UserMailer"
   # deliver_by :slack
@@ -19,6 +20,8 @@ class ProjectLikeNotification < Noticed::Base
   #   t(".message")
   # end
 
+  after_database :broadcast_project_like
+
 
 
   def webpush_data 
@@ -34,6 +37,33 @@ class ProjectLikeNotification < Noticed::Base
       total_performers: @total_performers
     }
   end
+
+
+  def action_cable_data
+    { project: record[:params][:project] }
+  end
+
+
+ private 
+
+
+ def broadcast_project_like 
+
+    project = params[:project]
+    
+
+    user = project.user
+
+    users = []
+    users.push(user)
+
+    relay_message_from(@recipient, 'project_channel', users, false)
+
+
+
+ end
+
+
 
 
   

@@ -38,16 +38,12 @@ class AnticipationLikeNotification < Noticed::Base
     }
   end
 
- 
-  def action_cable_data
-    { anticipation: record[:params][:anticipation] }
-  end
-
-
-  private 
 
   def broadcast_anticipation_like
     # Logic for sending the notification
+
+
+    
 
     anticipation = params[:anticipation]
     
@@ -61,5 +57,10 @@ class AnticipationLikeNotification < Noticed::Base
 
     
 
+  end
+
+ 
+  def action_cable_data
+    { anticipation: record[:params][:anticipation] }
   end
 end
