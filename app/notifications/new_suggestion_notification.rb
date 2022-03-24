@@ -4,6 +4,8 @@
 # NewSuggestionNotification.with(post: @post).deliver(current_user)
 
 class NewSuggestionNotification < Noticed::Base
+     include BroadcastToUsersHelper
+
    deliver_by :database
    # deliver_by :email, mailer: "ProjectMailer", delay: 1.hours, unless: :read?
    deliver_by :custom, class: "DeliveryMethods::Webpush", format: :web_push_data, delay: 5.minutes, unless: :read? 
@@ -17,6 +19,12 @@ class NewSuggestionNotification < Noticed::Base
 
   # Define helper methods to make rendering easier.
   #
+
+  after_database :broadcast_suggestion
+
+    def action_cable_data
+    { project: record[:params][:project] }
+  end
  
 
   def webpush_data 
@@ -31,6 +39,26 @@ class NewSuggestionNotification < Noticed::Base
       action_owner: @action_owner,
       project: @project
     }
+  end
+
+
+  private 
+
+
+  def broadcast_suggestion
+
+    project = params[:project]
+    
+
+    user = project.user
+
+    users = []
+    users.push(user)
+
+    relay_message_from(@recipient, 'project_channel', users, false)
+
+
+
   end
 
 end
