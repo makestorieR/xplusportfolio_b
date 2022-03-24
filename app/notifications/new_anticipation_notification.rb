@@ -15,7 +15,7 @@ class NewAnticipationNotification < Noticed::Base
 
   # Add required params
   #
-   param :anticipation, :action_owner
+   param :anticipation, :action_owner, :activity
 
   # Define helper methods to make rendering easier.
   #
@@ -41,7 +41,23 @@ class NewAnticipationNotification < Noticed::Base
 
 
   def action_cable_data
-    { anticipation: record[:params][:anticipation] }
+    { anticipation: record[:params][:anticipation], activity: record[:params][:activity] }
+  end
+
+  private 
+
+  def broadcast_new_anticipation
+    # Logic for sending the notification
+
+    anticipation = params[:anticipation]
+    activity = params[:activity]
+    
+
+    user = anticipation.user
+
+
+    relay_message_from(user, 'new_anticipation_channel', (user.followers_by_type('User') + user.following_by_type('User')), true, activity)
+
   end
 
   private 
