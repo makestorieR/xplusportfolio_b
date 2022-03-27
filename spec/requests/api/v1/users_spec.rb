@@ -114,13 +114,6 @@ RSpec.describe "Api::V1::Users", type: :request do
         end
       end
 
-     context "when user could not be found " do
-        it "returns http status :not_found" do
-          put '/api/v1/users/peter-packer', headers: @headers, params: {name: "john paul", github_url: 'github_url', avatar_url: 'avatar_url'} 
-          expect(response).to have_http_status(:not_found)
-          
-        end
-     end
     
                                  
     end

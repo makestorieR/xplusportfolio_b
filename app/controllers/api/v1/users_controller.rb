@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
     before_action :authenticate_api_v1_user!, only: [:index, :show, :update, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] 
-    before_action :find_user, only: [:show, :update, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
+    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
     before_action :check_follow_status, only: :up
     def index 
         if params[:page].present?
@@ -13,6 +13,9 @@ class Api::V1::UsersController < ApplicationController
 
     def update 
 
+        @user = current_api_v1_user
+
+        
 
         result = Cloudinary::Uploader.upload(params[:backcover_imgurl], height: 150, :folder => "#{current_api_v1_user.name}/background_cover_photos/") if params[:backcover_imgurl] 
         
@@ -107,6 +110,8 @@ class Api::V1::UsersController < ApplicationController
             render json: {message: "User Already Been Followed"}, status: :unprocessable_entity
         end
     end
+
+
 
     def followers 
         @user.followers_by_type("User")
