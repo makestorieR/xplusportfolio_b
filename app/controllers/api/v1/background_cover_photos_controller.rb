@@ -1,26 +1,3 @@
-# class Api::V1::BackgroundCoverPhotosController < ApplicationController
-# 	before_action :authenticate_api_v1_user!, only: :update
-# 	def update 
-
-# 		result = Cloudinary::Uploader.upload(params[:image], :folder => "resources/agencies")
-
-		
-# 		resource = Resource.create title: 'Andela', link: 'https://andela.com/', img_url: result['url'], resource_type: 'agencies', video_url: 'https://youtu.be/e3mmQCCPAJY?t=52'
-
-
-# 		if resource.save!
-
-
-# 			render json: "", status: :ok
-
-# 		else
-# 			render json: "Failed to update the background photo", status: :unprocessable_entity
-# 		end
-
-
-# 	end
-# end
-
 
 
 class Api::V1::BackgroundCoverPhotosController < ApplicationController

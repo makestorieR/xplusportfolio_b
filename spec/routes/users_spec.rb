@@ -34,6 +34,10 @@ RSpec.describe "Users", type: :routing do
         expect(post '/api/v1/users/john-doe/followings').to route_to(controller: 'api/v1/users', action: 'up', id: 'john-doe')  
     end
 
+     it "PUT api/v1/users/john-doe routes to api/v1/users#update" do
+        expect(put '/api/v1/users/john-doe').to route_to(controller: 'api/v1/users', action: 'update', id: 'john-doe')  
+    end
+
     it "DELETE api/v1/users/john-doe/followings routes to api/v1/users#down" do
         expect(delete '/api/v1/users/john-doe/followings').to route_to(controller: 'api/v1/users', action: 'down', id: 'john-doe')  
     end

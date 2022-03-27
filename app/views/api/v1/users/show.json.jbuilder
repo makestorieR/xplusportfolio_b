@@ -23,6 +23,7 @@ json.user do
     json.total_followers @user.followers_by_type_count('User')
     json.total_followings @user.following_by_type_count('User')
     json.backcover_imgurl @user.backcover_imgurl
+    json.avatar_url @user.avatar_url
 
 
 

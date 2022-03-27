@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] 
-    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
+    before_action :authenticate_api_v1_user!, only: [:index, :show, :update, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] 
+    before_action :find_user, only: [:show, :update, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
     before_action :check_follow_status, only: :up
     def index 
         if params[:page].present?
@@ -9,6 +9,31 @@ class Api::V1::UsersController < ApplicationController
             @pagy, @users = pagy(User.all, page: 1)
         end
         render 'api/v1/users/index.json.jbuilder'
+    end
+
+    def update 
+
+
+        result = Cloudinary::Uploader.upload(params[:backcover_imgurl], height: 150, :folder => "#{current_api_v1_user.name}/background_cover_photos/") if params[:backcover_imgurl] 
+        
+
+
+        @user.backcover_imgurl = result['url'] if params[:backcover_imgurl]
+
+        @user.github_url = params[:github_url]
+        @user.avatar_url = params[:avatar_url]
+        @user.name = params[:name]
+
+
+        if @user.save
+            render json: @user, status: :ok
+        else
+
+            render json: @user.errors.messages, status: :unprocessable_entity
+        end
+            
+
+
     end
 
 
@@ -69,7 +94,9 @@ class Api::V1::UsersController < ApplicationController
  
     private 
     def find_user 
-        @user = User.all.friendly.find(params[:id]) 
+
+        
+        @user = User.all.find_by_slug(params[:id])
         unless @user 
             render json: 'Not Found', message: "User does not exist", status: :not_found
         end

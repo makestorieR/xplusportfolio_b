@@ -19,6 +19,10 @@ module ApiDoc
         action 'Get a user'
       end
 
+      document :update do 
+        action 'Update a user'
+      end
+
       document :projects do
         resource 'Projects' do
           endpoint '/projects'

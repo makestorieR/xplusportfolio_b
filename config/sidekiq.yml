@@ -9,7 +9,7 @@ queues:
   - low
 
 production:
-  :concurrency: 19
+  :concurrency: 25
 
 staging:
   :concurrency: 15

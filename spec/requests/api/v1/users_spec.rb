@@ -80,6 +80,59 @@ RSpec.describe "Api::V1::Users", type: :request do
     
   end
 
+
+
+  describe "GET /update" do
+    include ApiDoc::V1::Users::Update
+
+    subject { put '/api/v1/users/paul-mike', headers: @headers,  params: {name: "john paul", github_url: 'github_url', avatar_url: 'avatar_url'} } 
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        put '/api/v1/users/paul-mike'
+        
+        expect(response).to have_http_status(:unauthorized) 
+      end
+      
+    end
+
+    context "when user is authenticated " do
+
+      context "and user successfully updated their data" do
+        it "returns http status :ok" do
+          subject
+          expect(response).to have_http_status(:ok)
+          
+        end
+      end
+
+      context "and user failed to updated their data" do
+        it "returns http status :ok" do
+          put '/api/v1/users/paul-mike', headers: @headers,  params: {name: "", github_url: 'github_url', avatar_url: 'avatar_url'}
+          expect(response).to have_http_status(:unprocessable_entity)
+          
+        end
+      end
+
+     context "when user could not be found " do
+        it "returns http status :not_found" do
+          put '/api/v1/users/peter-packer', headers: @headers, params: {name: "john paul", github_url: 'github_url', avatar_url: 'avatar_url'} 
+          expect(response).to have_http_status(:not_found)
+          
+        end
+     end
+    
+                                 
+    end
+
+
+   
+    
+
+  end
+
+
+
   describe "GET /show" do
     include ApiDoc::V1::Users::Show
 
@@ -581,6 +634,7 @@ RSpec.describe "Api::V1::Users", type: :request do
 
       context "when user could not be found " do
         it "returns http status :not_found" do
+
           delete '/api/v1/users/peter-packer/followings', headers: @headers
           expect(response).to have_http_status(:not_found)
           

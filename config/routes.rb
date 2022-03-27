@@ -7,14 +7,13 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
 
-  # if Rails.env.production? 
-  #   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
-  #     ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_USERNAME"])) &
-  #       ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"]))
-  #   end
+  if Rails.env.production? 
+    Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+      ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_USERNAME"])) &
+        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV["SIDEKIQ_PASSWORD"]))
+    end
 
-
-  # end
+  end
 
   
   namespace :api do 
@@ -64,7 +63,7 @@ Rails.application.routes.draw do
       #route to get unfulfilled_anticipations 
       get 'unfulfilled_anticipations', to: 'unfulfilled_anticipations#index'
       #users routes
-      resources :users, only: [:index, :show] do 
+      resources :users, only: [:index, :show, :update] do 
         member do 
           get 'projects', to: 'users#project_index'
           get 'suggestions', to: 'users#suggestion_index'
