@@ -2,6 +2,7 @@
 
 class User < ActiveRecord::Base
   extend FriendlyId
+  include DeviseTokenAuth::Concerns::User
 
   after_commit :create_background_cover_photo
   # Include default devise modules. Others available are:
@@ -12,7 +13,7 @@ class User < ActiveRecord::Base
   end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  include DeviseTokenAuth::Concerns::User
+  
   friendly_id :name, use: :slugged
 
   validates :name, presence: true
