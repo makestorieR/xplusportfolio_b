@@ -71,7 +71,7 @@ Rails.application.configure do
    tls: true
 }
 
-config.action_mailer.default_url_options = { :host => 'https://xplusportfolio.herokuapp.com' }
+config.action_mailer.default_url_options = { :host => 'https://xplusportfoliob.herokuapp.com' }
 config.action_mailer.default_options = { from: 'noreply@mycustomdomain.com' }
 
 
