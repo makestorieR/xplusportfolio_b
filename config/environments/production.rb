@@ -62,14 +62,24 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
    address:              'smtp.gmail.com',
-   port:                 '465',
+   port:                 587,
    domain:               'gmail.com',
    user_name:            ENV['GMAIL_USERNAME'],
    password:             ENV['GMAIL_PASSWORD'],
-   authentication:       :plain,
+   authentication:       :login,
    enable_starttls_auto: true,
    tls: true
 }
+
+# config.action_mailer.smtp_settings = {
+#     :enable_starttls_auto => true,
+#     :address => "smtp.gmail.com",
+#     :port => 587,
+#     :domain => "gmail.com",
+#     :authentication => :login,
+#     :user_name => "user@myapp.com",
+#     :password => "mypassword"
+# }
 
 config.action_mailer.default_url_options = { :host => 'https://xplusportfoliob.herokuapp.com' }
 config.action_mailer.default_options = { from: 'noreply@mycustomdomain.com' }
