@@ -7,7 +7,7 @@ class Api::V1::SearchController < ApplicationController
 		@results = []
 
 		if params[:query] 
-			@results = Searchkick.search params[:query] , { fields: ["title", "body", "name", "description"], misspellings: false,  models: [Project, Anticipation, User]}
+			@results = Searchkick.search params[:query] , { fields: ["title", "body", "name", "description"], misspellings: true,  models: [Project, Anticipation, User]}
 
 		end
 
