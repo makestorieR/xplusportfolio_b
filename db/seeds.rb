@@ -34,7 +34,29 @@
 # AnticipationCover.create name: "Astronomy", image: "https://images.unsplash.com/photo-1566198602184-30a482db864a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDJ8fHRleHR1cmUlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60", text_color: "white
 
 
-User.all.each do |user|
+# User.all.each do |user|
 
-	BackgroundCoverPhoto.create user: user
-end
+# 	BackgroundCoverPhoto.create user: user
+# end
+
+# json.(resource, :id, :img_url, :title, :desc, :link, :color, :video_url)
+
+
+# [
+# 	{
+# 		img_url: "http://res.cloudinary.com/dn6vnxbnm/image/upload/v1647904055/resources/agencies/lktxyiwlfdue4et0vjtg.png" ,
+# 		title: "Andela",
+# 		desc: ,
+# 		link: ,
+# 		video_url: ,
+
+# 	}
+# ]
+
+Resource.create (
+	img_url: 'http://res.cloudinary.com/dn6vnxbnm/image/upload/v1647904055/resources/agencies/lktxyiwlfdue4et0vjtg.png',
+	title: "Andela",
+	desc: "Andela is the worlds first long-term talent network that connects companies with vetted remote engineers in emerging markets. Hundreds of leading companies like InVision, Cloudflare, and ViacomCBS leverage Andela to scale their engineering teams quickly cost-effectively, and globally.",
+	link: 'https://andela.com',
+	video_url: 'https://youtube/e3mmQCCPAJY?t=52'
+	 )
