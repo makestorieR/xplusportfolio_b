@@ -24,7 +24,7 @@ class Api::V1::UsersController < ApplicationController
         @user.backcover_imgurl = result['url'] if params[:backcover_imgurl]
 
         @user.github_url = params[:github_url]
-        @user.avatar_url = params[:avatar_url]
+        @user.image = params[:avatar_url]
         @user.name = params[:name]
 
 
