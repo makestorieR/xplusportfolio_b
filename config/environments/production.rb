@@ -81,7 +81,7 @@ Rails.application.configure do
 #     :password => "mypassword"
 # }
 
-config.action_mailer.default_url_options = { :host => 'xplusportfoliob.herokuapp.com' }
+config.action_mailer.default_url_options = { :host => 'https://xplusportfolio.herokuapp.com' }
 config.action_mailer.default_options = { from: 'noreply@mycustomdomain.com' }
 
 
