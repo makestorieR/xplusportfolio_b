@@ -99,7 +99,7 @@ Rails.application.configure do
     config.action_mailer.raise_delivery_errors = true
 
 
-config.action_mailer.default_url_options = {host: "xplusportfoliob.herokuapp.com", protocol: "https"}
+config.action_mailer.default_url_options = {host: "xplusportfolio.herokuapp.com", protocol: "https"}
 
 config.action_mailer.default_options = { from: 'noreply@mycustomdomain.com' }
 
