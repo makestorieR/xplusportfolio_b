@@ -53,10 +53,22 @@
 # 	}
 # ]
 
-Resource.create (
-	img_url: 'http://res.cloudinary.com/dn6vnxbnm/image/upload/v1647904055/resources/agencies/lktxyiwlfdue4et0vjtg.png',
-	title: "Andela",
-	desc: "Andela is the worlds first long-term talent network that connects companies with vetted remote engineers in emerging markets. Hundreds of leading companies like InVision, Cloudflare, and ViacomCBS leverage Andela to scale their engineering teams quickly cost-effectively, and globally.",
-	link: 'https://andela.com',
-	video_url: 'https://youtube/e3mmQCCPAJY?t=52'
-	 )
+[
+	'ActiveRecord', 'Adobe XD', 'AngularJS', 'Apollo', 
+	'Arduino', 'Asp.net', 'AWS', 'AWS S3/Lambda', 'Blazor', 
+	'Bootstrap', 'C', 'C#', 'C++', 'C#/ASP .NET Core', 'C/C++', 
+	'Clojure', 'Confluence', 'CSS3(SASS)', 'CSS', 'Dart', 'Datomic', 
+	'Django', 'Docker', 'Elixir', 'Ember.js', 'Entity', 'ES6', 'Express.js', 
+	'Firebase', 'Flask', 'Foxpro', 'Gatsby', 'Git', 'Github', 'Go', 'GraphQL', 
+	'GSAP', 'Handlebars', 'Heroku', 'HTML', 'HTML5', 'Java', 'Javascript', 
+	'Jest', 'Jira', 'JQuery', 'JSS', 'JWT', 'Kotlin', 'Kubernetes', 'LINQ', 
+	'Lua', 'Material-UI', 'MATLAB', 'MongoDB', 'MYSQL', 'NestJS', '.NET', 'Next.js', 
+	'Node.js', 'NoSQL', 'openFrameworks', 'P5', 'Phoenix', 'PHP', 'PostgreSQL', 'Postman', 
+	'Python', 'Razor', 'React', 'Redis', 'Redux', 'REST APIs', 'Ruby', 'Ruby on Rails', 'Sass', 'Tailwind UI'
+	'SCSS', 'Selenium', 'Sinatra', 'Socket.io', 'SQL', 
+	'SQLite', 'Three.js', 'TypeScript','Vue.js' 
+].each do |record| 
+
+	Technology.create name: record
+
+end
