@@ -13,7 +13,7 @@ class AnticipationLikeNotification < Noticed::Base
   deliver_by :database
   deliver_by :custom, class: "DeliveryMethods::Webpush", delay: 5.minutes, unless: :read?
 
-  # Add required params
+  # Add required param
   #
   param :anticipation, :action_owner, :total_performers
 
@@ -26,9 +26,9 @@ class AnticipationLikeNotification < Noticed::Base
   after_database :broadcast_anticipation_like
 
   def webpush_data 
-    @anticipation = record[:params][:anticipation]
-    @action_owner = record[:params][:action_owner]
-    @total_performers = record[:params][:total_performers]
+    @anticipation = record[:param][:anticipation]
+    @action_owner = record[:param][:action_owner]
+    @total_performers = record[:param][:total_performers]
 
   
     {
@@ -46,7 +46,7 @@ class AnticipationLikeNotification < Noticed::Base
 
     
 
-    anticipation = params[:anticipation]
+    anticipation = param[:anticipation]
     
 
     user = anticipation.user
@@ -62,6 +62,6 @@ class AnticipationLikeNotification < Noticed::Base
 
  
   def action_cable_data
-    { anticipation: record[:params][:anticipation] }
+    { anticipation: record[:param][:anticipation] }
   end
 end
