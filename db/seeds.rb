@@ -72,3 +72,4 @@
 	Technology.create name: record
 
 end
+

@@ -55,10 +55,6 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "iamworkingon_b_production"
 
-  config.action_mailer.perform_caching = true
-
-
-  config.action_mailer.delivery_method = :smtp
 
 #   config.action_mailer.smtp_settings = {
 #    address:              'smtp.gmail.com',
@@ -71,16 +67,19 @@ Rails.application.configure do
 #    tls: true
 # }
 
- config.action_mailer.smtp_settings = {
-   address:              'smtp.gmail.com',
-   port:                 '465',
-   domain:               'gmail.com',
-   user_name:            ENV['GMAIL_USERNAME'],
-   password:             ENV['GMAIL_PASSWORD'],
-   authentication:       :plain,
-   enable_starttls_auto: true,
-   tls: true
-  }
+ # config.action_mailer.smtp_settings = {
+ #   address:              'smtp.gmail.com',
+ #   port:                 '465',
+ #   domain:               'gmail.com',
+ #   user_name:            ENV['GMAIL_USERNAME'],
+ #   password:             ENV['GMAIL_PASSWORD'],
+ #   authentication:       :plain,
+ #   enable_starttls_auto: true,
+ #   tls: true
+ #  }
+
+
+
 # config.action_mailer.smtp_settings = {
 #     :enable_starttls_auto => true,
 #     :address => "smtp.gmail.com",
@@ -91,13 +90,34 @@ Rails.application.configure do
 #     :password => "mypassword"
 # }
 
-config.action_mailer.default_url_options = { :host => 'https://xplusportfolio.herokuapp.com' }
+  config.action_mailer.perform_caching = true
+
+
+  config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.raise_delivery_errors = true
+
+
+config.action_mailer.default_url_options = {host: "xplusportfoliob.herokuapp.com", protocol: "https"}
+
 config.action_mailer.default_options = { from: 'noreply@mycustomdomain.com' }
+
+
+  # GMAIL
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               '4709a2f39b264a28ac87e8cc7246bcda.vfs.cloud9.eu-central-1.amazonaws.com',
+    user_name:            ENV['GMAIL_USERNAME'],
+    password:             ENV['GMAIL_PASSWORD'],
+    authentication:       :plain,
+    enable_starttls_auto: true 
+  }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = false
+
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
