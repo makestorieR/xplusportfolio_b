@@ -32,7 +32,7 @@ class AnticipationSubscriptionNotification < Noticed::Base
 
     {
       title: "New Anticipation Subscriber",
-      body: custom_body(@action_owner, @total_performers, "subscribed to your anticipation, #{anticipation.body}"),
+      body: custom_body(@action_owner[:name], @total_performers, "subscribed to your anticipation, #{anticipation.body}"),
       action_owner: @action_owner,
       total_performers: @total_performers
     }

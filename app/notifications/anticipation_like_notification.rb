@@ -33,7 +33,7 @@ class AnticipationLikeNotification < Noticed::Base
   
     {
       title: "Anticipation Like",
-      body: custom_body(@action_owner, @total_performers, "likes your anticipation, #{anticipation.body}"),
+      body: custom_body(@action_owner[:name], @total_performers, "likes your anticipation, #{anticipation.body}"),
       action_owner: @action_owner,
       total_performers: @total_performers
     }

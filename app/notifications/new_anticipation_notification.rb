@@ -33,7 +33,7 @@ class NewAnticipationNotification < Noticed::Base
 
     {
       title: "New Anticipation",
-      body: "#{@action_owner} anticipate #{@anticipation.body}",
+      body: "#{@action_owner[:name]} anticipate #{@anticipation.body}",
       action_owner: @action_owner
     }
   end

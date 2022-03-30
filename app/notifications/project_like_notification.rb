@@ -34,7 +34,7 @@ class ProjectLikeNotification < Noticed::Base
 
     {
       title: "Project Like",
-      body: custom_body(@action_owner, @total_performers, "likes your project, #{project.title}"),
+      body: custom_body(@action_owner[:name], @total_performers, "likes your project, #{project.title}"),
       action_owner: @action_owner,
       total_performers: @total_performers
     }
