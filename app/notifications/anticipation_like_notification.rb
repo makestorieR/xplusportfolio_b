@@ -26,9 +26,9 @@ class AnticipationLikeNotification < Noticed::Base
   after_database :broadcast_anticipation_like
 
   def webpush_data 
-    @anticipation = record[:param][:anticipation]
-    @action_owner = record[:param][:action_owner]
-    @total_performers = record[:param][:total_performers]
+    @anticipation = record[:params][:anticipation]
+    @action_owner = record[:params][:action_owner]
+    @total_performers = record[:params][:total_performers]
 
   
     {
