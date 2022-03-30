@@ -25,7 +25,7 @@ RSpec.describe "Api::V1::Notes", type: :request do
       'uid' => response.headers['uid']
     }
 
-    create :project, id: 34, user: @user
+    @project = create :project, id: 34, user: @user
 
   end
 
@@ -85,17 +85,90 @@ RSpec.describe "Api::V1::Notes", type: :request do
         
       end
 
-    #   context "note failed to be created" do
-    #     it "do not increment Note.count " do
-    #       expect{subject}.to_not change{Note.count}  
-    #     end
+      context "note failed to be created" do
+        it "do not increment Note.count " do
+          expect{subject}.to_not change{Note.count}  
+        end
 
-    #     it "returns http status :unprocessable_entity" do
-    #       post @note_url, params: {note: {content: "this is a really like application, what i like about the project is the fact that users are using the note part very well"}}, headers: @headers
-    #       expect(response).to have_http_status(:unprocessable_entity)
-    #     end
+        it "returns http status :unprocessable_entity" do
+          post @note_url, params: {note: {content: "this is a really like application, what i like about the project is the fact that users are using the note part very well"}}, headers: @headers
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
       
-    #   end
+      end
+      
+     end
+  
+  end
+
+
+
+
+
+   describe "GET /show" do
+    include ApiDoc::V1::Notes::Show 
+
+    before do 
+
+      create :note, id: 12, user: @user, project: @project, content:  'i really like the way the note is being shown and how it can be portraiyed'
+    end
+
+    
+
+    context "when user is not authenticated" do
+      it "returns http status :unauthorized" do
+        get '/api/v1/notes/12'
+        expect(response).to have_http_status(:unauthorized)  
+      end
+      
+    end
+
+    context "when user is authenticated and" do
+
+      context "new note is created" do
+        subject { get '/api/v1/notes/12', headers: @headers } 
+
+       
+
+        it "returns http status ok" do
+          subject
+          expect(response).to have_http_status(:ok)
+        end
+
+        it "returns proper json response of the note" do 
+
+          subject 
+
+          json_data = JSON.parse(response.body)
+
+          expect(json_data['note']).to include({
+            'content' => 'i really like the way the note is being shown and how it can be portraiyed'
+          })
+
+        end
+
+        # it "matches with performed job" do
+        #   ActiveJob::Base.queue_adapter = :test
+        #   ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+          
+        #   expect {
+        #     subject
+        #   }.to have_performed_job(NewNoteJob)
+        # end
+        
+        
+      end
+
+      context "note could not be found" do
+      
+        it "returns http status not_found " do 
+
+          get '/api/v1/notes/132', headers: @headers
+
+          expect(response).to have_http_status(:not_found)
+        end
+      
+      end
       
      end
   
