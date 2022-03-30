@@ -53,23 +53,23 @@
 # 	}
 # ]
 
-[
-	'ActiveRecord', 'Adobe XD', 'AngularJS', 'Apollo', 
-	'Arduino', 'Asp.net', 'AWS', 'AWS S3/Lambda', 'Blazor', 
-	'Bootstrap', 'C', 'C#', 'C++', 'C#/ASP .NET Core', 'C/C++', 
-	'Clojure', 'Confluence', 'CSS3(SASS)', 'Dart', 'Datomic', 
-	'Django', 'Docker', 'Elixir', 'Ember.js', 'Entity', 'ES6', 'Express.js', 
-	'Firebase', 'Flask', 'Foxpro', 'Gatsby', 'Go', 'GraphQL', 
-	'GSAP', 'Handlebars', 'Heroku', 'HTML5', 'Java', 
-	'Jest', 'Jira', 'JQuery', 'JSS', 'JWT', 'Kotlin', 'Kubernetes', 'LINQ', 
-	'Lua', 'Material-UI', 'MATLAB', 'MongoDB', 'MYSQL', 'NestJS', '.NET', 'Next.js', 
-	'Node.js', 'NoSQL', 'openFrameworks', 'P5', 'Phoenix', 'PHP', 'PostgreSQL', 'Postman', 
-	'Python', 'Razor', 'Redis', 'Redux', 'REST APIs', 'Ruby', 'Sass', 'Tailwind UI',
-	'SCSS', 'Selenium', 'Sinatra', 'Socket.io', 'SQL', 
-	'SQLite', 'Three.js', 'TypeScript','Vue.js' 
-].each do |record| 
+# [
+# 	'ActiveRecord', 'Adobe XD', 'AngularJS', 'Apollo', 
+# 	'Arduino', 'Asp.net', 'AWS', 'AWS S3/Lambda', 'Blazor', 
+# 	'Bootstrap', 'C', 'C#', 'C++', 'C#/ASP .NET Core', 'C/C++', 
+# 	'Clojure', 'Confluence', 'CSS3(SASS)', 'Dart', 'Datomic', 
+# 	'Django', 'Docker', 'Elixir', 'Ember.js', 'Entity', 'ES6', 'Express.js', 
+# 	'Firebase', 'Flask', 'Foxpro', 'Gatsby', 'Go', 'GraphQL', 
+# 	'GSAP', 'Handlebars', 'Heroku', 'HTML5', 'Java', 
+# 	'Jest', 'Jira', 'JQuery', 'JSS', 'JWT', 'Kotlin', 'Kubernetes', 'LINQ', 
+# 	'Lua', 'Material-UI', 'MATLAB', 'MongoDB', 'MYSQL', 'NestJS', '.NET', 'Next.js', 
+# 	'Node.js', 'NoSQL', 'openFrameworks', 'P5', 'Phoenix', 'PHP', 'PostgreSQL', 'Postman', 
+# 	'Python', 'Razor', 'Redis', 'Redux', 'REST APIs', 'Ruby', 'Sass', 'Tailwind UI',
+# 	'SCSS', 'Selenium', 'Sinatra', 'Socket.io', 'SQL', 
+# 	'SQLite', 'Three.js', 'TypeScript','Vue.js' 
+# ].each do |record| 
 
-	Technology.create name: record
+# 	Technology.create name: record
 
-end
+# end
 
