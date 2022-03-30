@@ -15,6 +15,7 @@ class Project < ApplicationRecord
   has_many :suggestions, dependent: :destroy
   has_many :tools, dependent: :destroy
   has_many :project_photos, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
 
 

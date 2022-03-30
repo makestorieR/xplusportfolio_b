@@ -25,6 +25,8 @@ RSpec.describe "Api::V1::Notes", type: :request do
       'uid' => response.headers['uid']
     }
 
+    create :project, id: 34, user: @user
+
   end
 
 
@@ -37,11 +39,15 @@ RSpec.describe "Api::V1::Notes", type: :request do
 
         note: {
          
-         content: "i really like the way the note is being shown and how it can be portraiyed"
+         content: "i really like the way the note is being shown and how it can be portraiyed", 
+         project_id: 34
   
         }
         
       }
+
+
+
 
     end
 
@@ -55,29 +61,29 @@ RSpec.describe "Api::V1::Notes", type: :request do
 
     context "when user is authenticated and" do
 
-    #   context "new note is created" do
-    #     subject { post @note_url, params: @note_params, headers: @headers } 
+      context "new note is created" do
+        subject { post @note_url, params: @note_params, headers: @headers } 
 
-    #     it "increment Note.count by 1" do
-    #       expect{subject}.to change{Note.count}.by(1)  
-    #     end
+        it "increment Note.count by 1" do
+          expect{subject}.to change{Note.count}.by(1)  
+        end
 
-    #     it "returns http status :created" do
-    #       subject
-    #       expect(response).to have_http_status(:created)
-    #     end
+        it "returns http status :created" do
+          subject
+          expect(response).to have_http_status(:created)
+        end
 
-    #     it "matches with performed job" do
-    #       ActiveJob::Base.queue_adapter = :test
-    #       ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
+        # it "matches with performed job" do
+        #   ActiveJob::Base.queue_adapter = :test
+        #   ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true
           
-    #       expect {
-    #         subject
-    #       }.to have_performed_job(NewNoteJob)
-    #     end
+        #   expect {
+        #     subject
+        #   }.to have_performed_job(NewNoteJob)
+        # end
         
         
-    #   end
+      end
 
     #   context "note failed to be created" do
     #     it "do not increment Note.count " do
