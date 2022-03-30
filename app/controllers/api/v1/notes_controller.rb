@@ -1,6 +1,6 @@
 class Api::V1::NotesController < ApplicationController
-	before_action :authenticate_api_v1_user!, only: [:create, :show]
-	before_action :find_note, only: :show
+	before_action :authenticate_api_v1_user!, only: [:create, :show, :update]
+	before_action :find_note, only: [:show, :update]
 
 	def create 
 
@@ -27,7 +27,18 @@ class Api::V1::NotesController < ApplicationController
 	end
 
 
+	def update 
 
+		
+
+		if @note.update(note_params) 
+
+			render json: @note, status: :ok
+		else
+			render json: @note.errors.messages, status: :unprocessable_entity
+		end
+
+	end
 
 
 	private 
@@ -41,7 +52,7 @@ class Api::V1::NotesController < ApplicationController
 
 		@note = current_api_v1_user.notes.find_by_id(params[:id])
 
-		
+
 
 
 		unless @note 

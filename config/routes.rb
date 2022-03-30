@@ -64,7 +64,7 @@ Rails.application.routes.draw do
       get 'unfulfilled_anticipations', to: 'unfulfilled_anticipations#index'
 
       #routes for the notes 
-      resources :notes, only: [:create, :show]
+      resources :notes, only: [:create, :show, :update]
       #users routes
       resources :users, only: [:index, :show, :update] do 
         member do 
