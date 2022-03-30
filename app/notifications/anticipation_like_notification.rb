@@ -46,7 +46,7 @@ class AnticipationLikeNotification < Noticed::Base
 
     
 
-    anticipation = param[:anticipation]
+    anticipation = params[:anticipation]
     
 
     user = anticipation.user
