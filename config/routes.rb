@@ -65,6 +65,11 @@ Rails.application.routes.draw do
 
       #routes for the notes 
       resources :notes, only: [:create, :show, :update]
+
+      #route to mark note as seen 
+      resources :mark_note, only: :update
+
+
       #users routes
       resources :users, only: [:index, :show, :update] do 
         member do 
