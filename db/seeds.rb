@@ -64,7 +64,7 @@
 	'Jest', 'Jira', 'JQuery', 'JSS', 'JWT', 'Kotlin', 'Kubernetes', 'LINQ', 
 	'Lua', 'Material-UI', 'MATLAB', 'MongoDB', 'MYSQL', 'NestJS', '.NET', 'Next.js', 
 	'Node.js', 'NoSQL', 'openFrameworks', 'P5', 'Phoenix', 'PHP', 'PostgreSQL', 'Postman', 
-	'Python', 'Razor', 'Redis', 'Redux', 'REST APIs', 'Ruby', 'Sass', 'Tailwind UI'
+	'Python', 'Razor', 'Redis', 'Redux', 'REST APIs', 'Ruby', 'Sass', 'Tailwind UI',
 	'SCSS', 'Selenium', 'Sinatra', 'Socket.io', 'SQL', 
 	'SQLite', 'Three.js', 'TypeScript','Vue.js' 
 ].each do |record| 
