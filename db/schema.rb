@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_30_191540) do
+ActiveRecord::Schema.define(version: 2022_03_30_225000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,8 +102,13 @@ ActiveRecord::Schema.define(version: 2022_03_30_191540) do
 
   create_table "notes", force: :cascade do |t|
     t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.boolean "seen", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_notes_on_project_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -245,6 +250,8 @@ ActiveRecord::Schema.define(version: 2022_03_30_191540) do
   add_foreign_key "anticipations", "users"
   add_foreign_key "background_cover_photos", "users"
   add_foreign_key "comments", "users"
+  add_foreign_key "notes", "projects"
+  add_foreign_key "notes", "users"
   add_foreign_key "project_photos", "projects"
   add_foreign_key "projects", "anticipations"
   add_foreign_key "projects", "users"

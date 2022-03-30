@@ -119,6 +119,10 @@
           null,
           null,
           1,
+          1,
+          null,
+          1,
+          1,
           null,
           null,
           1,
@@ -852,6 +856,9 @@
           null,
           1,
           null,
+          null,
+          1,
+          null,
           1,
           1,
           1,
@@ -949,7 +956,7 @@
           1,
           null,
           null,
-          0,
+          3,
           null,
           null,
           null,
@@ -1096,15 +1103,43 @@
           null
         ]
       },
-      "/root/xplusportfolio_b/app/models/note.rb": {
+      "/root/xplusportfolio_b/app/models/background_cover_photo.rb": {
         "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/root/xplusportfolio_b/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           null,
           1,
+          null,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/root/xplusportfolio_b/app/controllers/api/v1/notes_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1648667895
+    "timestamp": 1648681084
   }
 }
