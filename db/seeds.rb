@@ -45,43 +45,11 @@
 [
 	{
 		img_url: "",
-		title: "Arc",
-		desc: "Arc is a remote career platform. We make it easier for developers to find remote jobs so they can build amazing careers from anywhere. We also help connect developers with fast-growing companies for permanent and contract remote roles.",
-		link: "https://arc.dev/",
-		video_url: "https://youtu.be/yGLwVH58h4A",
+		title: "Remotasks",
+		desc: "Remotasks is a platform that lets us build real AI with the help of real people. Remotasks offer a variety of tasks like 2D and 3D Image Annotation and Categorization, all of which can help companies develop techs like new gadgets and self-driving cars.",
+		link: "https://www.remotasks.com/es",
+		video_url: "https://youtu.be/DOou5aayna4",
 	},
-	{
-		img_url: "" ,
-		title: "AngelList",
-		desc: "AngelList's mission is to increase the number of successful startups in the world. In service of that mission, AngelList has built the leading platform for early-stage venture investing. AngelList gives more people the opportunity to participate in the venture economy — and more startups the resources they need to change the world.",
-		link: "https://www.angellist.com/",
-		video_url: "https://youtu.be/PnpjT2T1PC8",
-
-	},
-	{
-		img_url: "" ,
-		title: "Y Combinator",
-		desc: "We work intensively with the companies for three months, to get them into the best possible shape and refine their pitch to investors. Each cycle culminates in Demo Day, when the startups present their companies to a carefully selected, invite-only audience.",
-		link: "https://ycombinator.com/",
-		video_url: "https://youtu.be/IGj7CK-K6q4",
-
-	},
-	{
-		img_url: "https://res.cloudinary.com/dn6vnxbnm/image/upload/v1648690856/resources/calm_s2efrt.png" ,
-		title: "CalmHire",
-		desc: "Find companies with less stressful interviews No whiteboarding, no live coding, no need to spend months studying on LeetCode. Apply to jobs that have a more practical and calmer hiring process.",
-		link: "https://www.calmhire.com/",
-		video_url: nil,
-
-	},
-	{
-		img_url: "" ,
-		title: "We Work Remotely(WWR)",
-		desc: "We Work Remotely is the largest remote work community in the world. With over 2.5M monthly visitors, WWR is the #1 destination to find and list incredible remote jobs.",
-		link: "https://weworkremotely.com/",
-		video_url: "https://youtu.be/MTCF1jf-_94",
-
-	}
 ].each do |jobboard|
 
 	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'job_board'
@@ -108,4 +76,3 @@ end
 # 	Technology.create name: record
 
 # end
-

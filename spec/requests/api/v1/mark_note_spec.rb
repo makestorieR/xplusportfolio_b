@@ -32,7 +32,7 @@ RSpec.describe "Api::V1::Notes", type: :request do
 
 
 
-   describe "GET /update" do
+  describe "GET /update" do
     include ApiDoc::V1::Notes::Update 
 
     before do 
@@ -71,6 +71,8 @@ RSpec.describe "Api::V1::Notes", type: :request do
 
         end
 
+      end
+
 
       
 
@@ -85,9 +87,12 @@ RSpec.describe "Api::V1::Notes", type: :request do
       
       end
       
-     end
+     
   
   end
+
+
+end
 
 
 
