@@ -78,6 +78,7 @@ Rails.application.routes.draw do
           get 'anticipations', to: 'users#anticipation_index'
           get 'followers', to: 'users#follower_index'
           get 'followings', to: 'users#following_index'
+          get 'notes', to: 'users#note_index'
           post 'followings', to: 'users#up'
           delete 'followings', to: 'users#down'
         end

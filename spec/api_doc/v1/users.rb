@@ -51,6 +51,10 @@ module ApiDoc
         action 'Get a user Followings'
       end
 
+       document :note_index do
+        action 'Get all notes for a user'
+      end
+
       document :up do
         action 'Follow User'
       end

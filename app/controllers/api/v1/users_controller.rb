@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:index, :show, :update, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] 
-    before_action :find_user, only: [:show, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
+    before_action :authenticate_api_v1_user!, only: [:index, :show, :update, :note_index, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] 
+    before_action :find_user, only: [:show, :note_index, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]
     before_action :check_follow_status, only: :up
     def index 
         if params[:page].present?
@@ -47,6 +47,14 @@ class Api::V1::UsersController < ApplicationController
 
     
         render 'api/v1/users/show.json.jbuilder'
+    end
+
+    def note_index 
+
+        @notes = @user.notes.order(created_at: 'desc')
+
+        render 'api/v1/notes/index.json.jbuilder'
+
     end
 
     def project_index 

@@ -71,9 +71,6 @@ RSpec.describe "Api::V1::Notes", type: :request do
 
         end
 
-        
-      end
-
 
       
 
