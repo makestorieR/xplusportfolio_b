@@ -52,10 +52,43 @@
 	},
 ].each do |jobboard|
 
-	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'job_board'
+	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'side_income'
 	
 
 end
+
+
+
+[
+	{
+		img_url: "",
+		title: "Learning How to Learn for Programmers (Barbara Oakley & Zach Caceres)",
+		desc: "Technological change is relentless. It often feels like software engineers must learn new tools, techniques, and systems every day. Distinguished Professor of Engineering Barbara Oakley is the instructor of Learning How to Learn on Coursera, one of the world’s largest massive open online course, with over 3 million students. In this presentation, she's joined by software engineer Zach Caceres to show you how you can better use the most important tool in a software developer's toolkit: your own brain.",
+		link: "https://youtu.be/9xm8suE2lk0",
+		video_url: "https://youtu.be/9xm8suE2lk0",
+	},
+	{
+		img_url: "",
+		title: "Data-structure and algorithm",
+		desc: "Dr. Rob Edwards from San Diego State University teaches computer science and bioinformatics",
+		link: "https://www.youtube.com/watch?v=zgCnMvvw6Oo&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=1",
+		video_url: "https://youtu.be/zgCnMvvw6Oo?list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk",
+	},
+	,
+	{
+		img_url: "",
+		title: "Log2Base2",
+		desc: "Log2Base2 is a visual learning platform to learn programming, data structures & algorithms and prepare for coding interviews. Our platform is trusted by 125,000+ learners around the world.",
+		link: "https://log2base2.com/",
+		video_url: "https://youtu.be/MSX-IZE27zc",
+	},
+].each do |jobboard|
+
+	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'learning'
+	
+
+end
+
 
 # [
 # 	'ActiveRecord', 'Adobe XD', 'AngularJS', 'Apollo', 
