@@ -74,7 +74,6 @@ end
 		link: "https://www.youtube.com/watch?v=zgCnMvvw6Oo&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=1",
 		video_url: "https://youtu.be/zgCnMvvw6Oo?list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk",
 	},
-	,
 	{
 		img_url: "",
 		title: "Log2Base2",
