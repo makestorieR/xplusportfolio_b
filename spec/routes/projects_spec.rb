@@ -18,6 +18,10 @@ RSpec.describe "Projects", type: :routing do
         expect(get '/api/v1/projects/todo-application/suggestions').to route_to(controller: 'api/v1/projects', action: 'suggestion_index', id: 'todo-application')  
     end
 
+    it "GET api/v1/projects/todo-application/notes routes to api/v1/projects#note_index" do
+        expect(get '/api/v1/projects/todo-application/notes').to route_to(controller: 'api/v1/projects', action: 'note_index', id: 'todo-application')  
+    end
+
     it "PUT api/v1/projects/todo-application routes to api/v1/projects#update" do
         expect(put '/api/v1/projects/todo-application').to route_to(controller: 'api/v1/projects', action: 'update', id: 'todo-application')  
     end

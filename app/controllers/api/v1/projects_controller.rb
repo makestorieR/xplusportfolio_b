@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
-    before_action :authenticate_api_v1_user!, only: [:create, :index, :update, :destroy, :show, :upvote, :downvote, :up, :down, :suggestion_index]
-    before_action :find_project, only: [:upvote, :downvote, :up, :down, :suggestion_index, :update, :destroy, :show] 
+    before_action :authenticate_api_v1_user!, only: [:create, :index, :update, :destroy, :show, :upvote, :downvote, :up, :down, :note_index, :suggestion_index]
+    before_action :find_project, only: [:upvote, :downvote, :up, :down, :note_index, :suggestion_index, :update, :destroy, :show] 
     
 
 
@@ -143,15 +143,21 @@ class Api::V1::ProjectsController < ApplicationController
         render json: {message: "Unlikes this project", total_likes: @project.get_likes.size}, status: :ok
     end
 
+
+    def note_index 
+
+        @notes = @project.notes.order(created_at: 'desc')
+
+        
+
+        render 'api/v1/notes/index.json.jbuilder'
+
+    end 
+
     def suggestion_index 
         
 
-        if params[:page].present?  
-              
-            @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: params[:page]) 
-        else
-            @pagy, @suggestions = pagy(@project.suggestions.includes(:user), page: 1) 
-        end
+        @suggestions = @project.suggestions.includes(:user).order(created_at: 'desc')
         render 'api/v1/projects/suggestion_index.json.jbuilder'
     end
 
@@ -171,6 +177,9 @@ class Api::V1::ProjectsController < ApplicationController
 
     def find_project 
         @project = Project.friendly.find_by_slug(params[:id])
+
+
+
         
         unless @project 
             render json: "Not Found", message: "Project not found", status: :not_found

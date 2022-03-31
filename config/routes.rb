@@ -93,6 +93,7 @@ Rails.application.routes.draw do
           post 'voters', to: 'projects#upvote'
           delete 'voters', to: 'projects#downvote'
           get 'suggestions', to: 'projects#suggestion_index'
+          get 'notes', to: 'projects#note_index'
 
         end
 

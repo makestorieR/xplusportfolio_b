@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-RSpec.describe "Anticipations", type: :routing do
+RSpec.describe "Notes", type: :routing do
     it "POST api/v1/notes routes to api/v1/notes#create" do
         expect(post '/api/v1/notes').to route_to('api/v1/notes#create')  
     end

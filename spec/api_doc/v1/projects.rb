@@ -76,6 +76,10 @@ module ApiDoc
           action 'Get suggestions'
         end
 
+        document :note_index do
+          action 'Get notes'
+        end
+
 
 
 

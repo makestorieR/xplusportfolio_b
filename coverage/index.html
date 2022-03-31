@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.12.3/application.js' type='text/javascript'></script>
     <link href='./assets/0.12.3/application.css' media='screen, projection, print' rel='stylesheet' type='text/css' />
-    <link rel="shortcut icon" type="image/png" href="./assets/0.12.3/favicon_green.png" />
+    <link rel="shortcut icon" type="image/png" href="./assets/0.12.3/favicon_red.png" />
     <link rel="icon" type="image/png" href="./assets/0.12.3/favicon.png" />
   </head>
 
@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-31T01:23:48+01:00">2022-03-31T01:23:48+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-03-31T01:45:38+01:00">2022-03-31T01:45:38+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,15 +22,15 @@
   <h2>
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
-      <span class="green">
-  91.62%
+      <span class="red">
+  79.21%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.38
+         1.76
        </span>
     </span> hits/line
     )
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>38</b> files in total.
+    <b>39</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>334</b> relevant lines,
-    <span class="green"><b>306</b> lines covered</span> and
-    <span class="red"><b>28</b> lines missed. </span>
-    (<span class="green">
-  91.62%
+    <b>356</b> relevant lines,
+    <span class="green"><b>282</b> lines covered</span> and
+    <span class="red"><b>74</b> lines missed. </span>
+    (<span class="red">
+  79.21%
 </span>
 )
   </div>
@@ -71,13 +71,13 @@
       <tbody>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#b74278e3bec327e44a37c5ab31e113032ab3863b" class="src_link" title="app/controllers/api/v1/users_controller.rb">app/controllers/api/v1/users_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">131</td>
-            <td class="cell--number">59</td>
-            <td class="cell--number">59</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">2.58</td>
+            <td class="strong t-file__name"><a href="#9c51637b918c320bb140c628129cc67fe5c209e0" class="src_link" title="app/controllers/api/v1/projects_controller.rb">app/controllers/api/v1/projects_controller.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">57.69 %</td>
+            <td class="cell--number">188</td>
+            <td class="cell--number">78</td>
+            <td class="cell--number">45</td>
+            <td class="cell--number">33</td>
+            <td class="cell--number">1.60</td>
             
           </tr>
         
@@ -88,7 +88,7 @@
             <td class="cell--number">9</td>
             <td class="cell--number">9</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">5.67</td>
+            <td class="cell--number">5.33</td>
             
           </tr>
         
@@ -148,24 +148,35 @@
           </tr>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#be8e965a79e5ae8e0663aef980df2cfb985d8ad2" class="src_link" title="app/models/anticipation.rb">app/models/anticipation.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">90.48 %</td>
-            <td class="cell--number">40</td>
-            <td class="cell--number">21</td>
-            <td class="cell--number">19</td>
-            <td class="cell--number">2</td>
-            <td class="cell--number">12.19</td>
-            
-          </tr>
-        
-          <tr class="t-file">
-            <td class="strong t-file__name"><a href="#b009c5ddd7c8d293af226d7ab7c7e3e27d26cc50" class="src_link" title="app/models/anticipation_cover.rb">app/models/anticipation_cover.rb</a></td>
+            <td class="strong t-file__name"><a href="#8c0b83f7efc62da2d776bd3e539e6b3c286dd67c" class="src_link" title="app/jobs/application_job.rb">app/jobs/application_job.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">2</td>
+            <td class="cell--number">7</td>
             <td class="cell--number">1</td>
             <td class="cell--number">1</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#7ba272ebde38294d4109ce1982c429d8737c287a" class="src_link" title="app/jobs/project_like_job.rb">app/jobs/project_like_job.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">33.33 %</td>
+            <td class="cell--number">29</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">0.33</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#38953354117edfaddab5fcf33d42f45f4b175c70" class="src_link" title="app/jobs/project_upvote_job.rb">app/jobs/project_upvote_job.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">33.33 %</td>
+            <td class="cell--number">30</td>
+            <td class="cell--number">12</td>
+            <td class="cell--number">4</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">0.33</td>
             
           </tr>
         
@@ -192,13 +203,13 @@
           </tr>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#db2b975fc97fcd14a3d0788c1c7d55b611482c22" class="src_link" title="app/models/follow.rb">app/models/follow.rb</a></td>
-            <td class="yellow strong cell--number t-file__coverage">85.71 %</td>
-            <td class="cell--number">14</td>
-            <td class="cell--number">7</td>
+            <td class="strong t-file__name"><a href="#e88c37073157dfa47c84d7bb6fce56dd4b5c0217" class="src_link" title="app/models/comment.rb">app/models/comment.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">8</td>
             <td class="cell--number">6</td>
-            <td class="cell--number">1</td>
-            <td class="cell--number">0.86</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
             
           </tr>
         
@@ -264,7 +275,7 @@
             <td class="cell--number">25</td>
             <td class="cell--number">23</td>
             <td class="cell--number">2</td>
-            <td class="cell--number">15.60</td>
+            <td class="cell--number">6.64</td>
             
           </tr>
         
@@ -479,10 +490,10 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#8c711624e914695d58aafa16a3cd94c35956cd08" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">96.36 %</td>
-            <td class="cell--number">124</td>
-            <td class="cell--number">55</td>
-            <td class="cell--number">53</td>
+            <td class="green strong cell--number t-file__coverage">96.43 %</td>
+            <td class="cell--number">125</td>
+            <td class="cell--number">56</td>
+            <td class="cell--number">54</td>
             <td class="cell--number">2</td>
             <td class="cell--number">0.96</td>
             
@@ -505,12 +516,12 @@
 
       <div class="source_files">
       
-        <div class="source_table" id="b74278e3bec327e44a37c5ab31e113032ab3863b">
+        <div class="source_table" id="9c51637b918c320bb140c628129cc67fe5c209e0">
   <div class="header">
-    <h3>app/controllers/api/v1/users_controller.rb</h3>
+    <h3>app/controllers/api/v1/projects_controller.rb</h3>
     <h4>
-      <span class="green">
-  100.0%
+      <span class="red">
+  57.69%
 </span>
 
       lines covered
@@ -519,9 +530,9 @@
     
 
     <div class="t-line-summary">
-      <b>59</b> relevant lines.
-      <span class="green"><b>59</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>78</b> relevant lines.
+      <span class="green"><b>45</b> lines covered</span> and
+      <span class="red"><b>33</b> lines missed.</span>
     </div>
 
     
@@ -538,7 +549,7 @@
 
             
 
-            <code class="ruby">class Api::V1::UsersController &lt; ApplicationController</code>
+            <code class="ruby">class Api::V1::ProjectsController &lt; ApplicationController</code>
           </li>
         </div>
       
@@ -549,7 +560,7 @@
 
             
 
-            <code class="ruby">    before_action :authenticate_api_v1_user!, only: [:index, :show, :update, :note_index, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down] </code>
+            <code class="ruby">    before_action :authenticate_api_v1_user!, only: [:create, :index, :update, :destroy, :show, :upvote, :downvote, :up, :down, :note_index, :suggestion_index]</code>
           </li>
         </div>
       
@@ -560,111 +571,23 @@
 
             
 
-            <code class="ruby">    before_action :find_user, only: [:show, :note_index, :project_index, :suggestion_index, :anticipation_index, :follower_index, :following_index, :up, :down]</code>
+            <code class="ruby">    before_action :find_project, only: [:upvote, :downvote, :up, :down, :note_index, :suggestion_index, :update, :destroy, :show] </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="4">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="4">
+            
             
 
             
 
-            <code class="ruby">    before_action :check_follow_status, only: :up</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def index </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="6">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        if params[:page].present?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">            @pagy, @users = pagy(User.all, page: params[:page])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="8">
-            
-            
-
-            
-
-            <code class="ruby">        else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="9">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">            @pagy, @users = pagy(User.all, page: 1)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="11">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        render &#39;api/v1/users/index.json.jbuilder&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="5">
             
             
 
@@ -675,13 +598,101 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def update </code>
+            <code class="ruby">    def index </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="9">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        if params[:page].present?  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">              </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="11">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">            @pagy, @projects = pagy(current_api_v1_user.projects, page: params[:page]) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby">        else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="13">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">            @pagy, @projects = pagy(current_api_v1_user.projects, page: 1) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -703,7 +714,7 @@
 
             
 
-            <code class="ruby">        @user = current_api_v1_user</code>
+            <code class="ruby">        render &#39;api/v1/projects/index.json.jbuilder&#39;</code>
           </li>
         </div>
       
@@ -725,7 +736,7 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -741,13 +752,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="20">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        result = Cloudinary::Uploader.upload(params[:backcover_imgurl], height: 150, :folder =&gt; &quot;#{current_api_v1_user.name}/background_cover_photos/&quot;) if params[:backcover_imgurl] </code>
+            <code class="ruby">    def create </code>
           </li>
         </div>
       
@@ -758,40 +769,40 @@
 
             
 
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="22">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="23">
+          <li class="missed" data-hits="0" data-linenumber="22">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">            photos = []</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="24">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="23">
+            
             
 
             
 
-            <code class="ruby">        @user.backcover_imgurl = result[&#39;url&#39;] if params[:backcover_imgurl]</code>
+            <code class="ruby">            technology_ids = params[:tools].split(&quot;,&quot;).map{|id| id.to_i}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">            project = JSON.parse(params[:project]).with_indifferent_access</code>
           </li>
         </div>
       
@@ -807,46 +818,46 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="26">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        @user.github_url = params[:github_url]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="27">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        @user.image = params[:avatar_url]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="28">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        @user.name = params[:name]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
+          <li class="never" data-hits="" data-linenumber="26">
             
             
 
             
 
             <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">            succesfull = false </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby">            params.each do |key, value|</code>
           </li>
         </div>
       
@@ -857,29 +868,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">              </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="31">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="31">
+            
             
 
             
 
-            <code class="ruby">        if @user.save</code>
+            <code class="ruby">              photos.push(value) if key.include?(&#39;image&#39;) &amp;&amp; value.class == ActionDispatch::Http::UploadedFile</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="32">
+            
             
 
             
 
-            <code class="ruby">            render json: @user, status: :ok</code>
+            <code class="ruby">            end</code>
           </li>
         </div>
       
@@ -890,7 +901,7 @@
 
             
 
-            <code class="ruby">        else</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -901,18 +912,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">            </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="35">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="35">
+            
             
 
             
 
-            <code class="ruby">            render json: @user.errors.messages, status: :unprocessable_entity</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -923,95 +934,95 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="37">
+          <li class="missed" data-hits="0" data-linenumber="37">
             
             
 
             
 
-            <code class="ruby">            </code>
+            <code class="ruby">            @project = Project.new </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
+          <li class="missed" data-hits="0" data-linenumber="38">
+            
+            
+
+            
+
+            <code class="ruby">            @project.title = project[:title]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="39">
+            
+            
+
+            
+
+            <code class="ruby">            @project.description = project[:description]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="40">
+            
+            
+
+            
+
+            <code class="ruby">            @project.user = current_api_v1_user</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="41">
+            
+            
+
+            
+
+            <code class="ruby">            @project.github_link = project[:githubLink]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="42">
+            
+            
+
+            
+
+            <code class="ruby">            @project.live_link = project[:liveLink]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="43">
+            
+            
+
+            
+
+            <code class="ruby">            @project.anticipation_id = project[:anticipation_id]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="44">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="41">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="42">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def show </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="44">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @total_project_votes = @user.projects.reduce(0) { |sum, project| sum + project.get_upvotes.size }</code>
           </li>
         </div>
       
@@ -1027,18 +1038,40 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="46">
+            
             
 
             
 
-            <code class="ruby">        total_anticipation_fulfilled = 0</code>
+            <code class="ruby">            Project.transaction(requires_new: true) do </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
+          <li class="missed" data-hits="0" data-linenumber="47">
+            
+            
+
+            
+
+            <code class="ruby">                ProjectPhoto.transaction(requires_new: true) do </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="48">
+            
+            
+
+            
+
+            <code class="ruby">                    Tool.transaction(requires_new: true) do </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
             
             
 
@@ -1049,35 +1082,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="missed" data-hits="0" data-linenumber="50">
             
             
 
             
 
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        render &#39;api/v1/users/show.json.jbuilder&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="50">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
+            <code class="ruby">                        raise ActiveRecord::Rollback if !@project.save </code>
           </li>
         </div>
       
@@ -1093,13 +1104,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="52">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="52">
+            
             
 
             
 
-            <code class="ruby">    def note_index </code>
+            <code class="ruby">                        photos.each do |photo|  </code>
           </li>
         </div>
       
@@ -1115,35 +1126,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="54">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="54">
+            
             
 
             
 
-            <code class="ruby">        @notes = @user.notes.order(created_at: &#39;desc&#39;)</code>
+            <code class="ruby">                            result = Cloudinary::Uploader.upload(photo, :folder =&gt; &quot;#{current_api_v1_user.name}/projects/&quot;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="55">
+          <li class="missed" data-hits="0" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">                            ProjectPhoto.create img_url: result[&quot;url&quot;], project: @project</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="56">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        render &#39;api/v1/notes/index.json.jbuilder&#39;</code>
           </li>
         </div>
       
@@ -1165,7 +1176,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">                        end</code>
           </li>
         </div>
       
@@ -1181,24 +1192,24 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="60">
+            
             
 
             
 
-            <code class="ruby">    def project_index </code>
+            <code class="ruby">                        technology_ids.each do |tech_id|  </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="61">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="61">
+            
             
 
             
 
-            <code class="ruby">       @projects = @user.projects.includes(:user, :project_photos, :tools).order(created_at: &#39;desc&#39;) </code>
+            <code class="ruby">                            Tool.create technology_id: tech_id, project: @project</code>
           </li>
         </div>
       
@@ -1214,13 +1225,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="63">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="63">
+            
             
 
             
 
-            <code class="ruby">        render &#39;api/v1/projects/index.json.jbuilder&#39;</code>
+            <code class="ruby">                        end</code>
           </li>
         </div>
       
@@ -1231,29 +1242,29 @@
 
             
 
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="66">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="65">
+            
             
 
             
 
-            <code class="ruby">    def anticipation_index </code>
+            <code class="ruby">                        if @project.save </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby">                            succesfull = true </code>
           </li>
         </div>
       
@@ -1264,7 +1275,7 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1275,18 +1286,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                        end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="69">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="69">
+            
             
 
             
 
-            <code class="ruby">        @anticipations = @user.anticipations.includes(:anticipation_cover, :anticipation_cover, :user, :project).order(created_at: &#39;desc&#39;) </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1297,18 +1308,18 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="71">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="71">
+            
             
 
             
 
-            <code class="ruby">        render &#39;api/v1/users/anticipation_index.json.jbuilder&#39;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1319,7 +1330,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">                    end</code>
           </li>
         </div>
       
@@ -1341,18 +1352,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="75">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="75">
+            
             
 
             
 
-            <code class="ruby">    def suggestion_index</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1363,29 +1374,29 @@
 
             
 
+            <code class="ruby">                end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="77">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="77">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="78">
+            
             
 
             
 
-            <code class="ruby">        @suggestions = @user.suggestions.includes(:user).order(created_at: &#39;desc&#39;) </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="78">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        render &#39;api/v1/users/suggestion_index.json.jbuilder&#39;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1396,7 +1407,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">            end</code>
           </li>
         </div>
       
@@ -1407,18 +1418,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="81">
+            
             
 
             
 
-            <code class="ruby">    def follower_index </code>
+            <code class="ruby">        if succesfull </code>
           </li>
         </div>
       
@@ -1429,29 +1440,29 @@
 
             
 
-            <code class="ruby">   </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="83">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="83">
+            
             
 
             
 
-            <code class="ruby">        @followers = followers.order(created_at: &#39;desc&#39;) </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="84">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="84">
+            
             
 
             
 
-            <code class="ruby">        render &#39;api/v1/users/follower_index.json.jbuilder&#39;</code>
+            <code class="ruby">                if @project.anticipation</code>
           </li>
         </div>
       
@@ -1462,29 +1473,29 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">                  </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="86">
+          <li class="missed" data-hits="0" data-linenumber="86">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                    AnticipationFulfillJob.perform_later @project.anticipation.id </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="87">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="87">
+            
             
 
             
 
-            <code class="ruby">    def following_index </code>
+            <code class="ruby">                else</code>
           </li>
         </div>
       
@@ -1495,29 +1506,29 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">                    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="89">
-            <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="89">
+            
             
 
             
 
-            <code class="ruby">        @follows = following.order(created_at: &#39;desc&#39;) </code>
+            <code class="ruby">                    NewProjectJob.perform_later(@project.id)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="90">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="90">
+            
             
 
             
 
-            <code class="ruby">        render &#39;api/v1/users/following_index.json.jbuilder&#39;</code>
+            <code class="ruby">                end</code>
           </li>
         </div>
       
@@ -1528,40 +1539,40 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">            </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="92">
+          <li class="missed" data-hits="0" data-linenumber="92">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">            render json: @project, status: :created</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="93">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="93">
+            
             
 
             
 
-            <code class="ruby">    def up </code>
+            <code class="ruby">        else</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="94">
+          <li class="missed" data-hits="0" data-linenumber="94">
             
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">            render json: @project.errors.messages, status: :unprocessable_entity</code>
           </li>
         </div>
       
@@ -1572,29 +1583,29 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="96">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="96">
+            
             
 
             
 
-            <code class="ruby">        current_api_v1_user.follow @user</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="97">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="97">
+            
             
 
             
 
-            <code class="ruby">        render json: {message: &quot;Started Following #{@user.name}&quot;}, status: :ok</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1605,7 +1616,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1627,45 +1638,12 @@
 
             
 
-            <code class="ruby">    def down </code>
+            <code class="ruby">    def update </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="101">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        current_api_v1_user.stop_following @user</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="102">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        render json: {message: &quot;Stopped Following #{@user.name}&quot;}, status: :ok</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="103">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="104">
+          <li class="never" data-hits="" data-linenumber="101">
             
             
 
@@ -1676,35 +1654,68 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="105">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="102">
+            <span class="hits">2</span>
             
 
-            <code class="ruby"> </code>
+            
+
+            <code class="ruby">        if @project.update(project_params)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="106">
+          <li class="covered" data-hits="1" data-linenumber="103">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    private </code>
+            <code class="ruby">            render json: @project, status: :ok</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="107">
+          <li class="never" data-hits="" data-linenumber="104">
+            
+            
+
+            
+
+            <code class="ruby">        else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="105">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def find_user </code>
+            <code class="ruby">            render json: @project.errors.messages, status: :unprocessable_entity</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="106">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="107">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1726,40 +1737,40 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="110">
-            <span class="hits">28</span>
+          <li class="covered" data-hits="1" data-linenumber="110">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        @user = User.all.find_by_slug(params[:id])</code>
+            <code class="ruby">    def destroy </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="111">
-            <span class="hits">28</span>
+          <li class="covered" data-hits="2" data-linenumber="111">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        unless @user </code>
+            <code class="ruby">        @project.destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="112">
-            <span class="hits">9</span>
+          <li class="never" data-hits="" data-linenumber="112">
+            
             
 
             
 
-            <code class="ruby">            render json: &#39;Not Found&#39;, message: &quot;User does not exist&quot;, status: :not_found</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1770,7 +1781,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1781,12 +1792,45 @@
 
             
 
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="115">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def show </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="116">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render &#39;api/v1/projects/show.json.jbuilder&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="117">
+            
+            
+
+            
+
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="115">
+          <li class="never" data-hits="" data-linenumber="118">
             
             
 
@@ -1797,46 +1841,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="116">
+          <li class="covered" data-hits="1" data-linenumber="119">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def check_follow_status </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="117">
-            <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">        unless !current_api_v1_user.following? @user </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="118">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">            render json: {message: &quot;User Already Been Followed&quot;}, status: :unprocessable_entity</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="119">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
+            <code class="ruby">    def upvote </code>
           </li>
         </div>
       
@@ -1847,18 +1858,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="121">
-            
-            
-
+          <li class="covered" data-hits="2" data-linenumber="121">
+            <span class="hits">2</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        @project.vote_by voter: current_api_v1_user</code>
           </li>
         </div>
       
@@ -1874,35 +1885,35 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="123">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="124">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def followers </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="125">
+          <li class="covered" data-hits="2" data-linenumber="123">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        @user.followers_by_type(&quot;User&quot;)</code>
+            <code class="ruby">        ProjectUpvoteJob.perform_later @project.id, current_api_v1_user.id </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="124">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render json: {message: &quot;Succesfully Voted for project&quot;, total_votes: @project.weighted_score}, status: :ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="125">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -1913,7 +1924,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -1924,34 +1935,56 @@
 
             
 
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
+            
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="128">
+          <li class="covered" data-hits="1" data-linenumber="129">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def following </code>
+            <code class="ruby">    def downvote </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="129">
+          <li class="covered" data-hits="2" data-linenumber="130">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        @user.following_by_type(&quot;User&quot;)</code>
+            <code class="ruby">        @project.downvote_from current_api_v1_user</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="130">
+          <li class="covered" data-hits="2" data-linenumber="131">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render json: {message: &quot;Downvoted project&quot;, total_votes: @project.weighted_score}, status: :ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="132">
             
             
 
@@ -1962,7 +1995,612 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="131">
+          <li class="never" data-hits="" data-linenumber="133">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="134">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="135">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def up </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="136">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        current_api_v1_user.likes @project</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="137">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        ProjectLikeJob.perform_later @project.id, current_api_v1_user.id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="138">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render json: {message: &quot;Liked this project&quot;, total_likes: @project.get_likes.size}, status: :ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="139">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="140">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="141">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def down </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="142">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        current_api_v1_user.unlike @project</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="143">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render json: {message: &quot;Unlikes this project&quot;, total_likes: @project.get_likes.size}, status: :ok</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="144">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="145">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="146">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="147">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def note_index </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="148">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="149">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        @notes = @project.notes.order(created_at: &#39;desc&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="150">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="151">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="152">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="153">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render &#39;api/v1/notes/index.json.jbuilder&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="154">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="155">
+            
+            
+
+            
+
+            <code class="ruby">    end </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="156">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="157">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def suggestion_index </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="158">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="159">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="160">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        @suggestions = @project.suggestions.includes(:user).order(created_at: &#39;desc&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="161">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        render &#39;api/v1/projects/suggestion_index.json.jbuilder&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="162">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="163">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="164">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="165">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="166">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def project_params </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="167">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        params.require(:project).permit(:title, :description)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="168">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="169">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="170">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def find_project_by_user</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="171">
+            
+            
+
+            
+
+            <code class="ruby">        @project = current_api_v1_user.projects.friendly.find_by_slug(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="172">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="173">
+            
+            
+
+            
+
+            <code class="ruby">        unless @project </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="174">
+            
+            
+
+            
+
+            <code class="ruby">            render json: &quot;Not Found&quot;, message: &quot;Project not found&quot;, status: :not_found</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="175">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="176">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="177">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="178">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def find_project </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="27" data-linenumber="179">
+            <span class="hits">27</span>
+            
+
+            
+
+            <code class="ruby">        @project = Project.friendly.find_by_slug(params[:id])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="180">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="181">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="182">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="183">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="27" data-linenumber="184">
+            <span class="hits">27</span>
+            
+
+            
+
+            <code class="ruby">        unless @project </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="185">
+            <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">            render json: &quot;Not Found&quot;, message: &quot;Project not found&quot;, status: :not_found</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="186">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="187">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="188">
             
             
 
@@ -2114,8 +2752,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="43" data-linenumber="11">
-            <span class="hits">43</span>
+          <li class="covered" data-hits="40" data-linenumber="11">
+            <span class="hits">40</span>
             
 
             
@@ -3549,480 +4187,9 @@
 </div>
 
       
-        <div class="source_table" id="be8e965a79e5ae8e0663aef980df2cfb985d8ad2">
+        <div class="source_table" id="8c0b83f7efc62da2d776bd3e539e6b3c286dd67c">
   <div class="header">
-    <h3>app/models/anticipation.rb</h3>
-    <h4>
-      <span class="green">
-  90.48%
-</span>
-
-      lines covered
-    </h4>
-
-    
-
-    <div class="t-line-summary">
-      <b>21</b> relevant lines.
-      <span class="green"><b>19</b> lines covered</span> and
-      <span class="red"><b>2</b> lines missed.</span>
-    </div>
-
-    
-
-  </div>
-
-  <pre>
-    <ol>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="1">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">class Anticipation &lt; ApplicationRecord</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="2">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  include PublicActivity::Common</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="3">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  if Rails.env === &#39;production&#39; </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="4">
-            
-            
-
-            
-
-            <code class="ruby">    searchkick word_middle: [:body]</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="5">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    before_create :set_slug</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="8">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    before_save :penilize_user</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    belongs_to :user</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="11">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    belongs_to :anticipation_cover</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="12">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    has_one :project</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="14">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    has_many :comments, as: :commentable</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    validates :due_date, :body, presence: true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    acts_as_followable</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    acts_as_votable</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="18">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="19">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    private </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="21">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def set_slug </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="80" data-linenumber="22">
-            <span class="hits">80</span>
-            
-
-            
-
-            <code class="ruby">        self.slug = Digest::MD5.hexdigest(self.body + Time.now.to_f.to_s.gsub(&quot;.&quot;, &quot;&quot;) + SecureRandom.hex(5))</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="23">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="24">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def penilize_user </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="80" data-linenumber="26">
-            <span class="hits">80</span>
-            
-
-            
-
-            <code class="ruby">        if self.due_date_changed? </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="80" data-linenumber="27">
-            <span class="hits">80</span>
-            
-
-            
-
-            <code class="ruby">           user.decrement!(:repu_coin, 50)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="28">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="29">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="30">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="31">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="32">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def search_data</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="33">
-            
-            
-
-            
-
-            <code class="ruby">      {</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="34">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="35">
-            
-            
-
-            
-
-            <code class="ruby">        body: body</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="36">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="37">
-            
-            
-
-            
-
-            <code class="ruby">      }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="38">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="39">
-            
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="40">
-            
-            
-
-            
-
-            <code class="ruby">end</code>
-          </li>
-        </div>
-      
-    </ol>
-  </pre>
-</div>
-
-      
-        <div class="source_table" id="b009c5ddd7c8d293af226d7ab7c7e3e27d26cc50">
-  <div class="header">
-    <h3>app/models/anticipation_cover.rb</h3>
+    <h3>app/jobs/application_job.rb</h3>
     <h4>
       <span class="green">
   100.0%
@@ -4053,12 +4220,778 @@
 
             
 
-            <code class="ruby">class AnticipationCover &lt; ApplicationRecord</code>
+            <code class="ruby">class ApplicationJob &lt; ActiveJob::Base</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="2">
+            
+            
+
+            
+
+            <code class="ruby">  # Automatically retry jobs that encountered a deadlock</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="3">
+            
+            
+
+            
+
+            <code class="ruby">  # retry_on ActiveRecord::Deadlocked</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby">  # Most jobs are safe to ignore if the underlying records are no longer available</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby">  # discard_on ActiveJob::DeserializationError</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="7ba272ebde38294d4109ce1982c429d8737c287a">
+  <div class="header">
+    <h3>app/jobs/project_like_job.rb</h3>
+    <h4>
+      <span class="red">
+  33.33%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>12</b> relevant lines.
+      <span class="green"><b>4</b> lines covered</span> and
+      <span class="red"><b>8</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class ProjectLikeJob &lt; ApplicationJob</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  include ActivityHelper</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  queue_as :default</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def perform(*args)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby">    # Do something later</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby">     @project = Project.friendly.find(args.first)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby">     action_owner  = User.all.friendly.find(args.last) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">     return if activity_belongs_to_current_user @project, action_owner</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby">     unless activity_was_performed_previously(@project, &#39;project.like&#39;, action_owner)  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">        total_performers = (@project.get_likes.size - 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">        @project.create_activity :like, owner: action_owner</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">        action_owner_info = {name: action_owner.name, image: action_owner.image}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">        ProjectLikeNotification.with(project: @project, action_owner: action_owner_info, total_performers: total_performers ).deliver @project.user</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">     end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="38953354117edfaddab5fcf33d42f45f4b175c70">
+  <div class="header">
+    <h3>app/jobs/project_upvote_job.rb</h3>
+    <h4>
+      <span class="red">
+  33.33%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>12</b> relevant lines.
+      <span class="green"><b>4</b> lines covered</span> and
+      <span class="red"><b>8</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">class ProjectUpvoteJob &lt; ApplicationJob</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  include ActivityHelper</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  queue_as :default</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="4">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="5">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def perform(*args)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">    # Do something later</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="9">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="10">
+            
+            
+
+            
+
+            <code class="ruby">    	@project = Project.friendly.find(args.first)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby">    	action_owner  = User.all.friendly.find(args.last) </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="12">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="13">
+            
+            
+
+            
+
+            <code class="ruby">      return if activity_belongs_to_current_user @project, action_owner</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="14">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="15">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="16">
+            
+            
+
+            
+
+            <code class="ruby">       unless activity_was_performed_previously(@project, &#39;project.upvote&#39;, action_owner)  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">       		</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="18">
+            
+            
+
+            
+
+            <code class="ruby">          total_performers = (@project.get_upvotes.size - 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby">          @project.create_activity :upvote, owner: action_owner</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="20">
+            
+            
+
+            
+
+            <code class="ruby">          action_owner_info = {name: action_owner.name, image: action_owner.image}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby">          UpvoteNotification.with(project: @project, action_owner: action_owner_info, total_performers: total_performers ).deliver @project.user</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">          </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">       		</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">       end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="26">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
             
             
 
@@ -4201,12 +5134,12 @@
 </div>
 
       
-        <div class="source_table" id="db2b975fc97fcd14a3d0788c1c7d55b611482c22">
+        <div class="source_table" id="e88c37073157dfa47c84d7bb6fce56dd4b5c0217">
   <div class="header">
-    <h3>app/models/follow.rb</h3>
+    <h3>app/models/comment.rb</h3>
     <h4>
-      <span class="yellow">
-  85.71%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -4215,9 +5148,9 @@
     
 
     <div class="t-line-summary">
-      <b>7</b> relevant lines.
+      <b>6</b> relevant lines.
       <span class="green"><b>6</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -4234,18 +5167,18 @@
 
             
 
-            <code class="ruby">class Follow &lt; ActiveRecord::Base</code>
+            <code class="ruby">class Comment &lt; ApplicationRecord</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="2">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  belongs_to :user</code>
           </li>
         </div>
       
@@ -4256,7 +5189,7 @@
 
             
 
-            <code class="ruby">  extend ActsAsFollower::FollowerLib</code>
+            <code class="ruby">  belongs_to :commentable, polymorphic: true</code>
           </li>
         </div>
       
@@ -4267,12 +5200,34 @@
 
             
 
-            <code class="ruby">  extend ActsAsFollower::FollowScopes</code>
+            <code class="ruby">  belongs_to  :parent, class_name: &quot;Comment&quot;, optional: true</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="5">
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  has_many :comments, foreign_key: :parent_id, dependent: :destroy</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  acts_as_votable</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
             
             
 
@@ -4283,95 +5238,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="6">
-            
-            
-
-            
-
-            <code class="ruby">  # NOTE: Follows belong to the &quot;followable&quot; and &quot;follower&quot; interface</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  belongs_to :followable, polymorphic: true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="8">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  belongs_to :follower,   polymorphic: true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def block!</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="11">
-            
-            
-
-            
-
-            <code class="ruby">    self.update_attribute(:blocked, true)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="12">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="13">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 
@@ -5778,8 +6645,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="368" data-linenumber="45">
-            <span class="hits">368</span>
+          <li class="covered" data-hits="144" data-linenumber="45">
+            <span class="hits">144</span>
             
 
             
@@ -14263,7 +15130,7 @@
     <h3>config/routes.rb</h3>
     <h4>
       <span class="green">
-  96.36%
+  96.43%
 </span>
 
       lines covered
@@ -14272,8 +15139,8 @@
     
 
     <div class="t-line-summary">
-      <b>55</b> relevant lines.
-      <span class="green"><b>53</b> lines covered</span> and
+      <b>56</b> relevant lines.
+      <span class="green"><b>54</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
 
@@ -15330,13 +16197,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="96">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="96">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">          get &#39;notes&#39;, to: &#39;projects#note_index&#39;</code>
           </li>
         </div>
       
@@ -15347,7 +16214,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -15358,7 +16225,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -15369,7 +16236,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -15380,7 +16247,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -15391,18 +16258,18 @@
 
             
 
-            <code class="ruby">      #anticipations routes </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="102">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="102">
+            
             
 
             
 
-            <code class="ruby">      resources :anticipations, only: [:show, :update, :create] do </code>
+            <code class="ruby">      #anticipations routes </code>
           </li>
         </div>
       
@@ -15413,7 +16280,7 @@
 
             
 
-            <code class="ruby">        member do </code>
+            <code class="ruby">      resources :anticipations, only: [:show, :update, :create] do </code>
           </li>
         </div>
       
@@ -15424,7 +16291,7 @@
 
             
 
-            <code class="ruby">          post &#39;likes&#39;, to: &#39;anticipations#up&#39;</code>
+            <code class="ruby">        member do </code>
           </li>
         </div>
       
@@ -15435,7 +16302,7 @@
 
             
 
-            <code class="ruby">          delete &#39;likes&#39;, to: &#39;anticipations#down&#39;</code>
+            <code class="ruby">          post &#39;likes&#39;, to: &#39;anticipations#up&#39;</code>
           </li>
         </div>
       
@@ -15446,7 +16313,7 @@
 
             
 
-            <code class="ruby">          post &#39;suscribers&#39;, to: &#39;anticipations#suscribe&#39;</code>
+            <code class="ruby">          delete &#39;likes&#39;, to: &#39;anticipations#down&#39;</code>
           </li>
         </div>
       
@@ -15457,7 +16324,7 @@
 
             
 
-            <code class="ruby">          delete &#39;suscribers&#39;, to: &#39;anticipations#unsuscribe&#39;</code>
+            <code class="ruby">          post &#39;suscribers&#39;, to: &#39;anticipations#suscribe&#39;</code>
           </li>
         </div>
       
@@ -15468,18 +16335,18 @@
 
             
 
-            <code class="ruby">          get &#39;subscribers&#39;, to: &#39;anticipations#subscribers&#39;</code>
+            <code class="ruby">          delete &#39;suscribers&#39;, to: &#39;anticipations#unsuscribe&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="109">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="109">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">          get &#39;subscribers&#39;, to: &#39;anticipations#subscribers&#39;</code>
           </li>
         </div>
       
@@ -15490,7 +16357,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -15501,7 +16368,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -15512,7 +16379,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -15523,7 +16390,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -15534,18 +16401,18 @@
 
             
 
-            <code class="ruby">      #suggestions</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="115">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="115">
+            
             
 
             
 
-            <code class="ruby">      resources :suggestions, only: [:create, :update, :index] do </code>
+            <code class="ruby">      #suggestions</code>
           </li>
         </div>
       
@@ -15556,7 +16423,7 @@
 
             
 
-            <code class="ruby">        put &#39;complete&#39;, to: &#39;suggestions#mark_as_done&#39;</code>
+            <code class="ruby">      resources :suggestions, only: [:create, :update, :index] do </code>
           </li>
         </div>
       
@@ -15567,18 +16434,18 @@
 
             
 
-            <code class="ruby">        get &#39;suggestions&#39;, to: &#39;suggestions#index&#39;</code>
+            <code class="ruby">        put &#39;complete&#39;, to: &#39;suggestions#mark_as_done&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="118">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="118">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        get &#39;suggestions&#39;, to: &#39;suggestions#index&#39;</code>
           </li>
         </div>
       
@@ -15589,7 +16456,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -15600,7 +16467,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -15611,7 +16478,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
@@ -15622,7 +16489,7 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -15633,12 +16500,23 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="124">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="125">
             
             
 
