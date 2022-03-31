@@ -85,7 +85,7 @@
 	}
 ].each do |agency|
 
-	Resource.create title: agency.title, desc: agency.desc, link: agency.link, video_url: agency.video_url, resource_type: 'agency'
+	Resource.create title: agency[:title], desc: agency[:desc], link: agency[:link], video_url: agency[:video_url], resource_type: 'agency'
 end
 
 # [
