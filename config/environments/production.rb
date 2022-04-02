@@ -36,7 +36,7 @@ Rails.application.configure do
  # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
   config.action_cable.url = 'wss://xplusportfoliob.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = ['https://xplusportfolio.herokuapp.com']
+  config.action_cable.allowed_request_origins = ["#{ENV['CLIENT']}"]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -99,7 +99,7 @@ Rails.application.configure do
     config.action_mailer.raise_delivery_errors = true
 
 
-config.action_mailer.default_url_options = {host: "xplusportfolio.herokuapp.com", protocol: "https"}
+config.action_mailer.default_url_options = {host: ENV['CLIENT'], protocol: "https"}
 
 config.action_mailer.default_options = { from: 'noreply@mycustomdomain.com' }
 
