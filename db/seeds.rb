@@ -44,67 +44,34 @@
 
 [
 	{
-		img_url: "",
-		title: "Remotasks",
-		desc: "Remotasks is a platform that lets us build real AI with the help of real people. Remotasks offer a variety of tasks like 2D and 3D Image Annotation and Categorization, all of which can help companies develop techs like new gadgets and self-driving cars.",
-		link: "https://www.remotasks.com/es",
-		video_url: "https://youtu.be/DOou5aayna4",
+		img_url: "https://res.cloudinary.com/dn6vnxbnm/image/upload/v1648903934/resources/free_vsu7xp.png",
+		title: "freeCodeCamp",
+		desc: "freeCodeCamp is a non-profit organization that consists of an interactive learning web platform, an online community forum, chat rooms, online publications and local organizations that intend to make learning web development accessible to anyone.",
+		link: "https://www.freecodecamp.org/",
+		video_url: nil,
 	},
+
+	{
+		img_url: "https://res.cloudinary.com/dn6vnxbnm/image/upload/v1648903810/resources/yearone-removebg-preview_ar1c4l.png",
+		title: "YearOne (Techstars 2020)",
+		desc: "We help code schools grads land incredible jobs and support through their early careers in tech companies.",
+		link: "https://www.joinyearone.io/",
+		video_url: nil,
+	},
+
+	{
+		img_url: "https://res.cloudinary.com/dn6vnxbnm/image/upload/v1648903706/resources/odin_project-removebg-preview_wqhnpw.png",
+		title: "The Odin Project",
+		desc: "The Odin Project provides a free open source coding curriculum that can be taken entirely online. Since its inception, it has helped many students get hired as developers and has assisted countless others in learning enough programming to work on their own personal projects.",
+		link: "https://www.theodinproject.com/",
+		video_url: nil,
+	}
 ].each do |jobboard|
 
-	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'side_income'
+	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'community'
 	
 
 end
 
 
 
-[
-	{
-		img_url: "",
-		title: "Learning How to Learn for Programmers (Barbara Oakley & Zach Caceres)",
-		desc: "Technological change is relentless. It often feels like software engineers must learn new tools, techniques, and systems every day. Distinguished Professor of Engineering Barbara Oakley is the instructor of Learning How to Learn on Coursera, one of the world’s largest massive open online course, with over 3 million students. In this presentation, she's joined by software engineer Zach Caceres to show you how you can better use the most important tool in a software developer's toolkit: your own brain.",
-		link: "https://youtu.be/9xm8suE2lk0",
-		video_url: "https://youtu.be/9xm8suE2lk0",
-	},
-	{
-		img_url: "",
-		title: "Data-structure and algorithm",
-		desc: "Dr. Rob Edwards from San Diego State University teaches computer science and bioinformatics",
-		link: "https://www.youtube.com/watch?v=zgCnMvvw6Oo&list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk&index=1",
-		video_url: "https://youtu.be/zgCnMvvw6Oo?list=PLpPXw4zFa0uKKhaSz87IowJnOTzh9tiBk",
-	},
-	{
-		img_url: "",
-		title: "Log2Base2",
-		desc: "Log2Base2 is a visual learning platform to learn programming, data structures & algorithms and prepare for coding interviews. Our platform is trusted by 125,000+ learners around the world.",
-		link: "https://log2base2.com/",
-		video_url: "https://youtu.be/MSX-IZE27zc",
-	},
-].each do |jobboard|
-
-	Resource.create title: jobboard[:title], desc: jobboard[:desc], link: jobboard[:link], video_url: jobboard[:video_url], img_url: jobboard[:img_url], resource_type: 'learning'
-	
-
-end
-
-
-# [
-# 	'ActiveRecord', 'Adobe XD', 'AngularJS', 'Apollo', 
-# 	'Arduino', 'Asp.net', 'AWS', 'AWS S3/Lambda', 'Blazor', 
-# 	'Bootstrap', 'C', 'C#', 'C++', 'C#/ASP .NET Core', 'C/C++', 
-# 	'Clojure', 'Confluence', 'CSS3(SASS)', 'Dart', 'Datomic', 
-# 	'Django', 'Docker', 'Elixir', 'Ember.js', 'Entity', 'ES6', 'Express.js', 
-# 	'Firebase', 'Flask', 'Foxpro', 'Gatsby', 'Go', 'GraphQL', 
-# 	'GSAP', 'Handlebars', 'Heroku', 'HTML5', 'Java', 
-# 	'Jest', 'Jira', 'JQuery', 'JSS', 'JWT', 'Kotlin', 'Kubernetes', 'LINQ', 
-# 	'Lua', 'Material-UI', 'MATLAB', 'MongoDB', 'MYSQL', 'NestJS', '.NET', 'Next.js', 
-# 	'Node.js', 'NoSQL', 'openFrameworks', 'P5', 'Phoenix', 'PHP', 'PostgreSQL', 'Postman', 
-# 	'Python', 'Razor', 'Redis', 'Redux', 'REST APIs', 'Ruby', 'Sass', 'Tailwind UI',
-# 	'SCSS', 'Selenium', 'Sinatra', 'Socket.io', 'SQL', 
-# 	'SQLite', 'Three.js', 'TypeScript','Vue.js' 
-# ].each do |record| 
-
-# 	Technology.create name: record
-
-# end
