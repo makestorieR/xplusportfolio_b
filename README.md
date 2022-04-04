@@ -1,5 +1,5 @@
 # Xplusportfolio
- Xplusportfolio is a project accountability platform that helps self-taught developers, bootcamp-grads, and newbies in tech improve their web portfolio by collaboratively sharing, improving and adding value to other user’s projects.  [xplusportfolio.tech](https://xplusportfolio.tech)
+ Xplusportfolio is a project accountability platform that helps self-taught developers, bootcamp-grads, and newbies in tech improve their web portfolio by collaboratively sharing, improving and adding value to other user’s projects.  [xplusportfolio.tech](https://www.xplusportfolio.tech)
 
 
 ## Note.
@@ -59,7 +59,7 @@ Share Resource: What use would it be to suggest a complex feature for a project 
 
 ## Basic Usage
 ### Register
-Visit [xplusportfolio.tech](https://xplusportfolio.tech), to sign up and create an account. confirm your account on email and login.
+Visit [xplusportfolio.tech](https://www.xplusportfolio.tech), to sign up and create an account. confirm your account on email and login.
 ![alt text](https://res.cloudinary.com/dn6vnxbnm/image/upload/v1648905990/git_homepage/ezgif.com-gif-maker_12_lb3to1.gif)
 
 
